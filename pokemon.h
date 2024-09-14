@@ -20,43 +20,139 @@ typedef struct {
     tp_fila hab;
 } tp_pokemon;
 
-void criarPokemons(tp_pokemon poke[]){
+void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
 
-//coloca para todos os pokemons comecarem com experiencia = 0.
-for(int i=1; i<=QTDPOKEMONS; i++){
+    //coloca para todos os pokemons comecarem com experiencia = 0.
+    for(int i=1; i<=QTDPOKEMONS; i++){
 
-poke[i].exp = 0;
+    poke[i].exp = 0;
 
-}
+    }
 
-//Pikapombo
-strcpy(poke[1].nome, "Pikapombo");
-strcpy(poke[1].tipo, "eletrico");
-poke[1].vida = 250;
-poke[1].atq = 30;
-poke[1].def = 0.6;
-poke[1].agil = 50;
-poke[1].evolucao = 1;
+    //Pikapombo
+    strcpy(poke[1].nome, "Pikapombo");
+    strcpy(poke[1].tipo, "eletrico");
+    poke[1].vida = 250;
+    poke[1].atq = 30;
+    poke[1].def = 0.6;
+    poke[1].agil = 50;
+    poke[1].evolucao = 1;
 
-inicializaFila(&poke[1].hab);
-insereFila(&poke[1].hab, hab[1]); //bicada
-insereFila(&poke[1].hab, choque); //choque
-insereFila(&poke[1].hab, eletrizar); //eletrizar
-insereFila(&poke[1].hab, bombardeioEletrico); //bombardeioEletrico
+    inicializaFila(&poke[1].hab);
+    insereFila(&poke[1].hab, hab[1]); //bicada
+    insereFila(&poke[1].hab, choque); //choque
+    insereFila(&poke[1].hab, eletrizar); //eletrizar
+    insereFila(&poke[1].hab, bombardeioEletrico); //bombardeioEletrico
 
-//Cocatriz:
-poke[2].nome = "Cocatriz";
-poke[2].vida = 300;
-poke[2].atq = 40;
-poke[2].def = 0.8;
-poke[2].agil = 50;
-poke[2].evolucao = 1;
 
-inicializaFila(&poke[2].hab);
-insereFila(&poke[2].hab, bicada);
-insereFila(&poke[2].hab amaldicoar);
-insereFila(&poke[2].hab petrificar);
-insereFila(&poke[2].hab paralizar);
+    //Cocatriz:
+    strcpy(poke[2].nome, "Cocatriz");
+    strcpy(poke[1].tipo, "sombrio");
+    poke[2].vida = 300;
+    poke[2].atq = 40;
+    poke[2].def = 0.8;
+    poke[2].agil = 50;
+    poke[2].evolucao = 1;
+
+    inicializaFila(&poke[2].hab);
+    insereFila(&poke[2].hab, bicada); //bicada
+    insereFila(&poke[2].hab amaldicoar); //amaldicoar
+    insereFila(&poke[2].hab petrificar); //petrificar
+    insereFila(&poke[2].hab paralizar); //paralizar
+
+
+    //Pato do Clube:
+    strcpy(poke[3].nome, "Pato do Clube");
+    strcpy(poke[1].tipo, "agua");
+    poke[3].vida = 300;
+    poke[3].atq = 50;
+    poke[3].def = 0.45;
+    poke[3].agil = 50;
+    poke[3].evolucao = 1;
+
+    inicializaFila(&poke[3].hab);
+    insereFila(&poke[3].hab bicada);
+    insereFila(&poke[3].hab encharcar);
+    insereFila(&poke[3].hab relaxar);
+    insereFila(&poke[3].hab aguaQuente);
+
+
+    //Flamingo Capoerista:
+    strcpy(poke[4].nome, "Flamingo Capoeirista");
+    strcpy(poke[4].tipo, "lutador");
+    poke[4].vida = 250;
+    poke[4].atq = 40;
+    poke[4].def = 0.95;
+    poke[4].agil = 80;
+    poke[4].evolucao = 1;
+
+    inicializaFila(&poke[4].hab);
+    insereFila(&poke[4].hab chute);
+    insereFila(&poke[4].hab brigar);
+    insereFila(&poke[4].hab tocarBerimbau);
+    insereFila(&poke[4].hab meiaLua);
+
+
+    //Galo Guerreiro:
+    strcpy(poke[5].nome, "Flamingo Capoeirista");
+    strcpy(poke[5].tipo, "lutador");
+    poke[5].vida = 300;
+    poke[5].atq = 45;
+    poke[5].def = 0.6;
+    poke[5].agil = 35;
+    poke[5].evolucao = 1;
+
+    inicializaFila(&poke[5].hab);
+    insereFila(&poke[5].hab soco);
+    insereFila(&poke[5].hab brigar);
+    insereFila(&poke[5].hab gritoDeGuerra);
+    insereFila(&poke[5].hab avancarComEscudo);
+
+    //Galinha Pintadinha:
+    strcpy(poke[6].nome, "Galinha Pintadinha");
+    strcpy(poke[6].tipo, "dancarino");
+    poke[6].vida = 300;
+    poke[6].atq = 20;
+    poke[6].def = 0.6;
+    poke[6].agil = 80;
+    poke[6].evolucao = 1;
+
+    inicializaFila(&poke[6].hab);
+    insereFila(&poke[6].hab chute);
+    insereFila(&poke[6].hab sambar);
+    insereFila(&poke[6].hab botarSaia);
+    insereFila(&poke[6].hab pintinhoAmarelinho);
+
+
+    //ticoliro
+    strcpy(poke[6].nome, "Ticoliro");
+    strcpy(poke[6].tipo, "lutador");
+    poke[7].vida = 180;
+    poke[7].atq = 35;
+    poke[7].def = 0.8;
+    poke[7].agil = 50;
+    poke[7].evolucao = 1;
+
+    inicializaFila(&poke[7].hab);
+    insereFila(&poke[7].hab soco);
+    insereFila(&poke[7].hab rolar);
+    insereFila(&poke[7].hab chorar);
+    insereFila(&poke[7].hab tacada);
+
+
+    //dodo
+    poke[8].vida = 150;
+    poke[8].atq = 20;
+    poke[8].def = 0.8;
+    poke[8].agil = 50;
+    poke[8].evolucao = 1;
+
+    inicializaFila(&poke[8].hab);
+    insereFila(&poke[8].hab bicada);
+    insereFila(&poke[8].hab rolar);
+    insereFila(&poke[8].hab hibernar);
+    insereFila(&poke[8].hab extincao);
+
 }
 
 //DECLARACAO DOS POKEMONS
@@ -64,107 +160,7 @@ insereFila(&poke[2].hab paralizar);
 
 
 
-//leti aqui
 
-
-
-
-
-
-
-
-//Pato do Clube:
-tp_pokemon patoDoClube;
-patoDoClube.nome = "Pato do Clube";
-patoDoClube.vida = 300;
-patoDoClube.atq = 50;
-patoDoClube.def = 0.45;
-patoDoClube.agil = 50;
-patoDoClube.evolucao = 1;
-
-inicializaFila(&patoDoClube.hab);
-insereFila(&patoDoClube.hab bicada);
-insereFila(&patoDoClube.hab encharcar);
-insereFila(&patoDoClube.hab relaxar);
-insereFila(&patoDoClube.hab aguaQuente);
-
-
-//Flamingo Capoerista:
-tp_pokemon flamingoC;
-flamingoC.nome = "Flamingo Capoeirista";
-flamingoC.vida = 250;
-flamingoC.atq = 40;
-flamingoC.def = 0.95;
-flamingoC.agil = 80;
-flamingoC.evolucao = 1;
-
-inicializaFila(&flamingoC.hab);
-insereFila(&flamingoC.hab chute);
-insereFila(&flamingoC.hab brigar);
-insereFila(&flamingoC.hab tocarBerimbau);
-insereFila(&flamingoC.hab meiaLua);
-
-
-//Galo Guerreiro:
-tp_pokemon galoGuerreiro;
-galoGuerreiro.nome = "Galo Guerreiro";
-galoGuerreiro.vida = 300;
-galoGuerreiro.atq = 45;
-galoGuerreiro.def = 0.6;
-galoGuerreiro.agil = 35;
-galoGuerreiro.evolucao = 1;
-
-inicializaFila(&galoGuerreiro.hab);
-insereFila(&galoGuerreiro.hab soco);
-insereFila(&galoGuerreiro.hab brigar);
-insereFila(&galoGuerreiro.hab gritoDeGuerra);
-insereFila(&galoGuerreiro.hab avancarComEscudo);
-
-
-//Galinha Pintadinha:
-tp_pokemon galinhaPintadinha;
-galinhaPintadinha.vida = 300;
-galinhaPintadinha.atq = 20;
-galinhaPintadinha.def = 0.6;
-galinhaPintadinha.agil = 80;
-galinhaPintadinha.evolucao = 1
-
-inicializaFila(&galinhaPintadinha.hab);
-insereFila(&galinhaPintadinha.hab chute);
-insereFila(&galinhaPintadinha.hab sambar);
-insereFila(&galinhaPintadinha.hab botarSaia);
-insereFila(&galinhaPintadinha.hab pintinhoAmarelinho);
-
-
-//ticoliro
-tp_pokemon ticoLiro;
-ticoLiro.vida = 180;
-ticoLiro.atq = 35;
-ticoliro.def = 0.8;
-ticoLiro.agil = 50;
-ticoLiro.evolucao = 1;
-
-inicializaFila(&ticoLiro.hab);
-insereFila(&ticoLiro.hab soco);
-insereFila(&ticoLiro.hab rolar);
-insereFila(&ticoLiro.hab chorar);
-insereFila(&ticoLiro.hab tacada);
-
-
-//dôdo
-tp_pokemon dodo;
-dodo.vida = 150;
-dodo.nome = "Dodo";
-dodo.atq = 20;
-dodo.def = 0.8;
-dodo.agil = 50;
-dodo.evolucao = 1;
-
-inicializaFila(&dodo.hab);
-insereFila(&dodo.hab bicada);
-insereFila(&dodo.hab rolar);
-insereFila(&dodo.hab hibernar);
-insereFila(&dodo.hab extincao);
 
 
 //rolinha

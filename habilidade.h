@@ -26,8 +26,6 @@ int dano;
 // Função para inicializar uma habilidade
 void criarHabilidades(tp_hab hab[]) {
   
-
-
     //bicada
     strcpy(hab[0].nome, "Bicada");
     strcpy(hab[0].tipo, "nenhum");

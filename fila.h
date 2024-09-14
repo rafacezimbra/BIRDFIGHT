@@ -1,9 +1,12 @@
+//FILA ADAPTADA PARA CABER HABILIDADES
+
 #ifndef FILA_H //if not define
 #define FILA_H
 #include <stdio.h>
+#include "habilidade.h"
 #define MAX 100
 
-typedef int
+typedef tp_hab
 tp_item;
 
 typedef struct {
