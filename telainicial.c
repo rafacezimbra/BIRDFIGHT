@@ -55,16 +55,6 @@ printf("\n");
 printf("Você deseja manter %s no seu time? (S/N)", poke[birdmonUsuario1].nome);
 scanf("%c", &resp);
 
-}
-void escolha2(){
-
-}
-
-void escolha3(){
-
-}
-
-
 int main (void) {
     tp_pokemon poke[17];
     char nomeUsuario[15];
@@ -122,9 +112,6 @@ scanf("%d", birdmonUsuario2);
 printf("\n");
 printf("Você deseja manter %s no seu time? (S/N)", poke[birdmonUsuario1].nome);
 scanf("%c", &resp);
-
-if("")
-
 
 printf("Terceiro Birdmon: ");
 scanf("%d", birdmonUsuario3)
