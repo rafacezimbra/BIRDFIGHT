@@ -13,7 +13,6 @@ char tipo[15];
 
 int dano;
 
-efeito
 //efeitos especiais para certas habilidades serao adicionados em suas funcoes respectivas
 //funcoes so serao adicionadas apos a criacao do sistema de batalha
 
@@ -25,25 +24,19 @@ efeito
 
 //TESTE DE FUNCAO
 // Função para inicializar uma habilidade
-void inicializa_habilidade(tp_hab *hab, const char n, const char t, int dano) {
-    *hab->nome = n;
-    *hab->tipo = t;
-    hab->dano = 0;
+void criarHabilidades(tp_hab hab[]) {
+  
+
+
+    //bicada
+    strcpy(hab[0].nome, "Bicada");
+    strcpy(hab[0].tipo, "nenhum");
+    hab[0].dano = 30; 
 }
 
-void define_habilidades(tp_hab hab){
-    tp_hab bicada, chute;
-    inicializa_habilidade(&bicada, "Bicada", "nenhum", 30);
-    inicializa_habilidade(&chute, "Chute", "nenhum", 30);
 
 
-}
 
-// bicada
-tp_hab bicada;
-bicada.nome = "Bicada";
-bicada.tipo = "nenhum";
-bicada.dano = 30; 
 
 
 // chute

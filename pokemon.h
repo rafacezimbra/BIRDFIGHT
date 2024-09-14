@@ -39,10 +39,24 @@ poke[1].agil = 50;
 poke[1].evolucao = 1;
 
 inicializaFila(&poke[1].hab);
-insereFila(&poke[1].hab, bicada);
-insereFila(&poke[1].hab, choque);
-insereFila(&poke[1].hab, eletrizar);
-insereFila(&poke[1].hab, bombardeioEletrico);
+insereFila(&poke[1].hab, hab[1]); //bicada
+insereFila(&poke[1].hab, choque); //choque
+insereFila(&poke[1].hab, eletrizar); //eletrizar
+insereFila(&poke[1].hab, bombardeioEletrico); //bombardeioEletrico
+
+//Cocatriz:
+poke[2].nome = "Cocatriz";
+poke[2].vida = 300;
+poke[2].atq = 40;
+poke[2].def = 0.8;
+poke[2].agil = 50;
+poke[2].evolucao = 1;
+
+inicializaFila(&poke[2].hab);
+insereFila(&poke[2].hab, bicada);
+insereFila(&poke[2].hab amaldicoar);
+insereFila(&poke[2].hab petrificar);
+insereFila(&poke[2].hab paralizar);
 }
 
 //DECLARACAO DOS POKEMONS
@@ -54,20 +68,9 @@ insereFila(&poke[1].hab, bombardeioEletrico);
 
 
 
-//Cocatriz:
-tp_pokemon cocatriz
-cocatriz.nome = "Cocatriz";
-cocatriz.vida = 300;
-cocatriz.atq = 40;
-cocatriz.def = 0.8;
-cocatriz.agil = 50;
-cocatriz.evolucao = 1;
 
-inicializaFila(&cocatriz.hab);
-insereFila(&cocatriz.hab, bicada);
-insereFila(&cocatriz.hab amaldicoar);
-insereFila(&cocatriz.hab petrificar);
-insereFila(&cocatriz.hab paralizar);
+
+
 
 
 //Pato do Clube:
