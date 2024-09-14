@@ -125,8 +125,8 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
 
 
     //ticoliro
-    strcpy(poke[6].nome, "Ticoliro");
-    strcpy(poke[6].tipo, "lutador");
+    strcpy(poke[7].nome, "Ticoliro");
+    strcpy(poke[7].tipo, "lutador");
     poke[7].vida = 180;
     poke[7].atq = 35;
     poke[7].def = 0.8;
@@ -141,6 +141,8 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
 
 
     //dodo
+    strcpy(poke[8].nome, "Dodo");
+    strcpy(poke[8].tipo, "normal");
     poke[8].vida = 150;
     poke[8].atq = 20;
     poke[8].def = 0.8;
@@ -153,148 +155,134 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     insereFila(&poke[8].hab hibernar);
     insereFila(&poke[8].hab extincao);
 
-}
 
-//DECLARACAO DOS POKEMONS
+    //rolinha
+    poke[9].vida = 180;
+    poke[9].atq = 30;
+    poke[9].def = 0.8;
+    poke[9].agil = 65;
+    poke[9].evolucao = 1;
 
-
-
-
-
-
-
-//rolinha
-tp_pokemon rolinha;
-rolinha.nome = "Rolinha";
-rolinha.vida = 180;
-rolinha.atq = 30;
-rolinha.def = 0.8;
-rolinha.agil = 65;
-rolinha.evolucao = 1;
-
-inicializaFila(&rolinha.hab);
-insereFila(&rolinha.hab bicada);
-insereFila(&rolinha.hab rolar);
-insereFila(&rolinha.hab golpeBaixo);
-insereFila(&rolinha.hab rolada);
+    inicializaFila(&poke[9].hab);
+    insereFila(&poke[9].hab bicada);
+    insereFila(&poke[9].hab rolar);
+    insereFila(&poke[9].hab golpeBaixo);
+    insereFila(&poke[9].hab rolada);
 
 
-//Joao(Frango)
-tp_pokemon joao;
-joao.nome = "Joao Frango";
-joao.vida = 300;
-joao.atq = 25;
-joao.def = 0.55;
-joao.agil = 35;
-joao.evolucao = 1
+    //Joao Frango 
+    strcpy(poke[10].nome, "Joao Frango");
+    strcpy(poke[10].tipo, "planta");
+    poke[10].vida = 300;
+    poke[10].atq = 25;
+    poke[10].def = 0.55;
+    poke[10].agil = 35;
+    poke[10].evolucao = 1;
 
-inicializaFila(&joao.hab);
-insereFila(&joao.hab bicada);
-insereFila(&joao.hab semear);
-insereFila(&joao.hab enrolar);
-insereFila(&joao.hab taDandoOnda);
-
-
-//Canarinho sambista
-tp_pokemon canarinhoS;
-canarinhoS.nome = "Canarinho Sambista";
-canarinhoS.vida = 180;
-canarinhoS.atq = 25;
-canarinhoS.def = 0.6;
-canarinhoS.agil = 80;
-canarinhoS.evolucao = 1
-
-inicializaFila(&canarinhoS.hab);
-insereFila(&canarinhoS.hab chute);
-insereFila(&canarinhoS.hab sambar);
-insereFila(&canarinhoS.hab festaEmIpanema);
-insereFila(&canarinhoS.hab carnaval);
+    inicializaFila(&poke[10].hab);
+    insereFila(&poke[10].hab bicada);
+    insereFila(&poke[10].hab semear);
+    insereFila(&poke[10].hab enrolar);
+    insereFila(&poke[10].hab taDandoOnda);
 
 
-//Corvo Emo Gotico
-tp_pokemon corvoEmoGotico;
-corvoEmoGotico.nome = "Corvo emo gotico";
-corvoEmoGotico.vida = 250;
-corvoEmoGotico.atq = 30;
-corvoEmoGotico.def = 0.8;
-corvoEmoGotico.agil = 65;
-corvoEmoGotico.evolucao = 1;
+    //Canarinho sambista
+    strcpy(poke[11].nome, "Canarinho sambista");
+    strcpy(poke[11].tipo, "dancarino");
+    poke[11].vida = 180;
+    poke[11].atq = 25;
+    poke[11].def = 0.6;
+    poke[11].agil = 80;
+    poke[11].evolucao = 1;
 
-inicializaFila(&corvoEmoGotico.hab);
-insereFila(&corvoEmoGotico.hab bicada);
-insereFila(&corvoEmoGotico.hab amaldicoar);
-insereFila(&corvoEmoGotico.hab noiteChuvosa);
-insereFila(&corvoEmoGotico.hab evanescence);
-
-
-//Papaleguas
-tp_pokemon papaleguas;
-papaleguas.nome = "Papaleguas";
-papaleguas.vida = 250;
-papaleguas.atq = 35;
-papaleguas.def = 0.8;
-papaleguas.agil = 95;
-papaleguas.evolucao = 1;
-
-inicializaFila(&papaleguas.hab);
-insereFila(&papaleguas.hab chute);
-insereFila(&papaleguas.hab choque);
-insereFila(&papaleguas.hab acelerar);
-insereFila(&papaleguas.hab beepBeep);
+    inicializaFila(&poke[11].hab);
+    insereFila(&poke[11].hab chute);
+    insereFila(&poke[11].hab sambar);
+    insereFila(&poke[11].hab festaEmIpanema);
+    insereFila(&poke[11].hab carnaval);
 
 
-//Pica-Pau
+    //Corvo Emo Gotico
+    strcpy(poke[12].nome, "Corvo emo gotico");
+    strcpy(poke[12].tipo, "sombrio");
+    poke[12].vida = 250;
+    poke[12].atq = 30;
+    poke[12].def = 0.8;
+    poke[12].agil = 65;
+    poke[12].evolucao = 1;
 
-tp_pokemon picaPau;
-picaPau.nome = "Pica Pau";
-picaPau.vida = 250;
-picaPau.atq = 40;
-picaPau.def = 0.65;
-picaPau.agil = 65;
-picaPau.evolucao = 1;
-
-inicializaFila(&picaPau.hab);
-insereFila(&picaPau.hab bicada);
-insereFila(&picaPau.hab semear);
-insereFila(&picaPau.hab boloDeMurango);
-insereFila(&picaPau.hab eLaVamosNos);
-
-
-//Pinguins de madagascar
-tp_pokemon pinguins;
-pinguins.nome = "Recruta";
-pinguins.vida = 200;
-pinguins.atq = 40;
-pinguins.def = 0.6;
-pinguins.agil = 50;
-pinguins.evolucao = 1;
-
-inicializaFila(&pinguins.hab);
-insereFila(&pinguins.hab soco);
-insereFila(&pinguins.hab encharcar);
-insereFila(&pinguins.hab sorrirEAcenar);
-insereFila(&pinguins.hab boom);
+    inicializaFila(&poke[12].hab);
+    insereFila(&poke[12].hab bicada);
+    insereFila(&poke[12].hab amaldicoar);
+    insereFila(&poke[12].hab noiteChuvosa);
+    insereFila(&poke[12].hab evanescence);
 
 
-//kiwi
-tp_pokemon kiwi;
-kiwi.nome = "Kiwi";
-kiwi.vida = 180;
-kiwi.atq = 25;
-kiwi.def = 0.65;
-kiwi.agil = 50;
-kiwi.evolucao = 1;
+    //Papaleguas
+    strcpy(poke[13].nome, "Papaleguas");
+    strcpy(poke[13].tipo, "eletrico");
+    poke[13].vida = 250;
+    poke[13].atq = 35;
+    poke[13].def = 0.8;
+    poke[13].agil = 95;
+    poke[13].evolucao = 1;
 
-inicializaFila(&kiwi.hab);
-insereFila(&kiwi.hab bicada);
-insereFila(&kiwi.hab semear);
-insereFila(&kiwi.hab camuflagem);
-insereFila(&kiwi.hab explosaoDeKiwi);
+    inicializaFila(&poke[13].hab);
+    insereFila(&poke[13].hab chute);
+    insereFila(&poke[13].hab choque);
+    insereFila(&poke[13].hab acelerar);
+    insereFila(&poke[13].hab beepBeep);
 
 
+    //Pica-Pau
+    strcpy(poke[14].nome, "Pica-Pau");
+    strcpy(poke[14].tipo, "planta");
+    poke[14].vida = 250;
+    poke[14].atq = 40;
+    poke[14].def = 0.65;
+    poke[14].agil = 65;
+    poke[14].evolucao = 1;
+
+    inicializaFila(&poke[14].hab);
+    insereFila(&poke[14].hab bicada);
+    insereFila(&poke[14].hab semear);
+    insereFila(&poke[14].hab boloDeMurango);
+    insereFila(&poke[14].hab eLaVamosNos);
+
+
+    //Pinguins de madagascar (recruta)
+    strcpy(poke[15].nome, "Recruta");
+    strcpy(poke[15].tipo, "agua");
+    poke[15].vida = 200;
+    poke[15].atq = 40;
+    poke[15].def = 0.6;
+    poke[15].agil = 50;
+    poke[15].evolucao = 1;
+
+    inicializaFila(&poke[15].hab);
+    insereFila(&poke[15].hab soco);
+    insereFila(&poke[15].hab encharcar);
+    insereFila(&poke[15].hab sorrirEAcenar);
+    insereFila(&poke[15].hab boom);
+
+    //Kiwi
+    strcpy(poke[16].nome, "Kiwi");
+    strcpy(poke[16].tipo, "planta");
+    poke[16].vida = 180;
+    poke[16].atq = 25;
+    poke[16].def = 0.65;
+    poke[16].agil = 50;
+    poke[16].evolucao = 1;
+
+    inicializaFila(&poke[16].hab);
+    insereFila(&poke[16].hab bicada);
+    insereFila(&poke[16].hab semear);
+    insereFila(&poke[16].hab camuflagem);
+    insereFila(&poke[16].hab explosaoDeKiwi);
+
+    }
 
 #endif
-
 
 //para que serve
 //tantos códigos?
