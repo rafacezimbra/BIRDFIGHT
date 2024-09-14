@@ -1,5 +1,3 @@
-//
-/*
 #ifndef habilidade_h
 #define habilidade_h
 #include <string.h>
@@ -308,6 +306,3 @@ explosaoDeKiwi.nome = "Explosao de Kiwi";
 explosaoDeKiwi.tipo = "planta";
 explosaoDeKiwi.dano = 60;
 #endif
-
-
-*/

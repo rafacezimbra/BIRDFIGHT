@@ -4,13 +4,15 @@
 #include <string.h>
 #include "fila.h"
 #include "habilidade.h"
+#define QTDPOKEMONS 16
 
 
 typedef struct {
 
-    int vida, atq, def, agil, evolucao;
+    int vida, atq, agil, evolucao;
+    float def;
    
-    int exp = 0;
+    int exp;
     char nome[35];
     char tipo[10];
 
@@ -20,6 +22,14 @@ typedef struct {
 
 void criarPokemons(tp_pokemon poke[]){
 
+//coloca para todos os pokemons comecarem com experiencia = 0.
+for(int i=1; i<=QTDPOKEMONS; i++){
+
+poke[i].exp = 0;
+
+}
+
+//Pikapombo
 strcpy(poke[1].nome, "Pikapombo");
 strcpy(poke[1].tipo, "eletrico");
 poke[1].vida = 250;
@@ -28,24 +38,17 @@ poke[1].def = 0.6;
 poke[1].agil = 50;
 poke[1].evolucao = 1;
 
+inicializaFila(&poke[1].hab);
+insereFila(&poke[1].hab, bicada);
+insereFila(&poke[1].hab, choque);
+insereFila(&poke[1].hab, eletrizar);
+insereFila(&poke[1].hab, bombardeioEletrico);
 }
-#endif
 
 //DECLARACAO DOS POKEMONS
-/*
-tp_pokemon pokemon[1]
-pokemon[1].nome = "pokemon[1]";
-pokemon[1].vida = 250;
-pokemon[1].atq = 30;
-pokemon[1].def = 0.6;
-pokemon[1].agil = 50;
-pokemon[1].evolucao = 1;
 
-inicializaFila(&pokemon[1].hab);
-insereFila(&pokemon[1].hab bicada);
-insereFila(&pokemon[1].hab choque);
-insereFila(&pokemon[1].hab eletrizar);
-insereFila(&pokemon[1].hab bicada);
+
+
 
 //leti aqui
 
@@ -302,4 +305,3 @@ insereFila(&kiwi.hab explosaoDeKiwi);
 //não tem lógica
 //johnsson, johnsson 2024
 
-*/
