@@ -39,10 +39,10 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     poke[1].evolucao = 1;
 
     inicializaFila(&poke[1].hab);
-    insereFila(&poke[1].hab, hab[1]); //bicada
-    insereFila(&poke[1].hab, choque); //choque
-    insereFila(&poke[1].hab, eletrizar); //eletrizar
-    insereFila(&poke[1].hab, bombardeioEletrico); //bombardeioEletrico
+    insereFila(&poke[1].hab, hab[0] /*bicada*/);
+    insereFila(&poke[1].hab, hab[3] /*soco*/);
+    insereFila(&poke[1].hab, hab[10] /*eletrizar*/);
+    insereFila(&poke[1].hab, hab[26] /*Bombardeio Eletrico*/);
 
 
     //Cocatriz:
@@ -55,10 +55,10 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     poke[2].evolucao = 1;
 
     inicializaFila(&poke[2].hab);
-    insereFila(&poke[2].hab, bicada); //bicada
-    insereFila(&poke[2].hab amaldicoar); //amaldicoar
-    insereFila(&poke[2].hab petrificar); //petrificar
-    insereFila(&poke[2].hab paralizar); //paralizar
+    insereFila(&poke[2].hab, hab[0] /*bicada*/);
+    insereFila(&poke[2].hab, hab[4] /*amaldicoar*/);
+    insereFila(&poke[2].hab, hab[11] /*petrificar*/);
+    insereFila(&poke[2].hab, hab[27] /*paralizar*/);
 
 
     //Pato do Clube:
@@ -71,10 +71,10 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     poke[3].evolucao = 1;
 
     inicializaFila(&poke[3].hab);
-    insereFila(&poke[3].hab bicada);
-    insereFila(&poke[3].hab encharcar);
-    insereFila(&poke[3].hab relaxar);
-    insereFila(&poke[3].hab aguaQuente);
+    insereFila(&poke[3].hab, hab[0] /*bicada*/);
+    insereFila(&poke[3].hab, hab[5] /*encharcar*/);
+    insereFila(&poke[3].hab, hab[12] /*relaxar*/);
+    insereFila(&poke[3].hab, hab[28] /*agua quente*/);
 
 
     //Flamingo Capoerista:
@@ -87,10 +87,10 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     poke[4].evolucao = 1;
 
     inicializaFila(&poke[4].hab);
-    insereFila(&poke[4].hab chute);
-    insereFila(&poke[4].hab brigar);
-    insereFila(&poke[4].hab tocarBerimbau);
-    insereFila(&poke[4].hab meiaLua);
+    insereFila(&poke[4].hab, hab[1] /*chute*/);
+    insereFila(&poke[4].hab, hab[6] /*brigar*/);
+    insereFila(&poke[4].hab, hab[13] /*tocarBerimbau*/);
+    insereFila(&poke[4].hab, hab[29] /*Meia-Lua*/);
 
 
     //Galo Guerreiro:
@@ -103,10 +103,10 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     poke[5].evolucao = 1;
 
     inicializaFila(&poke[5].hab);
-    insereFila(&poke[5].hab soco);
-    insereFila(&poke[5].hab brigar);
-    insereFila(&poke[5].hab gritoDeGuerra);
-    insereFila(&poke[5].hab avancarComEscudo);
+    insereFila(&poke[5].hab, hab[2] /*soco*/);
+    insereFila(&poke[5].hab, hab[6] /*brigar*/);
+    insereFila(&poke[5].hab, hab[14] /*grito de guerra*/);
+    insereFila(&poke[5].hab, hab[30] /*Avancar com Escudo*/);
 
     //Galinha Pintadinha:
     strcpy(poke[6].nome, "Galinha Pintadinha");
@@ -118,10 +118,10 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     poke[6].evolucao = 1;
 
     inicializaFila(&poke[6].hab);
-    insereFila(&poke[6].hab chute);
-    insereFila(&poke[6].hab sambar);
-    insereFila(&poke[6].hab botarSaia);
-    insereFila(&poke[6].hab pintinhoAmarelinho);
+    insereFila(&poke[6].hab, hab[1] /*chute*/);
+    insereFila(&poke[6].hab, hab[7] /*sambar*/);
+    insereFila(&poke[6].hab, hab[15] /*botar saia*/);
+    insereFila(&poke[6].hab, hab[31] /*Pintinho Amarelinho*/);
 
 
     //ticoliro
@@ -134,10 +134,10 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     poke[7].evolucao = 1;
 
     inicializaFila(&poke[7].hab);
-    insereFila(&poke[7].hab soco);
-    insereFila(&poke[7].hab rolar);
-    insereFila(&poke[7].hab chorar);
-    insereFila(&poke[7].hab tacada);
+    insereFila(&poke[7].hab, hab[2] /*soco*/);
+    insereFila(&poke[7].hab, hab[9] /*rolar*/);
+    insereFila(&poke[7].hab, hab[16] /*chorar*/);
+    insereFila(&poke[7].hab, hab[32] /*tacada*/);
 
 
     //dodo
@@ -150,10 +150,10 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     poke[8].evolucao = 1;
 
     inicializaFila(&poke[8].hab);
-    insereFila(&poke[8].hab bicada);
-    insereFila(&poke[8].hab rolar);
-    insereFila(&poke[8].hab hibernar);
-    insereFila(&poke[8].hab extincao);
+    insereFila(&poke[8].hab, hab[0] /*bicada*/);
+    insereFila(&poke[8].hab, hab[9] /*rolar*/);
+    insereFila(&poke[8].hab, hab[17] /*hibernar*/);
+    insereFila(&poke[8].hab, hab[33] /*Extincao*/);
 
 
     //rolinha
@@ -164,10 +164,10 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     poke[9].evolucao = 1;
 
     inicializaFila(&poke[9].hab);
-    insereFila(&poke[9].hab bicada);
-    insereFila(&poke[9].hab rolar);
-    insereFila(&poke[9].hab golpeBaixo);
-    insereFila(&poke[9].hab rolada);
+    insereFila(&poke[9].hab, hab[0] /*bicada*/);
+    insereFila(&poke[9].hab, hab[9] /*rolar*/);
+    insereFila(&poke[9].hab, hab[18] /*golpe baixo*/);
+    insereFila(&poke[9].hab, hab[34] /*rolada*/);
 
 
     //Joao Frango 
@@ -180,10 +180,10 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     poke[10].evolucao = 1;
 
     inicializaFila(&poke[10].hab);
-    insereFila(&poke[10].hab bicada);
-    insereFila(&poke[10].hab semear);
-    insereFila(&poke[10].hab enrolar);
-    insereFila(&poke[10].hab taDandoOnda);
+    insereFila(&poke[10].hab, hab[0] /*bicada*/);
+    insereFila(&poke[10].hab, hab[8] /*semear*/);
+    insereFila(&poke[10].hab, hab[19] /*enrolar*/);
+    insereFila(&poke[10].hab, hab[35] /*Ta dando onda!*/);
 
 
     //Canarinho sambista
@@ -196,10 +196,10 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     poke[11].evolucao = 1;
 
     inicializaFila(&poke[11].hab);
-    insereFila(&poke[11].hab chute);
-    insereFila(&poke[11].hab sambar);
-    insereFila(&poke[11].hab festaEmIpanema);
-    insereFila(&poke[11].hab carnaval);
+    insereFila(&poke[11].hab, hab[1] /*chute*/);
+    insereFila(&poke[11].hab, hab[7] /*sambar*/);
+    insereFila(&poke[11].hab, hab[20] /*Festa em Ipanema*/);
+    insereFila(&poke[11].hab, hab[36] /*Carnaval!*/);
 
 
     //Corvo Emo Gotico
@@ -212,10 +212,10 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     poke[12].evolucao = 1;
 
     inicializaFila(&poke[12].hab);
-    insereFila(&poke[12].hab bicada);
-    insereFila(&poke[12].hab amaldicoar);
-    insereFila(&poke[12].hab noiteChuvosa);
-    insereFila(&poke[12].hab evanescence);
+    insereFila(&poke[12].hab, hab[0] /*bicada*/);
+    insereFila(&poke[12].hab, hab[4] /*amaldicoar*/);
+    insereFila(&poke[12].hab, hab[21] /*Noite Chuvosa*/);
+    insereFila(&poke[12].hab, hab[37] /*evanescence*/);
 
 
     //Papaleguas
@@ -228,10 +228,10 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     poke[13].evolucao = 1;
 
     inicializaFila(&poke[13].hab);
-    insereFila(&poke[13].hab chute);
-    insereFila(&poke[13].hab choque);
-    insereFila(&poke[13].hab acelerar);
-    insereFila(&poke[13].hab beepBeep);
+    insereFila(&poke[13].hab, hab[1] /*chute*/);
+    insereFila(&poke[13].hab, hab[3] /*soco*/);
+    insereFila(&poke[13].hab, hab[22] /*Acelerar!*/);
+    insereFila(&poke[13].hab, hab[38] /*Beep Beep!*/);
 
 
     //Pica-Pau
@@ -244,10 +244,10 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     poke[14].evolucao = 1;
 
     inicializaFila(&poke[14].hab);
-    insereFila(&poke[14].hab bicada);
-    insereFila(&poke[14].hab semear);
-    insereFila(&poke[14].hab boloDeMurango);
-    insereFila(&poke[14].hab eLaVamosNos);
+    insereFila(&poke[14].hab, hab[0] /*bicada*/);
+    insereFila(&poke[14].hab, hab[8] /*semear*/);
+    insereFila(&poke[14].hab, hab[23] /*Bolo de Morango*/);
+    insereFila(&poke[14].hab, hab[39] /*E la vamos nos!*/);
 
 
     //Pinguins de madagascar (recruta)
@@ -260,10 +260,10 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     poke[15].evolucao = 1;
 
     inicializaFila(&poke[15].hab);
-    insereFila(&poke[15].hab soco);
-    insereFila(&poke[15].hab encharcar);
-    insereFila(&poke[15].hab sorrirEAcenar);
-    insereFila(&poke[15].hab boom);
+    insereFila(&poke[15].hab, hab[2] /*soco*/);
+    insereFila(&poke[15].hab, hab[5] /*encharcar*/);
+    insereFila(&poke[15].hab, hab[24] /*Sorrir e Acenar*/);
+    insereFila(&poke[15].hab, hab[40] /*boom?*/);
 
     //Kiwi
     strcpy(poke[16].nome, "Kiwi");
@@ -275,12 +275,12 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     poke[16].evolucao = 1;
 
     inicializaFila(&poke[16].hab);
-    insereFila(&poke[16].hab bicada);
-    insereFila(&poke[16].hab semear);
-    insereFila(&poke[16].hab camuflagem);
-    insereFila(&poke[16].hab explosaoDeKiwi);
+    insereFila(&poke[16].hab, hab[0] /*bicada*/);
+    insereFila(&poke[16].hab, hab[8] /*semear*/);
+    insereFila(&poke[16].hab, hab[25] /*camuflagem*/);
+    insereFila(&poke[16].hab, hab[41] /*Explosao de Kiwi*/);
 
-    }
+}
 
 #endif
 
