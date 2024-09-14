@@ -1,9 +1,9 @@
 #include <stdio.h>
-#ifndef POKEMON_H
-#define POKEMON_H
+#ifndef SPRITES_H
+#define SPRITES_H
 
 //esta biblioteca serve para guardar as imagens dos passaros
-
+/*
 
 printf("          xxxxxxxxx                                                  \n");
 printf("         xx    xxxxx                                                 \n");
@@ -24,4 +24,6 @@ printf("                       xxxxxx            xxxx xxxxx        xx        \n"
 printf("                         xx  xxxxxxxxxxxxx        xxxxxx    xxxx     \n");
 printf("                    xxxxxx   x                         xxxxxx  xxx   \n");
 printf("                         xxxxx                              xxxxxx   \n");
+#endif
+*/
 #endif

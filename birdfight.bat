@@ -1,0 +1,1 @@
+start telainicial.exe
