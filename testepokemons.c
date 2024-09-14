@@ -6,7 +6,7 @@
 
 int main(void){
 
-    tp_pokemon pokemon[16];
+    tp_pokemon pokemon[17];
     
     criarPokemons(pokemon);
 
