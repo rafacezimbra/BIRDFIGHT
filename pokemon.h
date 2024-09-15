@@ -94,7 +94,7 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
 
 
     //Galo Guerreiro:
-    strcpy(poke[5].nome, "Flamingo Capoeirista");
+    strcpy(poke[5].nome, "Galo Guerreiro");
     strcpy(poke[5].tipo, "lutador");
     poke[5].vida = 300;
     poke[5].atq = 45;
@@ -157,6 +157,8 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
 
 
     //rolinha
+    strcpy(poke[8].nome, "Rolinha");
+    strcpy(poke[8].tipo, "normal");
     poke[9].vida = 180;
     poke[9].atq = 30;
     poke[9].def = 0.8;
