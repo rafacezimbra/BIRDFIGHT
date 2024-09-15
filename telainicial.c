@@ -36,11 +36,12 @@ printf("||                                                                      
 // printf("||                                              * %s                                                                                ||\n", poke[birdmonUsuario3].nome);
 }
 
-void escolha1(tp_pokemon poke[17]){
+char escolha1(tp_pokemon poke[]){
     char resp;
     int birdmonUsuario1;
     printf("Primeiro Birdmon: ");
     scanf("%d", &birdmonUsuario1);
+
 
     #ifdef _WIN32
         system("cls");
@@ -49,17 +50,19 @@ void escolha1(tp_pokemon poke[17]){
     #endif
 
 
-        printf("%s:\n", poke[birdmonUsuario1].nome);
-        printf("%s:\n", poke[birdmonUsuario1].tipo);
-        printf("Vida: %d\n", poke[birdmonUsuario1].vida); 
-        printf("Ataque: %d\n", poke[birdmonUsuario1].atq);
-        printf("Defesa: %f\n", poke[birdmonUsuario1].def);
-        printf("Agilidade: %d\n", poke[birdmonUsuario1].agil); 
+    printf("%s:\n", poke[birdmonUsuario1].nome);
+    printf("%s:\n", poke[birdmonUsuario1].tipo);
+    printf("Vida: %d\n", poke[birdmonUsuario1].vida); 
+    printf("Ataque: %d\n", poke[birdmonUsuario1].atq);
+    printf("Defesa: %f\n", poke[birdmonUsuario1].def);
+    printf("Agilidade: %d\n", poke[birdmonUsuario1].agil); 
 
+      sleep (4);
 
     printf("\n");
     printf("Você deseja manter %s no seu time? (S/N)", poke[birdmonUsuario1].nome);
-    scanf("%c", &resp); 
+    scanf(" %c", &resp); 
+    return resp;
 }
 
 int main (void) {
@@ -94,10 +97,12 @@ int main (void) {
     menu(); //menu
 
     // ESCOLHA DO BIRDMON 1
-    escolha1(poke);
+    resp = escolha1(poke);
 
     if(resp == 'S') {
         // adc pokemon na fila 
+        //printf temporario
+    printf("\n pokemon sera adicionado!"); 
     }
 
     else if(resp == 'N'){
@@ -108,5 +113,8 @@ int main (void) {
         #endif
 
         escolha1(poke);
+        
     }
+    sleep(5);
+    return 0;
 }
