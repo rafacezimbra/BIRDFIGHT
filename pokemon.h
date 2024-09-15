@@ -47,7 +47,7 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
 
     //Cocatriz:
     strcpy(poke[2].nome, "Cocatriz");
-    strcpy(poke[1].tipo, "sombrio");
+    strcpy(poke[2].tipo, "sombrio");
     poke[2].vida = 300;
     poke[2].atq = 40;
     poke[2].def = 0.8;
@@ -63,7 +63,7 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
 
     //Pato do Clube:
     strcpy(poke[3].nome, "Pato do Clube");
-    strcpy(poke[1].tipo, "agua");
+    strcpy(poke[3].tipo, "agua");
     poke[3].vida = 300;
     poke[3].atq = 50;
     poke[3].def = 0.45;
@@ -282,8 +282,6 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
 
 }
 
-#endif
-
 //para que serve
 //tantos códigos?
 //se a vida
@@ -292,3 +290,4 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
 //não tem lógica
 //johnsson, johnsson 2024
 
+#endif

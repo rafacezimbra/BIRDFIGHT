@@ -1,5 +1,5 @@
-#ifndef habilidade_h
-#define habilidade_h
+#ifndef HABILIDADE_H
+#define HABILIDADE_H
 #include <string.h>
 #include <stdio.h>
 #define MAX 100
