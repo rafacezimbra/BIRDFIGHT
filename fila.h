@@ -1,19 +1,18 @@
-//FILA ADAPTADA PARA CABER HABILIDADES
-
 #ifndef FILA_H //if not define
 #define FILA_H
 #include <stdio.h>
 #include "habilidade.h"
 #define MAX 100
 
+//FILA ADAPTADA PARA CABER HABILIDADES
 typedef tp_hab
-tp_item;
+tp_item_f;
 
 typedef struct {
 int ini, fim;
 //outro caminho - int tam
 
-tp_item item[MAX];
+tp_item_f item[MAX];
 } tp_fila;
 
 void inicializaFila(tp_fila *f){
@@ -38,7 +37,7 @@ return 0;
 
 }
 
-int insereFila (tp_fila *f, tp_item e){
+int insereFila (tp_fila *f, tp_item_f e){
 if(filaCheia(f))
 return 0; //Nao foi possivel adicionar o elemento a fila
 
@@ -48,7 +47,7 @@ f->item[f->fim]=e;
 return 1;
 }
 
-int removeFila(tp_fila *f, tp_item *e){
+int removeFila(tp_fila *f, tp_item_f *e){
 if(filaVazia(f))
 return 0; //nao foi possivel remover da fila
 f->ini = proximo(f->ini);
@@ -58,12 +57,12 @@ return 1;
 
 }
 
-void imprime_fila (tp_fila f){
-tp_item e;
+void imprimeFila (tp_fila f){
+tp_item_f e;
 
 while(!filaVazia(&f)){
 removeFila(&f, &e);
-printf("\n%d", e);
+printf("\n%s", e.nome);
 
 }
 }

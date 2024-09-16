@@ -9,9 +9,10 @@
 
 typedef struct {
 
+    int num;
     int vida, atq, agil, evolucao;
     float def;
-   
+    
     int exp;
     char nome[35];
     char tipo[10];
@@ -32,6 +33,7 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     //Pikapombo
     strcpy(poke[1].nome, "Pikapombo");
     strcpy(poke[1].tipo, "eletrico");
+    poke[1].num = 1;
     poke[1].vida = 250;
     poke[1].atq = 30;
     poke[1].def = 0.6;
@@ -48,6 +50,7 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     //Cocatriz:
     strcpy(poke[2].nome, "Cocatriz");
     strcpy(poke[2].tipo, "sombrio");
+    poke[2].num = 2;
     poke[2].vida = 300;
     poke[2].atq = 40;
     poke[2].def = 0.8;
@@ -64,6 +67,7 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     //Pato do Clube:
     strcpy(poke[3].nome, "Pato do Clube");
     strcpy(poke[3].tipo, "agua");
+    poke[3].num = 3;
     poke[3].vida = 300;
     poke[3].atq = 50;
     poke[3].def = 0.45;
@@ -80,6 +84,7 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     //Flamingo Capoerista:
     strcpy(poke[4].nome, "Flamingo Capoeirista");
     strcpy(poke[4].tipo, "lutador");
+    poke[4].num = 4;
     poke[4].vida = 250;
     poke[4].atq = 40;
     poke[4].def = 0.95;
@@ -96,6 +101,7 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     //Galo Guerreiro:
     strcpy(poke[5].nome, "Galo Guerreiro");
     strcpy(poke[5].tipo, "lutador");
+    poke[5].num = 5;
     poke[5].vida = 300;
     poke[5].atq = 45;
     poke[5].def = 0.6;
@@ -111,6 +117,7 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     //Galinha Pintadinha:
     strcpy(poke[6].nome, "Galinha Pintadinha");
     strcpy(poke[6].tipo, "dancarino");
+    poke[6].num = 6;
     poke[6].vida = 300;
     poke[6].atq = 20;
     poke[6].def = 0.6;
@@ -127,6 +134,7 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     //ticoliro
     strcpy(poke[7].nome, "Ticoliro");
     strcpy(poke[7].tipo, "lutador");
+    poke[7].num = 7;
     poke[7].vida = 180;
     poke[7].atq = 35;
     poke[7].def = 0.8;
@@ -143,6 +151,7 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     //dodo
     strcpy(poke[8].nome, "Dodo");
     strcpy(poke[8].tipo, "normal");
+    poke[8].num = 8;
     poke[8].vida = 150;
     poke[8].atq = 20;
     poke[8].def = 0.8;
@@ -157,8 +166,9 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
 
 
     //rolinha
-    strcpy(poke[8].nome, "Rolinha");
-    strcpy(poke[8].tipo, "normal");
+    strcpy(poke[9].nome, "Rolinha");
+    strcpy(poke[9].tipo, "normal");
+    poke[9].num = 9;
     poke[9].vida = 180;
     poke[9].atq = 30;
     poke[9].def = 0.8;
@@ -175,6 +185,7 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     //Joao Frango 
     strcpy(poke[10].nome, "Joao Frango");
     strcpy(poke[10].tipo, "planta");
+    poke[10].num = 10;
     poke[10].vida = 300;
     poke[10].atq = 25;
     poke[10].def = 0.55;
@@ -191,6 +202,7 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     //Canarinho sambista
     strcpy(poke[11].nome, "Canarinho sambista");
     strcpy(poke[11].tipo, "dancarino");
+    poke[11].num = 11;
     poke[11].vida = 180;
     poke[11].atq = 25;
     poke[11].def = 0.6;
@@ -207,6 +219,7 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     //Corvo Emo Gotico
     strcpy(poke[12].nome, "Corvo emo gotico");
     strcpy(poke[12].tipo, "sombrio");
+    poke[12].num = 12;
     poke[12].vida = 250;
     poke[12].atq = 30;
     poke[12].def = 0.8;
@@ -223,6 +236,7 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     //Papaleguas
     strcpy(poke[13].nome, "Papaleguas");
     strcpy(poke[13].tipo, "eletrico");
+    poke[13].num = 13;
     poke[13].vida = 250;
     poke[13].atq = 35;
     poke[13].def = 0.8;
@@ -239,6 +253,7 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     //Pica-Pau
     strcpy(poke[14].nome, "Pica-Pau");
     strcpy(poke[14].tipo, "planta");
+    poke[14].num = 14;
     poke[14].vida = 250;
     poke[14].atq = 40;
     poke[14].def = 0.65;
@@ -255,6 +270,7 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     //Pinguins de madagascar (recruta)
     strcpy(poke[15].nome, "Recruta");
     strcpy(poke[15].tipo, "agua");
+    poke[15].num = 15;
     poke[15].vida = 200;
     poke[15].atq = 40;
     poke[15].def = 0.6;
@@ -270,6 +286,7 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     //Kiwi
     strcpy(poke[16].nome, "Kiwi");
     strcpy(poke[16].tipo, "planta");
+    poke[16].num = 16;
     poke[16].vida = 180;
     poke[16].atq = 25;
     poke[16].def = 0.65;
