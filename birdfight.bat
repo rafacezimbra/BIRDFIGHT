@@ -1,1 +1,1 @@
-start telainicial_lety.exe
+start telainicial.exe

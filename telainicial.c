@@ -89,7 +89,7 @@ void escolha(char nomeUsuario[], tp_pokemon pokeUsuario[], tp_pokemon poke[], in
 		menu(nomeUsuario, pokeUsuarioQtd, pokeUsuario);
 		
 		}else{
-	  apagarTela();
+	 	apagarTela();
 
 		printarPokemon(poke[birdmonUsuario]);
 		printf("%s:\n", poke[birdmonUsuario].nome);
@@ -105,7 +105,7 @@ void escolha(char nomeUsuario[], tp_pokemon pokeUsuario[], tp_pokemon poke[], in
 	    printf("\n\n");
 
 	    printf("Voce deseja manter %s no seu time? (s/n) ", poke[birdmonUsuario].nome);
-	    scanf("%c", &resp); 
+	    scanf(" %c", &resp); 
 	    switch(resp){
 
 				case 'S':
@@ -185,15 +185,34 @@ int main (void) {
     // ESCOLHA DO BIRDMON 
     escolha(nomeUsuario, pokeUsuario, poke, &pokeUsuarioQtd); 
 
-	printf("Birdmons sorteados:\n");
+	//SORTEIO DO RESTO DOS POKEMONS
 
-	sortearPokemons2(&pokeOponentes, pokeUsuario, poke);
+	sortearPokemons(&pokeOponentes, pokeUsuario, poke);
 
 	//PRINTAR A PILHA SORTEADA
-	printf("pilha ficara aqui embaixo:\n");
+	printf("Birdmons inimigos:\n");
 	imprimePilha(pokeOponentes);
-	//ajeitar o imprime pilha para imprimir os nomes dos pokemons
-	//... nao soube fazer isso
-    sleep(5);
+	
+	printf("\n digite qualquer valor para encerrar o programa\n");
+	char lixo;
+	scanf(" %c", &lixo);
+    
+	return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

@@ -1,0 +1,5 @@
+Programa feito para rodar em Windows.
+
+Para uma melhor experiencia, abra no prompt de comando, em tela cheia.
+
+Para iniciar o programa, clique no arquivo de nome "birdfight".
