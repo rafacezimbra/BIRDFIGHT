@@ -96,7 +96,7 @@ void escolha(char nomeUsuario[], tp_pokemon pokeUsuario[], tp_pokemon poke[], in
 	    printf("Tipo: %s\n", poke[birdmonUsuario].tipo);
 	    printf("Vida: %d\n", poke[birdmonUsuario].vida); 
 	    printf("Ataque: %d\n", poke[birdmonUsuario].atq);
-	    printf("Defesa: %f\n", poke[birdmonUsuario].def);
+	    printf("Defesa: %.2f\n", poke[birdmonUsuario].def);
 	    printf("Agilidade: %d\n", poke[birdmonUsuario].agil); 
 		printf("\n");
 		printf("Habilidades:"); 

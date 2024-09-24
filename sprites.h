@@ -355,9 +355,9 @@ switch(num){
     printf("       xxx     xx       xx      \n");
     printf("         xxxxxxxx      xx       \n");
     printf("               xx    xxx        \n");
-    printf("               ┬x┬┬┬xx          \n");
-    printf("             ┬┬┬x   x┬┬┬        \n");
-    printf("             ┬┬┬┬┬┬┬┬┬┬┬      \n");
+    printf("               TxTTTxx          \n");
+    printf("             TTTx   xTTT        \n");
+    printf("           TTTTTTTTTTTTTTT      \n");
     break;
     //recruta[15]
     case 15:
