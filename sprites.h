@@ -10,7 +10,7 @@ void printarPokemon(tp_pokemon poke){
 
 int num = poke.num;
 
-printf("\n");
+printf("\n\n");
 
 switch(num){
 
@@ -126,7 +126,7 @@ switch(num){
     printf("        XX   XXX   XX           X       \n");
     printf("        XXXXX X    _XXX         X       \n");
     printf("              X    @ XXX       XX       \n");
-    printf("              X     XXX ►      XX       \n");
+    printf("              X     XXX >      XX       \n");
     printf("              X      X        XXX       \n");
     printf("          XX XX     XXXXX     XXX       \n");
     printf("        XXX              X    XXX       \n");
@@ -184,7 +184,7 @@ switch(num){
     printf("          x  ) @  )))) @ )  x          \n");
     printf("         xx   )))))  )))))  xx         \n");
     printf("         x                   x         \n");
-    printf("         xx        ▼         x         \n");
+    printf("         xx        v         x         \n");
     printf("           xx               xx         \n");
     printf("            xxxx           xx          \n");
     printf("               xxxxxx   xxxx           \n");
