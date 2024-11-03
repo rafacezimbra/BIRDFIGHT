@@ -1,1 +1,1 @@
-start telainicial.exe
+start telainicial.exe /MAX

@@ -29,7 +29,7 @@ void sortearPokemons(tp_pilha *pokeOponentes, tp_pokemon pokeUsuario[], tp_pokem
     //momento pra embaralhar de fato
     for(int i=0; i<QTDPOKEMONS-3; i++){
          
-        int aleatorio = rand()%13 + 1;
+        int aleatorio = rand()%13;
         int aux;
 
         aux = vetor[i];

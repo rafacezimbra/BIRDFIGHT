@@ -1,3 +1,6 @@
+//atencao, para testar o codigo, sempre compile ele antes (clicando em run)
+//e depois abra o .bat pela pasta do windows, nao por aqui.
+
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
@@ -83,11 +86,16 @@ void escolha(char nomeUsuario[], tp_pokemon pokeUsuario[], tp_pokemon poke[], in
     	printf("%d Birdmon: ", *pokeUsuarioQtd+1);
 	    scanf(" %d", &birdmonUsuario); //escaneia o numero q o usuario digitou
 
-			if(checarSePokeJaFoiEscolhido(pokeUsuarioQtd, poke, pokeUsuario, birdmonUsuario)){
-		printf("Este passaro ja foi escolhido!");
-		sleep(3);
-		menu(nomeUsuario, pokeUsuarioQtd, pokeUsuario);
-		
+			if(birdmonUsuario > QTDPOKEMONS || birdmonUsuario < 1){ //checar se o valor eh um numero de um passaro
+				printf("Este valor nao eh valido!");
+				sleep(3);
+				menu(nomeUsuario, pokeUsuarioQtd, pokeUsuario);
+
+			}else if(checarSePokeJaFoiEscolhido(pokeUsuarioQtd, poke, pokeUsuario, birdmonUsuario)){ //checar se o passaro ja foi escolhido
+				printf("Este passaro ja foi escolhido!");
+				sleep(3);
+				menu(nomeUsuario, pokeUsuarioQtd, pokeUsuario);
+				
 		}else{
 	 	apagarTela();
 
@@ -165,6 +173,8 @@ int main (void) {
     criarHabilidades(hab);
     criarPokemons(poke, hab);
     
+	printf("POR FAVOR COLOQUE A JANELA EM TELA CHEIA\n\n");
+    sleep (1);
     printf("O mundo dos Birdmon eh um mundo cheio de misterios...\n");
     sleep (1);
     printf("Voce acaba de se mudar para a cidade de Xique-Xique, Bahia.\n");
