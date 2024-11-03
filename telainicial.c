@@ -11,16 +11,13 @@
 #include "pilha.h"
 #include "sprites.h"
 #include "randompokemon.h"
+#include "batalha.h"
+#include "loja.h"
+#include "apagartela.h"
 
 #define QTDPOKEMONS 16
 
-void apagarTela(){
-    #ifdef _WIN32
-            system("cls");
-        #else
-            system("clear");
-        #endif
-}
+
 
 void menu(char nomeUsuario[], int *pokeUsuarioQtd, tp_pokemon pokeUsuario[]){
 	
@@ -117,7 +114,7 @@ void escolha(char nomeUsuario[], tp_pokemon pokeUsuario[], tp_pokemon poke[], in
 	    switch(resp){
 
 				case 'S':
-				case 's':pokeUsuario[*pokeUsuarioQtd] = poke[birdmonUsuario];
+				case 's':pokeUsuario[*pokeUsuarioQtd] = poke[birdmonUsuario]; //copia o pokemon do numero escolhido para os pokemons do jogador
 						(*pokeUsuarioQtd)++; 
 						menu(nomeUsuario, pokeUsuarioQtd, pokeUsuario);
 						break;
@@ -133,7 +130,7 @@ void escolha(char nomeUsuario[], tp_pokemon pokeUsuario[], tp_pokemon poke[], in
 
 			if(*pokeUsuarioQtd == 3){
 
-				printf("\nVoce deseja ficar com esses tres birdmons? ");
+				printf("\nVoce deseja ficar com esses tres Birdmons? ");
 				scanf(" %c", &resp); 
 				switch(resp){
 
@@ -203,10 +200,23 @@ int main (void) {
 	printf("Birdmons inimigos:\n");
 	imprimePilha(pokeOponentes);
 	
+
+	//LOOP DE BATALHA-LOJA
+	int rodada = 0;
+
+	while(playerVivo(pokeUsuarioQtd, pokeUsuario)){
+		rodada++;
+
+
+	
+	}
+	perdeu();
+
+	//final do codigo antigo (acho que pode remover ja)
 	printf("\n digite qualquer valor para encerrar o programa\n");
 	char lixo;
 	scanf(" %c", &lixo);
-    
+
 	return 0;
 }
 

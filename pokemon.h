@@ -7,10 +7,10 @@
 #define QTDPOKEMONS 16
 
 
-typedef struct {
+typedef struct tp_pokemon{
 
     int num;
-    int vida, atq, agil, evolucao;
+    int vida, vidamax, atq, agil, evolucao, nivel, vivo;
     float def;
     
     int exp;
@@ -24,17 +24,31 @@ typedef struct {
 void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
 
     //coloca para todos os pokemons comecarem com experiencia = 0.
-    for(int i=1; i<=QTDPOKEMONS; i++){
+    for(int i=0; i<=QTDPOKEMONS; i++){
 
     poke[i].exp = 0;
+    poke[i].nivel = 0;
+     poke[i].vivo = 1;
 
     }
+
+    //BIRDMON NULO - SERVE APENAS PARA FINS DE LOGICA
+    strcpy(poke[0].nome, "NULO");
+    strcpy(poke[0].tipo, "NULO");
+    poke[1].num = 0;
+    poke[1].vida = 0;
+    poke[1].vidamax = 0;
+    poke[1].atq = 0;
+    poke[1].def = 0;
+    poke[1].agil = 0;
+    poke[1].evolucao = 1;
 
     //Pikapombo
     strcpy(poke[1].nome, "Pikapombo");
     strcpy(poke[1].tipo, "eletrico");
     poke[1].num = 1;
     poke[1].vida = 250;
+    poke[1].vidamax = 250;
     poke[1].atq = 30;
     poke[1].def = 0.6;
     poke[1].agil = 50;
@@ -52,6 +66,7 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     strcpy(poke[2].tipo, "sombrio");
     poke[2].num = 2;
     poke[2].vida = 300;
+    poke[2].vidamax = 300;
     poke[2].atq = 40;
     poke[2].def = 0.8;
     poke[2].agil = 50;
@@ -69,6 +84,7 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     strcpy(poke[3].tipo, "agua");
     poke[3].num = 3;
     poke[3].vida = 300;
+    poke[3].vidamax = 300;
     poke[3].atq = 50;
     poke[3].def = 0.45;
     poke[3].agil = 50;
@@ -86,6 +102,7 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     strcpy(poke[4].tipo, "lutador");
     poke[4].num = 4;
     poke[4].vida = 250;
+    poke[4].vidamax = 250;
     poke[4].atq = 40;
     poke[4].def = 0.95;
     poke[4].agil = 80;
@@ -103,6 +120,7 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     strcpy(poke[5].tipo, "lutador");
     poke[5].num = 5;
     poke[5].vida = 300;
+    poke[5].vidamax = 300;
     poke[5].atq = 45;
     poke[5].def = 0.6;
     poke[5].agil = 35;
@@ -119,6 +137,7 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     strcpy(poke[6].tipo, "dancarino");
     poke[6].num = 6;
     poke[6].vida = 300;
+    poke[6].vidamax = 300;
     poke[6].atq = 20;
     poke[6].def = 0.6;
     poke[6].agil = 80;
@@ -136,6 +155,7 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     strcpy(poke[7].tipo, "lutador");
     poke[7].num = 7;
     poke[7].vida = 180;
+    poke[7].vidamax = 180;
     poke[7].atq = 35;
     poke[7].def = 0.8;
     poke[7].agil = 50;
@@ -153,6 +173,7 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     strcpy(poke[8].tipo, "normal");
     poke[8].num = 8;
     poke[8].vida = 150;
+    poke[8].vidamax = 150;
     poke[8].atq = 20;
     poke[8].def = 0.8;
     poke[8].agil = 50;
@@ -170,6 +191,7 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     strcpy(poke[9].tipo, "normal");
     poke[9].num = 9;
     poke[9].vida = 180;
+    poke[9].vidamax = 180;
     poke[9].atq = 30;
     poke[9].def = 0.8;
     poke[9].agil = 65;
@@ -187,6 +209,7 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     strcpy(poke[10].tipo, "planta");
     poke[10].num = 10;
     poke[10].vida = 300;
+    poke[10].vidamax = 300;
     poke[10].atq = 25;
     poke[10].def = 0.55;
     poke[10].agil = 35;
@@ -204,6 +227,7 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     strcpy(poke[11].tipo, "dancarino");
     poke[11].num = 11;
     poke[11].vida = 180;
+    poke[11].vidamax = 180;
     poke[11].atq = 25;
     poke[11].def = 0.6;
     poke[11].agil = 80;
@@ -221,6 +245,7 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     strcpy(poke[12].tipo, "sombrio");
     poke[12].num = 12;
     poke[12].vida = 250;
+    poke[12].vidamax = 250;
     poke[12].atq = 30;
     poke[12].def = 0.8;
     poke[12].agil = 65;
@@ -238,6 +263,7 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     strcpy(poke[13].tipo, "eletrico");
     poke[13].num = 13;
     poke[13].vida = 250;
+    poke[13].vidamax = 250;
     poke[13].atq = 35;
     poke[13].def = 0.8;
     poke[13].agil = 95;
@@ -255,6 +281,7 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     strcpy(poke[14].tipo, "planta");
     poke[14].num = 14;
     poke[14].vida = 250;
+    poke[14].vidamax = 250;
     poke[14].atq = 40;
     poke[14].def = 0.65;
     poke[14].agil = 65;
@@ -272,6 +299,7 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     strcpy(poke[15].tipo, "agua");
     poke[15].num = 15;
     poke[15].vida = 200;
+    poke[15].vidamax = 200;
     poke[15].atq = 40;
     poke[15].def = 0.6;
     poke[15].agil = 50;
@@ -288,6 +316,7 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     strcpy(poke[16].tipo, "planta");
     poke[16].num = 16;
     poke[16].vida = 180;
+    poke[16].vidamax = 180;
     poke[16].atq = 25;
     poke[16].def = 0.65;
     poke[16].agil = 50;

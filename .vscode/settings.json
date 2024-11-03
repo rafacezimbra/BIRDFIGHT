@@ -3,6 +3,7 @@
         "habilidade.h": "c",
         "string.h": "c",
         "pilha.h": "c",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "loja.h": "c"
     }
 }
