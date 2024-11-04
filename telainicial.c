@@ -207,7 +207,7 @@ int main (void) {
 	while(playerVivo(pokeUsuarioQtd, pokeUsuario)){
 		rodada++;
 
-
+		batalha();
 	
 	}
 	perdeu();

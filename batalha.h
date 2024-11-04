@@ -24,6 +24,43 @@ void printarBatalha(tp_pokemon pokeUsuario[], tp_pokemon pokeInimigo, int pokeAt
 
 }
 
+void menuDeBatalha(BATALHA *batalha, tp_pokemon *pokeUsuario, tp_pokemon *pokeOponente) {
+    int escolha;
+
+    while (playerVivo(batalha->pokeUsuarioQtd, pokeUsuario) && pokeOponente->vivo) {
+        printf("\nEscolha sua ação:\n");
+        printf("1 - Acessar Inventário\n");
+        printf("2 - Capturar Pokémon\n");
+        printf("3 - Trocar Pokémon\n");
+        printf("4 - Selecionar Ataque\n");
+        printf("Escolha: ");
+        scanf("%d", &escolha);
+
+        switch (escolha) {
+            case 1:
+                // fazer a função do inventario
+                break;
+
+            case 2:
+                //fazer a função para capturar
+                break;
+
+            case 3:
+                // fazer a função para trocar o pkm
+               
+                break;
+
+            case 4:
+                // fazer a função de selecionar atk
+                break;
+
+            default:
+                printf("Escolha inválida. Tente novamente.\n");
+                break;
+        }
+    }
+}
+
 void batalha(int rodada, int *pokeUsuarioQtd, tp_pokemon pokeUsuario[], tp_pilha *pokeOponentes){
 
     apagarTela();
@@ -36,5 +73,7 @@ void batalha(int rodada, int *pokeUsuarioQtd, tp_pokemon pokeUsuario[], tp_pilha
 
 
 }
+
+
 
 #endif
