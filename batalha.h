@@ -39,16 +39,11 @@ void printarBatalha(tp_pokemon pokeUsuario[], tp_pokemon *pokeInimigo, int pokeA
     printf("RODADA %d\n", rodada);
 
     //printar o inimigo
-    printf("%*c", qtdDeEspacos, ' '); //printa uma certa quantidade de espacos pra deixar o oponente e seus status mais a direita
-    printf("%s    Lvl: %d\n", pokeInimigo->nome, pokeInimigo->nivel);
-    printf("%*c", qtdDeEspacos, ' ');
-    printf("HP: %d/%d\n", pokeInimigo->vida, pokeInimigo->vidamax);
     printarPokemon(*pokeInimigo, 1);
-
+    
     //printar o pokemon do jogador
     printarPokemon(pokeUsuario[pokeAtivo], 0);
-    printf("%s   Lvl: %d \n", pokeUsuario[pokeAtivo].nome, pokeUsuario[pokeAtivo].nivel);
-    printf("HP: %d \n", pokeUsuario[pokeAtivo].vida);
+ 
 
 
 }
@@ -92,7 +87,7 @@ void menuDeBatalha(BATALHA *batalha, tp_pokemon *pokeUsuario, tp_pokemon *pokeOp
 }
 */
 
-void batalha(int rodada, int *pokeUsuarioQtd, tp_pokemon pokeUsuario[], tp_pilha *pokeOponentes){
+int batalha(int rodada, int *pokeUsuarioQtd, tp_pokemon pokeUsuario[], tp_pilha *pokeOponentes){
 
     apagarTela();
 

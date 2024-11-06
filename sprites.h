@@ -7,6 +7,10 @@
 #define deslocamentoDoOponente 40
 //esta biblioteca serve para guardar as imagens dos passaros
 
+void endl(){
+    printf("\n");
+}
+
 int numCaracteresDeUmInt(int num){
     //funciona para inteiros nao negativos (ate 9999)
     if(num<10) return 1;
@@ -16,28 +20,52 @@ int numCaracteresDeUmInt(int num){
 
 }
 
+void pnome(tp_pokemon *poke, int ehinimigo, int desloc){ //printa a vida
+    if(ehinimigo==1){
+        printf("%*c", desloc, ' ');
+        printf("%s    Lvl: %d", poke->nome, poke->nivel);
+    }
+}
+
+void pvida(tp_pokemon *poke, int ehinimigo, int desloc){
+    if(ehinimigo==1){
+        printf("%*c", desloc, ' ');
+        printf("HP: %d/%d", poke->vida, poke->vidamax);
+    }
+}
+
+void ptipo(tp_pokemon *poke, int ehinimigo, int desloc){
+    if(ehinimigo==1){
+        printf("%*c", desloc, ' ');
+        printf("Tipo: %s", poke->tipo);
+    }
+}
 
 void printarPokemon(tp_pokemon poke, int ehinimigo){
 
-//ehinimigo = 0 --> printa o pokemon do jogador
-//eh inimigo = 1 --> printa o pokemon do inimigo (printa o pokemon, mas espacado para direita)
+//ehinimigo = -1 --> printa o pokemon sem status
+//ehinimigo = 0 --> printa o pokemon do jogador, com status a direite
+//eh inimigo = 1 --> printa o pokemon do inimigo (printa o pokemon, mas espacado para direita, com status a sua esquerda)
 
 int deslocS; //deslocamento para a direita do sprite sem texto
 int deslocN; //deslocamento ao printar o nome e nivel do pokemon ex: Kiwi
 int deslocT; //deslocamento ao printar o tipo do pokemon ex: Tipo: dancarino
 int deslocV; //deslocamento ao printar a vida do pokemon ex: HP: 100/100
+int desloc0; //nao desloca nada, serve apenas pro codigo ficar bonitinho
 
-if(ehinimigo == 0){
+if(ehinimigo == 0 || ehinimigo == -1){
 deslocS = 0;
 deslocN = 0;
 deslocT = 0;
 deslocV = 0;
+desloc0 = 0;
 
 }else{
 deslocS = deslocamentoDoOponente;
 deslocN = (deslocamentoDoOponente-(strlen(poke.nome) + 9 + numCaracteresDeUmInt(poke.nivel)));
 deslocT = (deslocamentoDoOponente-(6 + strlen(poke.tipo)));
-deslocV = (deslocamentoDoOponente-(4 + numCaracteresDeUmInt(poke.vida)) + 1 + numCaracteresDeUmInt(poke.vidamax));
+deslocV = (deslocamentoDoOponente-(4 + numCaracteresDeUmInt(poke.vida) + 1 + numCaracteresDeUmInt(poke.vidamax)));
+desloc0 = 0;
 
 }
 
@@ -50,10 +78,11 @@ switch(num){
 
     //pikapombo[1]
     case 1:
-    printf("%*c", deslocN, ' '); printf("        xxxxxxxxx                                \n");
-    printf("%*c", deslocT, ' '); printf("       xx        xx                              \n");
-    printf("%*c", deslocV, ' '); printf("      x           xx                             \n"); 
-    printf("%*c", deslocS, ' '); printf("     xx   $   $    x                             \n");
+    pnome(&poke, ehinimigo, deslocN);
+    printf("%*c", desloc0, ' '); printf("        xxxxxxxxx                                "); pnome(&poke, ehinimigo+1, deslocN); endl(); ptipo(&poke, ehinimigo, deslocT);
+    printf("%*c", desloc0, ' '); printf("       xx        xx                              "); ptipo(&poke, ehinimigo+1, deslocT); endl(); pvida(&poke, ehinimigo, deslocV);
+    printf("%*c", desloc0, ' '); printf("      x           xx                             "); pvida(&poke, ehinimigo+1, deslocV); endl();
+    printf("%*c", deslocS, ' '); printf("     xx   $   $    x                             \n"); //onde esta "ehinimigo+1" eh para ser printado apenas quando o pokemon for aliado
     printf("%*c", deslocS, ' '); printf("     x             xx               xxxxxxxxxxxxx\n");
     printf("%*c", deslocS, ' '); printf("    xxxxxxxx  xxx   xx               x       xxx \n");
     printf("%*c", deslocS, ' '); printf("  xxx    xxxxxxxxxxxxxxxx            x    xxxx   \n");
@@ -74,9 +103,10 @@ switch(num){
 
     //cocatriz[2]
     case 2:
-    printf("%*c", deslocN, ' '); printf("xxxxxxxxx                             xxxxxxxx  x  x x x         \n");
-    printf("%*c", deslocT, ' '); printf("   xx   xxxxxxx                   xxxxx   x    x  x x x          \n");
-    printf("%*c", deslocV, ' '); printf("    xx         xxxx             xxx      xx   xxxxxxxxxx         \n");
+    pnome(&poke, ehinimigo, deslocN);
+    printf("%*c", deslocN, ' '); printf("xxxxxxxxx                             xxxxxxxx  x  x x x         "); pnome(&poke, ehinimigo+1, deslocN); endl(); ptipo(&poke, ehinimigo, deslocT);
+    printf("%*c", deslocT, ' '); printf("   xx   xxxxxxx                   xxxxx   x    x  x x x          "); ptipo(&poke, ehinimigo+1, deslocT); endl(); pvida(&poke, ehinimigo, deslocV);
+    printf("%*c", deslocV, ' '); printf("    xx         xxxx             xxx      xx   xxxxxxxxxx         "); pvida(&poke, ehinimigo+1, deslocV); endl();
     printf("%*c", deslocS, ' '); printf("     xx            xxx         xx       xx   xx        xx        \n");
     printf("%*c", deslocS, ' '); printf("      xx          |  xxxx     xx        x   xx      @   xxx      \n");
     printf("%*c", deslocS, ' '); printf("       x         |  |   xxx   x         x   x             xxxxxx \n");
@@ -103,9 +133,10 @@ switch(num){
     break;
     //pato do clube[3]
     case 3:
-    printf("%*c", deslocN, ' '); printf("                              *((((                               \n");
-    printf("%*c", deslocT, ' '); printf("                 ((((   *(((((((((                                \n");
-    printf("%*c", deslocV, ' '); printf("                ((( (((((      (((                                \n");
+    pnome(&poke, ehinimigo, deslocN);
+    printf("%*c", deslocN, ' '); printf("                              *((((                               "); pnome(&poke, ehinimigo+1, deslocN); endl(); ptipo(&poke, ehinimigo, deslocT);
+    printf("%*c", deslocT, ' '); printf("                 ((((   *(((((((((                                "); ptipo(&poke, ehinimigo+1, deslocT); endl(); pvida(&poke, ehinimigo, deslocV);
+    printf("%*c", deslocV, ' '); printf("                ((( (((((      (((                                "); pvida(&poke, ehinimigo+1, deslocV); endl();
     printf("%*c", deslocS, ' '); printf("                ((              (((                               \n");
     printf("%*c", deslocS, ' '); printf("              (((                (((                              \n");
     printf("%*c", deslocS, ' '); printf("             ((                   (((                             \n");
@@ -130,9 +161,10 @@ switch(num){
     break;
     //flamingoC[4]
     case 4:
-    printf("%*c", deslocN, ' '); printf("     XXXXXX                  \n");
-    printf("%*c", deslocT, ' '); printf("   XXX     X                  \n");
-    printf("%*c", deslocV, ' '); printf("  XX    O   X                  \n");
+    pnome(&poke, ehinimigo, deslocN);
+    printf("%*c", deslocN, ' '); printf("     XXXXXX                  "); pnome(&poke, ehinimigo+1, deslocN); endl(); ptipo(&poke, ehinimigo, deslocT);
+    printf("%*c", deslocT, ' '); printf("   XXX     X                  "); ptipo(&poke, ehinimigo+1, deslocT); endl(); pvida(&poke, ehinimigo, deslocV);
+    printf("%*c", deslocV, ' '); printf("  XX    O   X                  "); pvida(&poke, ehinimigo+1, deslocV); endl();
     printf("%*c", deslocS, ' '); printf(" XXXXX     X                  \n");
     printf("%*c", deslocS, ' '); printf(" XX   XX XXX                  \n");
     printf("%*c", deslocS, ' '); printf("         XXX             X    \n");
@@ -153,9 +185,10 @@ switch(num){
     break;
     //galoGuerreiro[5]
     case 5:
-    printf("%*c", deslocN, ' '); printf("           XXXXXX                       \n");
-    printf("%*c", deslocT, ' '); printf("           XX   X                       \n");
-    printf("%*c", deslocV, ' '); printf("         XXXXXX XXX                     \n");
+    pnome(&poke, ehinimigo, deslocN);
+    printf("%*c", deslocN, ' '); printf("           XXXXXX                       "); pnome(&poke, ehinimigo+1, deslocN); endl(); ptipo(&poke, ehinimigo, deslocT);
+    printf("%*c", deslocT, ' '); printf("           XX   X                       "); ptipo(&poke, ehinimigo+1, deslocT); endl(); pvida(&poke, ehinimigo, deslocV);
+    printf("%*c", deslocV, ' '); printf("         XXXXXX XXX                     "); pvida(&poke, ehinimigo+1, deslocV); endl();
     printf("%*c", deslocS, ' '); printf("        XX   XXX   XX           X       \n");
     printf("%*c", deslocS, ' '); printf("        XXXXX X    _XXX         X       \n");
     printf("%*c", deslocS, ' '); printf("              X    @ XXX       XX       \n");
@@ -180,9 +213,10 @@ switch(num){
     break;
     //galinhaPintadinha[6]
     case 6:
-    printf("%*c", deslocN, ' '); printf("                 XXX                   \n");
-    printf("%*c", deslocT, ' '); printf("                XX  X   XXXXX           \n");
-    printf("%*c", deslocV, ' '); printf("                X  X XXXX   X           \n");
+    pnome(&poke, ehinimigo, deslocN);
+    printf("%*c", deslocN, ' '); printf("                 XXX                   "); pnome(&poke, ehinimigo+1, deslocN); endl(); ptipo(&poke, ehinimigo, deslocT);
+    printf("%*c", deslocT, ' '); printf("                XX  X   XXXXX           "); ptipo(&poke, ehinimigo+1, deslocT); endl(); pvida(&poke, ehinimigo, deslocV);
+    printf("%*c", deslocV, ' '); printf("                X  X XXXX   X           "); pvida(&poke, ehinimigo+1, deslocV); endl();
     printf("%*c", deslocS, ' '); printf("          XXXXX X XXX     XXX           \n");
     printf("%*c", deslocS, ' '); printf("          X   XXXXXX     XXX XX         \n");
     printf("%*c", deslocS, ' '); printf("            XXXXX  XXXXX X    X         \n");
@@ -203,10 +237,11 @@ switch(num){
     break;
     //ticoliro[7]
     case 7:
-    printf("%*c", deslocN, ' '); printf("                    xxx                \n");
-    printf("%*c", deslocT, ' '); printf("               xxxx  xxxxxxx           \n");
-    printf("%*c", deslocV, ' '); printf("          xxxx  xx xxxx xxxxxx         \n");
-    printf("%*c", deslocS, ' '); printf("       xxxx   xxxxx   xxxx   x         \n");
+    pnome(&poke, ehinimigo, deslocN);
+    printf("%*c", deslocN, ' '); printf("                    xxx                "); pnome(&poke, ehinimigo+1, deslocN); endl(); ptipo(&poke, ehinimigo, deslocT);
+    printf("%*c", deslocT, ' '); printf("               xxxx  xxxxxxx           "); ptipo(&poke, ehinimigo+1, deslocT); endl(); pvida(&poke, ehinimigo, deslocV);
+    printf("%*c", deslocS, ' '); printf("       xxxx   xxxxx   xxxx   x         "); pvida(&poke, ehinimigo+1, deslocV); endl();
+    printf("%*c", deslocV, ' '); printf("          xxxx  xx xxxx xxxxxx         \n"); 
     printf("%*c", deslocS, ' '); printf("      xxxxxxxxxx xxx  xx     x         \n");
     printf("%*c", deslocS, ' '); printf("    xxxx       xx           x          \n");
     printf("%*c", deslocS, ' '); printf("              xxxxxxxxxx  xx           \n");
@@ -225,9 +260,10 @@ switch(num){
     break;
     //dodo[8]
     case 8:
-    printf("%*c", deslocN, ' '); printf("                       xxxxxxxxxxx                                                  \n");
-    printf("%*c", deslocT, ' '); printf("                      xx         xx                                                 \n");
-    printf("%*c", deslocV, ' '); printf("                     xx           xx                                                \n");
+    pnome(&poke, ehinimigo, deslocN);
+    printf("%*c", deslocN, ' '); printf("                       xxxxxxxxxxx                                                  "); pnome(&poke, ehinimigo+1, deslocN); endl(); ptipo(&poke, ehinimigo, deslocT);
+    printf("%*c", deslocT, ' '); printf("                      xx         xx                                                 "); ptipo(&poke, ehinimigo+1, deslocT); endl(); pvida(&poke, ehinimigo, deslocV);
+    printf("%*c", deslocV, ' '); printf("                     xx           xx                                                "); pvida(&poke, ehinimigo+1, deslocV); endl();
     printf("%*c", deslocS, ' '); printf("                   xx   xxxx       x                                                \n");
     printf("%*c", deslocS, ' '); printf("                 xxx   xx          x                                                \n");
     printf("%*c", deslocS, ' '); printf("              xxxx                xx                                                \n");
@@ -257,9 +293,10 @@ switch(num){
     break;
     //rolinha [9]
     case 9:
-    printf("%*c", deslocN, ' '); printf("          xxxxxxxxx                                                  \n");
-    printf("%*c", deslocT, ' '); printf("         xx    xxxxx                                                 \n");
-    printf("%*c", deslocV, ' '); printf("        xx         xxx   xxxxxxxxxxxxxx                              \n");
+    pnome(&poke, ehinimigo, deslocN);
+    printf("%*c", deslocN, ' '); printf("          xxxxxxxxx                                                  "); pnome(&poke, ehinimigo+1, deslocN); endl(); ptipo(&poke, ehinimigo, deslocT);
+    printf("%*c", deslocT, ' '); printf("         xx    xxxxx                                                 "); ptipo(&poke, ehinimigo+1, deslocT); endl(); pvida(&poke, ehinimigo, deslocV);
+    printf("%*c", deslocV, ' '); printf("        xx         xxx   xxxxxxxxxxxxxx                              "); pvida(&poke, ehinimigo+1, deslocV); endl();
     printf("%*c", deslocS, ' '); printf("        x            xx xx            xxxxx                          \n");
     printf("%*c", deslocS, ' '); printf("       xx             xxx                  xx                        \n");
     printf("%*c", deslocS, ' '); printf("   xxxxx            xxx    zzzzzz            xxx                     \n");
@@ -279,10 +316,11 @@ switch(num){
     break;
     //joao[10]
     case 10:
-    printf("%*c", deslocN, ' '); printf("                                    \n");
-    printf("%*c", deslocT, ' '); printf("                             x           \n");
-    printf("%*c", deslocV, ' '); printf("                   xxxxxxxx xxxxxxxxxx   \n");
-    printf("%*c", deslocS, ' '); printf("                  xx      xxx   xx   x   \n");
+    pnome(&poke, ehinimigo, deslocN);
+    printf("%*c", deslocN, ' '); printf("                                         "); pnome(&poke, ehinimigo+1, deslocN); endl(); ptipo(&poke, ehinimigo, deslocT);
+    printf("%*c", deslocT, ' '); printf("                             x           "); ptipo(&poke, ehinimigo+1, deslocT); endl(); pvida(&poke, ehinimigo, deslocV);
+    printf("%*c", deslocS, ' '); printf("                  xx      xxx   xx   x   "); pvida(&poke, ehinimigo+1, deslocV); endl();
+    printf("%*c", deslocV, ' '); printf("                   xxxxxxxx xxxxxxxxxx   \n"); 
     printf("%*c", deslocS, ' '); printf("                            x  xx        \n");
     printf("%*c", deslocS, ' '); printf("                          xxxxxxxxx      \n");
     printf("%*c", deslocS, ' '); printf("                       xxx        xx     \n");
@@ -307,9 +345,10 @@ switch(num){
     break;
     //canarinhoS[11]
     case 11:
-    printf("%*c", deslocN, ' '); printf("     xxxxxxxx                                \n");
-    printf("%*c", deslocT, ' '); printf("  xxxx      xxxx                             \n");
-    printf("%*c", deslocV, ' '); printf("  x   x      x  xx                           \n");
+    pnome(&poke, ehinimigo, deslocN);
+    printf("%*c", deslocN, ' '); printf("     xxxxxxxx                                "); pnome(&poke, ehinimigo+1, deslocN); endl(); ptipo(&poke, ehinimigo, deslocT);
+    printf("%*c", deslocT, ' '); printf("  xxxx      xxxx                             "); ptipo(&poke, ehinimigo+1, deslocT); endl(); pvida(&poke, ehinimigo, deslocV);
+    printf("%*c", deslocV, ' '); printf("  x   x      x  xx                           \n"); pvida(&poke, ehinimigo+1, deslocV); endl();
     printf("%*c", deslocS, ' '); printf(" x   x x    x x   x                          \n");
     printf("%*c", deslocS, ' '); printf(" x  x @ x  x @ x  xx                         \n");
     printf("%*c", deslocS, ' '); printf(" x                 x                         \n");
@@ -329,9 +368,10 @@ switch(num){
     break;
     //Corvo emo gotico[12]
     case 12:
-    printf("%*c", deslocN, ' '); printf("              XXXXXXXX XXXX               \n");
-    printf("%*c", deslocT, ' '); printf("                 XXX@@@@@@@@XXX            \n");
-    printf("%*c", deslocV, ' '); printf("                  X@@@@@@@X_   XXX         \n");
+    pnome(&poke, ehinimigo, deslocN);
+    printf("%*c", deslocN, ' '); printf("              XXXXXXXX XXXX               "); pnome(&poke, ehinimigo+1, deslocN); endl(); ptipo(&poke, ehinimigo, deslocT);
+    printf("%*c", deslocT, ' '); printf("                 XXX@@@@@@@@XXX            "); ptipo(&poke, ehinimigo+1, deslocT); endl(); pvida(&poke, ehinimigo, deslocV);
+    printf("%*c", deslocV, ' '); printf("                  X@@@@@@@X_   XXX         "); pvida(&poke, ehinimigo+1, deslocV); endl();
     printf("%*c", deslocS, ' '); printf("                  X@X@@@@XX0\\     X        \n");
     printf("%*c", deslocS, ' '); printf("                 XXX@@XXXX    XXXXXX       \n");
     printf("%*c", deslocS, ' '); printf("       XXXXXXXX     XX X      XX           \n");
@@ -350,9 +390,10 @@ switch(num){
     break;
     //papaLeguas[13]
     case 13:
-    printf("%*c", deslocN, ' '); printf("                                            X                          \n");
-    printf("%*c", deslocT, ' '); printf("                                              XXXXXXXX                  \n");
-    printf("%*c", deslocV, ' '); printf("                                                 XX  XXXX               \n");
+    pnome(&poke, ehinimigo, deslocN);
+    printf("%*c", deslocN, ' '); printf("                                             X                          "); pnome(&poke, ehinimigo+1, deslocN); endl(); ptipo(&poke, ehinimigo, deslocT);
+    printf("%*c", deslocT, ' '); printf("                                              XXXXXXXX                  "); ptipo(&poke, ehinimigo+1, deslocT); endl(); pvida(&poke, ehinimigo, deslocV);
+    printf("%*c", deslocV, ' '); printf("                                                 XX  XXXX               "); pvida(&poke, ehinimigo+1, deslocV); endl();
     printf("%*c", deslocS, ' '); printf("                                                  XXX    X              \n");
     printf("%*c", deslocS, ' '); printf("                                              XXXXXXX X XXXX X          \n");
     printf("%*c", deslocS, ' '); printf("                                                 X XXXX      XXX        \n");
@@ -371,9 +412,10 @@ switch(num){
     break;
     //picaPau[14]
     case 14:
-    printf("%*c", deslocN, ' '); printf("        xxx              \n");
-    printf("%*c", deslocT, ' '); printf("        xxxxxxxx                \n");
-    printf("%*c", deslocV, ' '); printf("           xxx  xxx   xxx       \n");
+    pnome(&poke, ehinimigo, deslocN);
+    printf("%*c", deslocN, ' '); printf("        xxx                     "); pnome(&poke, ehinimigo+1, deslocN); endl(); ptipo(&poke, ehinimigo, deslocT);
+    printf("%*c", deslocT, ' '); printf("        xxxxxxxx                "); ptipo(&poke, ehinimigo+1, deslocT); endl(); pvida(&poke, ehinimigo, deslocV);
+    printf("%*c", deslocV, ' '); printf("           xxx  xxx   xxx       "); pvida(&poke, ehinimigo+1, deslocV); endl();
     printf("%*c", deslocS, ' '); printf("  xxxxxxxxx  xxx   xxx x xx     \n");
     printf("%*c", deslocS, ' '); printf("    xxxx  xxxx xx    xxxx xx    \n");
     printf("%*c", deslocS, ' '); printf("       xxxx   xxx      xx   x   \n");
@@ -394,9 +436,10 @@ switch(num){
     break;
     //recruta[15]
     case 15:
-    printf("%*c", deslocN, ' '); printf("          xxxxxxxxxxxx          \n");
-    printf("%*c", deslocT, ' '); printf("         xx xxxxxxxxxxx         \n");
-    printf("%*c", deslocV, ' '); printf("        xx    xxxxx    x        \n");
+    pnome(&poke, ehinimigo, deslocN);
+    printf("%*c", deslocN, ' '); printf("          xxxxxxxxxxxx          "); pnome(&poke, ehinimigo+1, deslocN); endl(); ptipo(&poke, ehinimigo, deslocT);
+    printf("%*c", deslocT, ' '); printf("         xx xxxxxxxxxxx         "); ptipo(&poke, ehinimigo+1, deslocT); endl(); pvida(&poke, ehinimigo, deslocV);
+    printf("%*c", deslocV, ' '); printf("        xx    xxxxx    x        "); pvida(&poke, ehinimigo+1, deslocV); endl();
     printf("%*c", deslocS, ' '); printf("        x              xx   xx  \n");
     printf("%*c", deslocS, ' '); printf("        x   @@    @@    x   xx  \n");
     printf("%*c", deslocS, ' '); printf("        xx  @@    @@    x   xx  \n");
@@ -414,9 +457,10 @@ switch(num){
     break;
     //kiwi[16]
     case 16:
-        printf("%*c", deslocN, ' '); printf("                        xxxxxxx             \n");
-    printf("%*c", deslocT, ' '); printf("                         xxxxxx      xxxx          \n");
-    printf("%*c", deslocV, ' '); printf("                      xxxx               xxx       \n");
+    pnome(&poke, ehinimigo, deslocN);
+    printf("%*c", deslocN, ' '); printf("                               xxxxxxx             "); pnome(&poke, ehinimigo+1, deslocN); endl(); ptipo(&poke, ehinimigo, deslocT);
+    printf("%*c", deslocT, ' '); printf("                         xxxxxx      xxxx          "); ptipo(&poke, ehinimigo+1, deslocT); endl(); pvida(&poke, ehinimigo, deslocV);
+    printf("%*c", deslocV, ' '); printf("                      xxxx               xxx       "); pvida(&poke, ehinimigo+1, deslocV); endl();
     printf("%*c", deslocS, ' '); printf("                   xxx                     xx      \n");
     printf("%*c", deslocS, ' '); printf("          xxxxxxxxx                         xx     \n");
     printf("%*c", deslocS, ' '); printf("        xxx   xxxx                           xx    \n");

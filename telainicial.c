@@ -96,7 +96,7 @@ void escolha(char nomeUsuario[], tp_pokemon pokeUsuario[], tp_pokemon poke[], in
 		}else{
 	 	apagarTela();
 
-		printarPokemon(poke[birdmonUsuario], 0);
+		printarPokemon(poke[birdmonUsuario], -1);
 		printf("%s:\n", poke[birdmonUsuario].nome);
 	    printf("Tipo: %s\n", poke[birdmonUsuario].tipo);
 	    printf("Vida: %d\n", poke[birdmonUsuario].vida); 
@@ -207,10 +207,14 @@ int main (void) {
 	while(playerVivo(pokeUsuarioQtd, pokeUsuario)){
 		rodada++;
 
-		batalha(rodada, &pokeUsuarioQtd, pokeUsuario, &pokeOponentes);
+		if(batalha(rodada, &pokeUsuarioQtd, pokeUsuario, &pokeOponentes) == 0){
+			perdeu();
+			return 0;
+		};
 	
+		//loja()
 	}
-	perdeu();
+	
 
 	//final do codigo antigo (acho que pode remover ja)
 	printf("\n digite qualquer valor para encerrar o programa\n");
