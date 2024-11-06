@@ -27,7 +27,7 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     for(int i=0; i<=QTDPOKEMONS; i++){
 
     poke[i].exp = 0;
-    poke[i].nivel = 0;
+    poke[i].nivel = 0; //mudar para 1
      poke[i].vivo = 1;
 
     }

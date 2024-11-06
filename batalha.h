@@ -2,6 +2,10 @@
 #define BATALHA_H
 
 #include "pokemon.h"
+#include "sprites.h"
+#include "apagartela.h"
+#define deslocamentoDoOponente 40
+
 
 //checa se o jogador esta vivo
 int playerVivo(int pokeUsuarioQtd, tp_pokemon pokeUsuario[]){ //procura um pokemon do jogador que esteja vivo. Se nao houver, o jogador perdeu
@@ -18,12 +22,38 @@ void perdeu(){
 	scanf(" %c", &lixo);
 }
 
-void printarBatalha(tp_pokemon pokeUsuario[], tp_pokemon pokeInimigo, int pokeAtivo){ //printa o estado da batalha
 
-    //printf("")
+
+void printarBatalha(tp_pokemon pokeUsuario[], tp_pokemon *pokeInimigo, int pokeAtivo, int rodada){ //printa o estado da batalha
+
+    //tamanho da tela inicial: 134
+    //tamanho do sprite do maior pokemon: 84
+
+    //para printar varios espacos pode-se usar printf("%*c", quantidade-de-espacos, ' ');
+
+    int qtdDeEspacos = deslocamentoDoOponente; //numero ajustavel
+    int centroDaTela = 30; //numero ajustavel, muda onde o RODADA vai ficar
+
+    apagarTela();
+    printf("%*c", centroDaTela, ' ');
+    printf("RODADA %d\n", rodada);
+
+    //printar o inimigo
+    printf("%*c", qtdDeEspacos, ' '); //printa uma certa quantidade de espacos pra deixar o oponente e seus status mais a direita
+    printf("%s    Lvl: %d\n", pokeInimigo->nome, pokeInimigo->nivel);
+    printf("%*c", qtdDeEspacos, ' ');
+    printf("HP: %d/%d\n", pokeInimigo->vida, pokeInimigo->vidamax);
+    printarPokemon(*pokeInimigo, 1);
+
+    //printar o pokemon do jogador
+    printarPokemon(pokeUsuario[pokeAtivo], 0);
+    printf("%s   Lvl: %d \n", pokeUsuario[pokeAtivo].nome, pokeUsuario[pokeAtivo].nivel);
+    printf("HP: %d \n", pokeUsuario[pokeAtivo].vida);
+
 
 }
 
+/*
 void menuDeBatalha(BATALHA *batalha, tp_pokemon *pokeUsuario, tp_pokemon *pokeOponente) {
     int escolha;
 
@@ -60,16 +90,21 @@ void menuDeBatalha(BATALHA *batalha, tp_pokemon *pokeUsuario, tp_pokemon *pokeOp
         }
     }
 }
+*/
 
 void batalha(int rodada, int *pokeUsuarioQtd, tp_pokemon pokeUsuario[], tp_pilha *pokeOponentes){
 
     apagarTela();
 
-    int pokeAtivo = 0; //posicao do pokemon do jogador ativo no vetor pokeUsuario
+    //0 eh um valor placeholder
+    int pokeAtivo = 0; //posicao do pokemon do jogador ativo no vetor pokeUsuario - mudar isso depois para o ultimo pokemon equipado
 
-    tp_pokemon pokeInimigo = pokeOponentes.top(); //o inimigo atual da batalha
-    pokeOponentes.pop();
+    tp_pokemon pokeInimigo;
+    pop(pokeOponentes, &pokeInimigo); //pega o inimigo no topo da pilha e torna ele o atual da batalha
+    pokeInimigo.nivel = rodada;
 
+    printarBatalha(pokeUsuario, &pokeInimigo, pokeAtivo, rodada); 
+    sleep (100); //placeholder
 
 
 }
