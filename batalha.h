@@ -93,7 +93,7 @@ void menuDeBatalha(tp_pokemon *pokeUsuario, tp_pokemon *pokeOponente, int pokeat
             // fazer a função de selecionar atk
             apagarTela();
             printarBatalha(*pokeUsuario, pokeOponente, pokeativo, rodada);
-            for(int i=1, i<=4, i++){printarAtaque(pokeUsuario->hab, i);
+            for(int i=1, i<=4, i++){printarAtaque(pokeUsuario->hab, i);}
             
 
             //printar selecao de ataques
