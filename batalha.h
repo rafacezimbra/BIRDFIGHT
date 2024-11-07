@@ -50,7 +50,7 @@ void printarBatalha(tp_pokemon pokeUsuario[], tp_pokemon *pokeInimigo, int pokeA
 
 
 }
-
+/*versao inalterada por cesio
 void printarAtaque(tp_fila *fila, int num){
     tp_hab ataque;
     removeFila(fila, &ataque);
@@ -62,6 +62,24 @@ void printarAtaque(tp_fila *fila, int num){
     }else{
         printf("\n");
     }
+}*/
+
+//versao alterada leticia do mato
+//alterações: passando a fila por copia, loop while para retirar os intens da fila
+void printarAtaque(tp_fila fila){
+tp_hab ataque;
+    int num = 1;
+    while(!filaVazia(f)){
+	removeFila(fila, &ataque);
+    	insereFila(fila, ataque);
+   	printf("%d. %s", num, atkTopo.nome);
+	   if(num == 1 || num == 3){
+	   printf("%*c",deslocAtaque - strlen(ataque.nome), ' ');
+	   }else{
+	   printf("\n");
+   	   }
+	   num++;
+	}
 }
 
 void menuDeBatalha(tp_pokemon *pokeUsuario, tp_pokemon *pokeOponente, int pokeativo, int rodada) {
