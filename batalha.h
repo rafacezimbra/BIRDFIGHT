@@ -69,7 +69,7 @@ void printarAtaque(tp_fila *fila, int num){
 void printarAtaque(tp_fila fila){
 tp_hab ataque;
     int num = 1;
-    while(!filaVazia(f)){
+    while(!filaVazia(&f)){
 	removeFila(fila, &ataque);
     	insereFila(fila, ataque);
    	printf("%d. %s", num, atkTopo.nome);
