@@ -4,7 +4,10 @@
 #include "pokemon.h"
 #include "sprites.h"
 #include "apagartela.h"
-#define deslocamentoDoOponente 40
+#include "habilidade.h"
+#include "fila.h"
+#define deslocamentoDoOponente 80
+#define deslocAtaque 25
 
 
 //checa se o jogador esta vivo
@@ -32,7 +35,7 @@ void printarBatalha(tp_pokemon pokeUsuario[], tp_pokemon *pokeInimigo, int pokeA
     //para printar varios espacos pode-se usar printf("%*c", quantidade-de-espacos, ' ');
 
     int qtdDeEspacos = deslocamentoDoOponente; //numero ajustavel
-    int centroDaTela = 30; //numero ajustavel, muda onde o RODADA vai ficar
+    int centroDaTela = 50; //numero ajustavel, muda onde o RODADA vai ficar
 
     apagarTela();
     printf("%*c", centroDaTela, ' ');
@@ -48,11 +51,22 @@ void printarBatalha(tp_pokemon pokeUsuario[], tp_pokemon *pokeInimigo, int pokeA
 
 }
 
-/*
-void menuDeBatalha(BATALHA *batalha, tp_pokemon *pokeUsuario, tp_pokemon *pokeOponente) {
+void printarAtaque(tp_fila *fila, int num){
+    tp_hab ataque;
+    removeFila(fila, &ataque);
+    insereFila(fila, ataque);
+    printf("%d. %s", num, atkTopo.nome);
+
+    if(num == 1 || num == 3){
+        printf("%*c",deslocAtaque - strlen(ataque.nome), ' ');
+    }else{
+        printf("\n");
+    }
+}
+
+void menuDeBatalha(tp_pokemon *pokeUsuario, tp_pokemon *pokeOponente, int pokeativo, int rodada) {
     int escolha;
 
-    while (playerVivo(batalha->pokeUsuarioQtd, pokeUsuario) && pokeOponente->vivo) {
         printf("\nEscolha sua ação:\n");
         printf("1 - Acessar Inventário\n");
         printf("2 - Capturar Pokémon\n");
@@ -61,31 +75,39 @@ void menuDeBatalha(BATALHA *batalha, tp_pokemon *pokeUsuario, tp_pokemon *pokeOp
         printf("Escolha: ");
         scanf("%d", &escolha);
 
-        switch (escolha) {
-            case 1:
-                // fazer a função do inventario
-                break;
+    switch (escolha) {
+        case 1:
+            // fazer a função do inventario
+            break;
 
-            case 2:
-                //fazer a função para capturar
-                break;
+        case 2:
+            //fazer a função para capturar
+            break;
 
-            case 3:
-                // fazer a função para trocar o pkm
-               
-                break;
+        case 3:
+            // fazer a função para trocar o pkm
+            
+            break;
 
-            case 4:
-                // fazer a função de selecionar atk
-                break;
+        case 4:
+            // fazer a função de selecionar atk
+            apagarTela();
+            printarBatalha(*pokeUsuario, pokeOponente, pokeativo, rodada);
+            for(int i=1, i<=4, i++){printarAtaque(pokeUsuario->hab, i);
+            
 
-            default:
-                printf("Escolha inválida. Tente novamente.\n");
-                break;
-        }
+            //printar selecao de ataques
+            tp_hab atkTopo = topo;
+            
+            break;
+
+        default:
+            printf("Escolha inválida. Tente novamente.\n");
+            break;
     }
+    
 }
-*/
+
 
 int batalha(int rodada, int *pokeUsuarioQtd, tp_pokemon pokeUsuario[], tp_pilha *pokeOponentes){
 
