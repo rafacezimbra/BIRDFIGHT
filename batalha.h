@@ -69,10 +69,10 @@ void printarAtaque(tp_fila *fila, int num){
 void printarAtaque(tp_fila fila){
 tp_hab ataque;
     int num = 1;
-    while(!filaVazia(&f)){
-	removeFila(fila, &ataque);
-    	insereFila(fila, ataque);
-   	printf("%d. %s", num, atkTopo.nome);
+    while(!filaVazia(&fila)){
+	removeFila(&fila, &ataque);
+    //insereFila(&fila, ataque);
+   	printf("%d. %s", num, ataque.nome);
 	   if(num == 1 || num == 3){
 	   printf("%*c",deslocAtaque - strlen(ataque.nome), ' ');
 	   }else{
@@ -82,7 +82,7 @@ tp_hab ataque;
 	}
 }
 
-void menuDeBatalha(tp_pokemon *pokeUsuario, tp_pokemon *pokeOponente, int pokeativo, int rodada) {
+void menuDeBatalha(tp_pokemon pokeUsuario[], tp_pokemon *pokeOponente, int pokeAtivo, int rodada) {
     int escolha;
 
         printf("\nEscolha sua ação:\n");
@@ -110,12 +110,13 @@ void menuDeBatalha(tp_pokemon *pokeUsuario, tp_pokemon *pokeOponente, int pokeat
         case 4:
             // fazer a função de selecionar atk
             apagarTela();
-            printarBatalha(*pokeUsuario, pokeOponente, pokeativo, rodada);
-            for(int i=1, i<=4, i++){printarAtaque(pokeUsuario->hab, i);}
+            printarBatalha(pokeUsuario, pokeOponente, pokeAtivo, rodada);
+           
+            printarAtaque(pokeUsuario->hab);
             
 
             //printar selecao de ataques
-            tp_hab atkTopo = topo;
+            
             
             break;
 
