@@ -20,7 +20,56 @@ int multiplicadorDeTipo(char tipoAtacante[], char tipoAlvo[]){
 
     switch(tAtk){
 
-        case 'n':
+ case 'n':  // Normal
+            if(tAlv == 'p') return 2.0;  // Vantagem contra Planta
+            if(tAlv == 's') return 0.5;  // Ineficaz contra Sombrio
+            return 1.0;  // Dano neutro
+        break;
+
+        case 'e':  // Elétrico
+            if(tAlv == 'l') return 2.0;  // Vantagem contra Lutador
+            if(tAlv == 'a') return 0.5;  // Ineficaz contra Água
+            return 1.0;
+        break;
+
+        case 'a':  // Água
+            if(tAlv == 'e') return 2.0;  // Vantagem contra Elétrico
+            if(tAlv == 'p') return 0.5;  // Ineficaz contra Planta
+            return 1.0;
+        break;
+
+        case 'd':  // Dançarino
+            if(tAlv == 's') return 0.5;  // Ineficaz contra Sombrio
+            if(tAlv == 'l') return 2.0;  // Vantagem contra Lutador
+            return 1.0;
+        break;
+
+        case 'l':  // Lutador
+            if(tAlv == 'd') return 2.0;  // Vantagem contra Dançarino
+            if(tAlv == 'e') return 0.5;  // Ineficaz contra Elétrico
+            return 1.0;
+        break;
+
+        case 'p':  // Planta
+            if(tAlv == 'a') return 2.0;  // Vantagem contra Água
+            if(tAlv == 'n') return 0.5;  // Ineficaz contra Normal
+            return 1.0;
+        break;
+
+        case 's':  // Sombrio
+            if(tAlv == 'd') return 2.0;  // Vantagem contra Dançarino
+            if(tAlv == 'n') return 0.5;  // Ineficaz contra Normal
+            return 1.0;
+        break;
+
+        default:
+            return 1.0; 
+    }
+}
+
+#endif
+
+       /* case 'n':
             if(tAlv == 'p') return 4;
             if(tAlv == 's') return 1;
             else return 2;
@@ -66,4 +115,4 @@ int multiplicadorDeTipo(char tipoAtacante[], char tipoAlvo[]){
 
 }
 
-#endif 
+#endif */
