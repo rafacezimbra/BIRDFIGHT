@@ -145,10 +145,11 @@ void menuBatalha(int *pokeAtivo, tp_pokemon *pokeInimigo, Inventory *inv, tp_pok
     //printf("4. Fugir\n");
     printf("Escolha uma opcao: ");
     scanf("%d", &escolha);
-
+    
+	int numAtaque;
     switch (escolha) {
         case 1:
-            int numAtaque;
+
             apagarTela();
             printarBatalha(pokeUsuario, pokeInimigo, *pokeAtivo, rodada);
             printarAtaque(pokeUsuario->hab);
@@ -158,13 +159,18 @@ void menuBatalha(int *pokeAtivo, tp_pokemon *pokeInimigo, Inventory *inv, tp_pok
             apagarTela();
             printarBatalha(pokeUsuario, pokeInimigo, *pokeAtivo, rodada);
             return  menuBatalha(pokeAtivo, pokeInimigo, inv, pokeUsuario, pokeUsuarioQtd, rodada);
-            }else
-            if(numAtaque > 0 && numAtaque <= 4){
+            }else if(numAtaque > 0 && numAtaque <= 4){
                 atacar(&pokeUsuario[*pokeAtivo], pokeInimigo, numAtaque, pokeUsuario[*pokeAtivo].hab);
                 
             }else{
-                printf("Opção inválida. Tente novamente.\n");
-            }
+                printf("Opcao invalida. Tente novamente.\n");
+	            //voltar
+	            apagarTela();
+	            printarBatalha(pokeUsuario, pokeInimigo, *pokeAtivo, rodada);
+				return menuBatalha(pokeAtivo, pokeInimigo, inv, pokeUsuario, pokeUsuarioQtd, rodada);
+				sleep(5);
+				break;
+           }
 
              /*
             realizarAtaque(pokeAtivo, *pokeInimigo);
@@ -184,12 +190,17 @@ void menuBatalha(int *pokeAtivo, tp_pokemon *pokeInimigo, Inventory *inv, tp_pok
 
         /*
         case 4:
-            printf("Você fugiu da batalha!\n");
+            printf("VocÃª fugiu da batalha!\n");
             return;  // Sai da batalha
         */
         default:
-            printf("Opção inválida. Tente novamente.\n");
-        break;
+            printf("Opcao invalida. Tente novamente.\n");
+            //voltar
+            apagarTela();
+            printarBatalha(pokeUsuario, pokeInimigo, *pokeAtivo, rodada);
+            return  menuBatalha(pokeAtivo, pokeInimigo, inv, pokeUsuario, pokeUsuarioQtd, rodada);
+            break;
+        	
     }
    
 }
