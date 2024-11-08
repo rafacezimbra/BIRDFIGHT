@@ -12,7 +12,7 @@ char tipo[15];
 //tipos: normal, eletrico, agua, dancarino, lutador, planta, sombrio, nenhum
 
 int dano;
-/*
+
 int temEfeito;
 int efDefOp;
 int efDefAl;
@@ -20,7 +20,7 @@ int efAtkOp;
 int efAtkAl;
 int efAgilOp;
 int efAgilAl;
-*/
+
 
 //efeitos especiais para certas habilidades serao adicionados em suas funcoes respectivas
 //funcoes so serao adicionadas apos a criacao do sistema de batalha
@@ -67,6 +67,13 @@ void criarHabilidades(tp_hab hab[]) {
     
     strcpy(hab[4].nome, "Amaldicoar");
     strcpy(hab[4].tipo, "sombrio");
+    hab[4].temEfeito = 1;
+    hab[4].efDefOp = 1;
+    hab[4].efDefAl = 0;
+    hab[4].efAtkOp = 0;
+    hab[4].efAtkAl = 0;
+    hab[4].efAgilOp = 0;
+    hab[4].efAgilAl = 0;
     hab[4].dano = 35;
     
     strcpy(hab[5].nome, "Encharcar");
@@ -92,66 +99,178 @@ void criarHabilidades(tp_hab hab[]) {
   //HABILIDADE 3:
     strcpy(hab[10].nome, "Eletrizar");
     strcpy(hab[10].tipo, "eletrico");
+    hab[10].temEfeito = 1;
+    hab[10].efDefOp = 0;
+    hab[10].efDefAl = 0;
+    hab[10].efAtkOp = 0;
+    hab[10].efAtkAl = 0;
+    hab[10].efAgilOp = 0;
+    hab[10].efAgilAl = 1;
     hab[10].dano = 0;
 
     strcpy(hab[11].nome, "Petrificar");
     strcpy(hab[11].tipo, "sombrio");
+    hab[11].temEfeito = 1;
+    hab[11].efDefOp = 0;
+    hab[11].efDefAl = 0;
+    hab[11].efAtkOp = 0;
+    hab[11].efAtkAl = 0;
+    hab[11].efAgilOp = 1;
+    hab[11].efAgilAl = 0;
     hab[11].dano = 0; 
 
     strcpy(hab[12].nome, "Relaxar");
     strcpy(hab[12].tipo, "agua");
+    hab[12].temEfeito = 1;
+    hab[12].efDefOp = 1;
+    hab[12].efDefAl = 0;
+    hab[12].efAtkOp = 0;
+    hab[12].efAtkAl = 0;
+    hab[12].efAgilOp = 0;
+    hab[12].efAgilAl = 0;
     hab[12].dano = 0; 
 
     strcpy(hab[13].nome, "Tocar Berimbau");
     strcpy(hab[13].tipo, "dancarino");
+    hab[13].temEfeito = 1;
+    hab[13].efDefOp = 0;
+    hab[13].efDefAl = 0;
+    hab[13].efAtkOp = 0;
+    hab[13].efAtkAl = 1;
+    hab[13].efAgilOp = 0;
+    hab[13].efAgilAl = 1;
     hab[13].dano = 0; 
 
     strcpy(hab[14].nome, "Grito de Guerra");
     strcpy(hab[14].tipo, "lutador");
+    hab[14].temEfeito = 1;
+    hab[14].efDefOp = 0;
+    hab[14].efDefAl = 0;
+    hab[14].efAtkOp = 0;
+    hab[14].efAtkAl = 1;
+    hab[14].efAgilOp = 0;
+    hab[14].efAgilAl = 0;
     hab[14].dano = 0;
     
     strcpy(hab[15].nome, "Botar Saia");
     strcpy(hab[15].tipo, "dancarino");
+    hab[15].temEfeito = 1;
+    hab[15].efDefOp = 1;
+    hab[15].efDefAl = 0;
+    hab[15].efAtkOp = 0;
+    hab[15].efAtkAl = 1;
+    hab[15].efAgilOp = 0;
+    hab[15].efAgilAl = 1;
     hab[15].dano = 0;
     
     strcpy(hab[16].nome, "Chorar");
     strcpy(hab[16].tipo, "normal");
+    hab[16].temEfeito = 1;
+    hab[16].efDefOp = 1;
+    hab[16].efDefAl = 0;
+    hab[16].efAtkOp = 0;
+    hab[16].efAtkAl = 0;
+    hab[16].efAgilOp = 0;
+    hab[16].efAgilAl = 0;
     hab[16].dano = 0;
     
     strcpy(hab[17].nome, "Hibernar");
     strcpy(hab[17].tipo, "normal");
+    hab[17].temEfeito = 1;
+    hab[17].efDefOp = 0;
+    hab[17].efDefAl = 0;
+    hab[17].efAtkOp = 0;
+    hab[17].efAtkAl = 0;
+    hab[17].efAgilOp = 0;
+    hab[17].efAgilAl = 1;
     hab[17].dano = 0;
     
     strcpy(hab[18].nome, "Golpe Baixo");
     strcpy(hab[18].tipo, "lutador");
+    hab[18].temEfeito = 1;
+    hab[18].efDefOp = 1;
+    hab[18].efDefAl = 0;
+    hab[18].efAtkOp = 0;
+    hab[18].efAtkAl = 0;
+    hab[18].efAgilOp = 0;
+    hab[18].efAgilAl = 0;  
     hab[18].dano = 25;
     
     strcpy(hab[19].nome, "Enrolar");
     strcpy(hab[19].tipo, "planta");
+    hab[19].temEfeito = 1;
+    hab[19].efDefOp = 0;
+    hab[19].efDefAl = 1;
+    hab[19].efAtkOp = 0;
+    hab[19].efAtkAl = 0;
+    hab[19].efAgilOp = 0;
+    hab[19].efAgilAl = 0;
     hab[19].dano = 0;
     
     strcpy(hab[20].nome, "Festa em Ipanema");
     strcpy(hab[20].tipo, "dancarino");
+    hab[20].temEfeito = 1;
+    hab[20].efDefOp = 1;
+    hab[20].efDefAl = 1;
+    hab[20].efAtkOp = 0;
+    hab[20].efAtkAl = 0;
+    hab[20].efAgilOp = 1;
+    hab[20].efAgilAl = 1;
     hab[20].dano = 0;
     
     strcpy(hab[21].nome, "Noite Chuvosa");
     strcpy(hab[21].tipo, "Sombrio");
+    hab[21].temEfeito = 1;
+    hab[21].efDefOp = 0;
+    hab[21].efDefAl = 0;
+    hab[21].efAtkOp = 0;
+    hab[21].efAtkAl = 1;
+    hab[21].efAgilOp = 0;
+    hab[21].efAgilAl = 0;
     hab[21].dano = 0;
     
     strcpy(hab[22].nome, "Acelerar!");
     strcpy(hab[22].tipo, "eletrico");
+    hab[22].temEfeito = 1;
+    hab[22].efDefOp = 0;
+    hab[22].efDefAl = 1;
+    hab[22].efAtkOp = 0;
+    hab[22].efAtkAl = 1;
+    hab[22].efAgilOp = 0;
+    hab[22].efAgilAl = 1;
     hab[22].dano = 0;
     
     strcpy(hab[23].nome, "Bolo de Morango");
     strcpy(hab[23].tipo, "normal");
+    hab[23].temEfeito = 1;
+    hab[23].efDefOp = 0;
+    hab[23].efDefAl = 0;
+    hab[23].efAtkOp = 0;
+    hab[23].efAtkAl = 0;
+    hab[23].efAgilOp = 0;
+    hab[23].efAgilAl = 1;
     hab[23].dano = 0;
     
     strcpy(hab[24].nome, "Sorrir e Acenar");
     strcpy(hab[24].tipo, "dancarino");
+    hab[24].temEfeito = 1;
+    hab[24].efDefOp = 0;
+    hab[24].efDefAl = 1;
+    hab[24].efAtkOp = 0;
+    hab[24].efAtkAl = 0;
+    hab[24].efAgilOp = 0;
+    hab[24].efAgilAl = 0;
     hab[24].dano = 0;
     
     strcpy(hab[25].nome, "Camuflagem");
     strcpy(hab[25].tipo, "planta");
+    hab[25].temEfeito = 1;
+    hab[25].efDefOp = 0;
+    hab[25].efDefAl = 0;
+    hab[25].efAtkOp = 0;
+    hab[25].efAtkAl = 0;
+    hab[25].efAgilOp = 0;
+    hab[25].efAgilAl = 1;
     hab[25].dano = 0;
 
   //HABILIDADE 4:
