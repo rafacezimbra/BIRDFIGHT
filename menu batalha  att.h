@@ -28,10 +28,6 @@ void trocarBirdmon(tp_pokemon pokeUsuario[], int totalBirdmons, tp_pokemon *poke
 // Função principal do menu de batalha
 void menuBatalha(tp_pokemon *pokeAtivo, tp_pokemon *pokeInimigo, tp_pokemon *inv, tp_pokemon pokeUsuario[], int totalBirdmons) {
     int escolha;
-    //tp_pokemon pokeUsuario[] = pokeAtivo; 
-    // remove essa linha pois está a sobrescrever a variável que recebe os pokemon do utilizador
-    // e está a criar um array com apenas 1 pokemon e o nome dele.
-
     while (pokeInimigo->hp > 0 && pokeAtivo->hp > 0) {
         printf("\n--- Menu de Batalha ---\n");
         printf("1. Atacar\n");
