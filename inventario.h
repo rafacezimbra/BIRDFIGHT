@@ -54,6 +54,22 @@ void adicionarAoInventario(Inventory *inv, const char *itemName) {
     }
     printf("Item %s nao encontrado no inventario.\n", itemName);
 }
+void resetarAtributos(int *atq, int *def, int *atqO, int *defO, int *agil, int *agilO) {
+    *atq = *atqO;
+    *def = *defO;
+    *agil = *agilO;
+    printf("Ataque, Defesa e Agilidade foram restaurados aos valores originais. Ataque: %d, Defesa: %d, Agilidade: %d\n", *atq, *def, *agil);
+}
+
+void reviverBirdmon(int *vida, int vidamax) {
+    if (*vida == 0) {
+        *vida = vidamax / 2;  // Restaura a 50% do HP máximo
+        printf("Birdmon revivido com %d HP.\n", *hp);
+    } else {
+        printf("Birdmon ainda está vivo e não precisa ser revivido.\n");
+    }
+}
+
 
 void aplicarEfeito(Item item, int *vida, int *atq, int *def, int *agil) {
     if (strcmp(item.name, "Alpiste") == 0) {
@@ -81,20 +97,6 @@ void aplicarEfeito(Item item, int *vida, int *atq, int *def, int *agil) {
     }
 }
 
-void resetarAtributos(int *atq, int *def, int *atqO, int *defO, int *agil, int *agilO) {
-    *atq = *atqO;
-    *def = *defO;
-    *agil = *agilO;
-    printf("Ataque, Defesa e Agilidade foram restaurados aos valores originais. Ataque: %d, Defesa: %d, Agilidade: %d\n", *atq, *def, *agil);
-}
 
-void reviverBirdmon(int *vida, int vidamax) {
-    if (*vida == 0) {
-        *vida = vidamax / 2;  // Restaura a 50% do HP máximo
-        printf("Birdmon revivido com %d HP.\n", *hp);
-    } else {
-        printf("Birdmon ainda está vivo e não precisa ser revivido.\n");
-    }
-}
 
 #endif
