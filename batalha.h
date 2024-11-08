@@ -182,17 +182,18 @@ void menuBatalha(int *pokeAtivo, tp_pokemon *pokeInimigo, Inventory *inv, tp_pok
 
         case 2:
             displayInventory(inv);
+		aplicarEfeito(item, poke.vida, poke.atq, poke.def, poke.agil);
         break;
 
         case 3:
             trocarBirdmon(pokeUsuario, pokeUsuarioQtd, pokeAtivo);
         break;
 
-        /*
+        
         case 4:
             printf("VocÃª fugiu da batalha!\n");
             return;  // Sai da batalha
-        */
+        
         default:
             printf("Opcao invalida. Tente novamente.\n");
             //voltar
