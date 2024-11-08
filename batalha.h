@@ -27,7 +27,25 @@ void perdeu(){
 	char lixo;
 	scanf(" %c", &lixo);
 }
+void xpBatalha(tp_pokemon *pokeAtivo) {
+    // Gera experiência aleatória entre 10 e 50
+    int exp_ganha = (rand() % 41) + 10;
+    printf("%s ganhou %d de EXP na batalha!\n", pokemon->nome, exp_ganha);
 
+    // Atualiza a experiência do Pokémon
+    pokemon->exp += exp_ganha;
+
+    // Verifica se o Pokémon alcançou ou excedeu a experiência necessária para subir de nível
+    if (pokemon->exp >= pokemon->expMax) {
+        // Sobe de nível
+        pokemon->nivel += 1;
+        printf("%s subiu para o nível %d!\n", pokemon->nome, pokemon->nivel);
+
+        // Reseta a experiência atual e aumenta o limite de experiência para o próximo nível
+        pokemon->exp = pokemon->expO;
+        pokemon->expMax += 20;
+    }
+}
 
 
 void printarBatalha(tp_pokemon pokeUsuario[], tp_pokemon *pokeInimigo, int pokeAtivo, int rodada){ //printa o estado da batalha
@@ -301,7 +319,10 @@ int verificarVivos(int *pokeAtivo, tp_pokemon *pokeInimigo, tp_pokemon pokeUsuar
     if(pokeInimigo->vida <= 0){
         pokeInimigo->vivo = 0;
         printf("O %s selvagem foi derrotado!\n");
-        loja(inv, BirdCoin);
+       	 int moedasGanhas = rand() % 451 + 150;
+    		*birdcoins += moedasGanhas;
+	 loja(inv, BirdCoin);
+	xpBatalha(pokeAtivo);
 
 	return 1; //inimigo perdeu
     }
