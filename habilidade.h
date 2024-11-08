@@ -280,26 +280,61 @@ void criarHabilidades(tp_hab hab[]) {
     
     strcpy(hab[27].nome, "Paralizar");
     strcpy(hab[27].tipo, "sombrio");
+    hab[27].temEfeito = 1;
+    hab[27].efDefOp = 0;
+    hab[27].efDefAl = 0;
+    hab[27].efAtkOp = 0;
+    hab[27].efAtkAl = 0;
+    hab[27].efAgilOp = 1;
+    hab[27].efAgilAl = 0;
     hab[27].dano = 50;
     
     strcpy(hab[28].nome, "Agua Quente");
     strcpy(hab[28].tipo, "agua");
+    hab[28].temEfeito = 1;
+    hab[28].efDefOp = 1;
+    hab[28].efDefAl = 0;
+    hab[28].efAtkOp = 0;
+    hab[28].efAtkAl = 0;
+    hab[28].efAgilOp = 0;
+    hab[28].efAgilAl = 0;
     hab[28].dano = 55;
     
     strcpy(hab[29].nome, "Meia Lua");
-    strcpy(hab[29].tipo, "agua");
+    strcpy(hab[29].tipo, "lutador");
     hab[29].dano = 55;
     
     strcpy(hab[30].nome, "Avancar com Escudo");
     strcpy(hab[30].tipo, "lutador");
+    hab[30].temEfeito = 1;
+    hab[30].efDefOp = 0;
+    hab[30].efDefAl = 1;
+    hab[30].efAtkOp = 0;
+    hab[30].efAtkAl = 0;
+    hab[30].efAgilOp = 0;
+    hab[30].efAgilAl = 0;
     hab[30].dano = 60;
     
     strcpy(hab[31].nome, "Pintinho Amarelinho");
     strcpy(hab[31].tipo, "dancarino");
+    hab[31].temEfeito = 1;
+    hab[31].efDefOp = 0;
+    hab[31].efDefAl = 1;
+    hab[31].efAtkOp = 0;
+    hab[31].efAtkAl = 0;
+    hab[31].efAgilOp = 1;//diminui
+    hab[31].efAgilAl = 1;//aumenta
     hab[31].dano = 0;
     
     strcpy(hab[32].nome, "Tacada");
     strcpy(hab[32].tipo, "normal");
+    hab[32].temEfeito = 1;
+    hab[32].efDefOp = 1;//diminui
+    hab[32].efDefAl = 0;
+    hab[32].efAtkOp = 1;//diminui
+    hab[32].efAtkAl = 0;
+    hab[32].efAgilOp = 1;//diminui
+    hab[32].efAgilAl = 0;
     hab[32].dano = 60;
     
     strcpy(hab[33].nome, "Extincao");
@@ -308,18 +343,46 @@ void criarHabilidades(tp_hab hab[]) {
     
     strcpy(hab[34].nome, "Rolada");
     strcpy(hab[34].tipo, "normal");
+    hab[34].temEfeito = 1;
+    hab[34].efDefOp = 0;
+    hab[34].efDefAl = 0;
+    hab[34].efAtkOp = 0;
+    hab[34].efAtkAl = 0;
+    hab[34].efAgilOp = 0;
+    hab[34].efAgilAl = 1;//aumenta
     hab[34].dano = 65;
     
     strcpy(hab[35].nome, "Ta Dando Onda");
     strcpy(hab[35].tipo, "planta");
+    hab[35].temEfeito = 1;
+    hab[35].efDefOp = 1;//diminui
+    hab[35].efDefAl = 0;
+    hab[35].efAtkOp = 0;
+    hab[35].efAtkAl = 0;
+    hab[35].efAgilOp = 0;
+    hab[35].efAgilAl = 0;
     hab[35].dano = 55;
     
     strcpy(hab[36].nome, "Carnaval");
     strcpy(hab[36].tipo, "dancarino");
+    hab[36].temEfeito = 1;
+    hab[36].efDefOp = 1;//diminui
+    hab[36].efDefAl = 1;//diminui
+    hab[36].efAtkOp = 0;
+    hab[36].efAtkAl = 0;
+    hab[36].efAgilOp = 0;
+    hab[36].efAgilAl = 1;//diminui
     hab[36].dano = 85;
     
     strcpy(hab[37].nome, "Evanescence");
     strcpy(hab[37].tipo, "sombrio");
+    hab[37].temEfeito = 1;
+    hab[37].efDefOp = 1;
+    hab[37].efDefAl = 0;
+    hab[37].efAtkOp = 0;
+    hab[37].efAtkAl = 0;
+    hab[37].efAgilOp = 0;
+    hab[37].efAgilAl = 0;
     hab[37].dano = 35;
     
     strcpy(hab[38].nome, "Beep Beep!");
