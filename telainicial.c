@@ -14,6 +14,7 @@
 #include "batalha.h"
 #include "loja.h"
 #include "apagartela.h"
+#include "inventario.h"
 
 #define QTDPOKEMONS 16
 
@@ -163,9 +164,11 @@ int main (void) {
 	tp_pokemon poke[QTDPOKEMONS + 1]; //declara todos os pokemons
 	tp_pokemon pokeUsuario[6]; //pokemons do usuario
 	tp_pilha pokeOponentes; //pilha de pokemons inimigos
+	Inventory inventario;
 	int pokeUsuarioQtd = 0; //quantidade de pokemons q o usuario tem
 
     inicializaPilha(&pokeOponentes);
+	initializeInventory(&inventario);
     
     criarHabilidades(hab);
     criarPokemons(poke, hab);
@@ -207,7 +210,7 @@ int main (void) {
 	while(playerVivo(pokeUsuarioQtd, pokeUsuario)){
 		rodada++;
 
-		if(batalha(rodada, &pokeUsuarioQtd, pokeUsuario, &pokeOponentes) == 0){
+		if(batalha(rodada, &pokeUsuarioQtd, pokeUsuario, &pokeOponentes, &inventario) == 0){
 			perdeu();
 			return 0;
 		};

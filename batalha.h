@@ -6,6 +6,7 @@
 #include "apagartela.h"
 #include "habilidade.h"
 #include "fila.h"
+#include "inventario.h"
 #define deslocamentoDoOponente 80
 #define deslocAtaque 25
 
@@ -81,7 +82,73 @@ tp_hab ataque;
 	   num++;
 	}
 }
+// Função de troca de Birdmon
+void trocarBirdmon(tp_pokemon pokeUsuario[], int *totalBirdmons, int *pokeAtivo) {
+    int escolha;
+    printf("Escolha um Birdmon para a batalha:\n");
+    for (int i = 0; i < *totalBirdmons; i++) {
+        printf("%d - %s (HP: %d/%d)\n", i + 1, pokeUsuario[i].nome, pokeUsuario[i].vida, pokeUsuario[i].vidamax);
+    }
+    printf("Escolha: ");
+    scanf("%d", &escolha);
+    if (escolha > 0 && escolha <= *totalBirdmons) {
+        pokeUsuario[*pokeAtivo] = pokeUsuario[escolha - 1];
+        printf("Você escolheu %s para a batalha!\n", pokeUsuario[*pokeAtivo].nome);
+    } else {
+        printf("Escolha inválida.\n");
+    }
+}
 
+// Função principal do menu de batalha
+void menuBatalha(int *pokeAtivo, tp_pokemon *pokeInimigo, Inventory *inv, tp_pokemon pokeUsuario[], int *pokeUsuarioQtd, int rodada) {
+int escolha;
+
+    printf("\n--- Menu de Batalha ---\n");
+    printf("1. Atacar\n");
+    printf("2. Inventario\n");
+    printf("3. Birdmons\n");
+    printf("4. Fugir\n");
+    printf("Escolha uma opcao: ");
+    scanf("%d", &escolha);
+
+    switch (escolha) {
+        case 1:
+            int escolhaAtaque;
+            apagarTela();
+            printarBatalha(pokeUsuario, pokeInimigo, *pokeAtivo, rodada);
+            printarAtaque(pokeUsuario->hab);
+            scanf("%d", &escolhaAtaque);
+
+            switch(case){
+            
+            }
+             /*
+            realizarAtaque(pokeAtivo, *pokeInimigo);
+            if (pokeInimigo->vida <= 0) {
+                printf("%s foi derrotado!\n", pokeInimigo->nome);
+                }
+            */
+            break;
+
+        case 2:
+            displayInventory(inv);
+            break;
+
+        case 3:
+            trocarBirdmon(pokeUsuario, pokeUsuarioQtd, pokeAtivo);
+            break;
+
+        case 4:
+            printf("Você fugiu da batalha!\n");
+            return;  // Sai da batalha
+
+        default:
+            printf("Opção inválida. Tente novamente.\n");
+            break;
+    }
+    
+}
+/*
 void menuDeBatalha(tp_pokemon pokeUsuario[], tp_pokemon *pokeOponente, int pokeAtivo, int rodada) {
     int escolha;
 
@@ -126,9 +193,9 @@ void menuDeBatalha(tp_pokemon pokeUsuario[], tp_pokemon *pokeOponente, int pokeA
     }
     
 }
+*/
 
-
-int batalha(int rodada, int *pokeUsuarioQtd, tp_pokemon pokeUsuario[], tp_pilha *pokeOponentes){
+int batalha(int rodada, int *pokeUsuarioQtd, tp_pokemon pokeUsuario[], tp_pilha *pokeOponentes, Inventory *inventario){
 
     apagarTela();
 
@@ -140,6 +207,7 @@ int batalha(int rodada, int *pokeUsuarioQtd, tp_pokemon pokeUsuario[], tp_pilha 
     pokeInimigo.nivel = rodada;
 
     printarBatalha(pokeUsuario, &pokeInimigo, pokeAtivo, rodada); 
+    menuBatalha(&pokeAtivo, &pokeInimigo, inventario, pokeUsuario, pokeUsuarioQtd, rodada);
     sleep (100); //placeholder
 
 

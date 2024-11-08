@@ -39,7 +39,7 @@ void initializeInventory(Inventory *inv) {
 
 // Função para exibir o inventário
 void displayInventory(Inventory *inv) {
-    printf("Inventário:\n");
+    printf("Inventario:\n");
     for (int i = 0; i < 6; i++) {
         printf("%s (Quantidade: %d) - %s\n", inv->items[i].name, inv->items[i].quantity, inv->items[i].effect);
     }
@@ -49,11 +49,11 @@ void adicionarAoInventario(Inventory *inv, const char *itemName) {
     for (int i = 0; i < 6; i++) {
         if (strcmp(inv->items[i].name, itemName) == 0) {
             inv->items[i].quantity++;
-            printf("%s adicionado ao inventário. Nova quantidade: %d\n", itemName, inv->items[i].quantity);
+            printf("%s adicionado ao inventario. Nova quantidade: %d\n", itemName, inv->items[i].quantity);
             return;
         }
     }
-    printf("Item %s não encontrado no inventário.\n", itemName);
+    printf("Item %s não encontrado no inventario.\n", itemName);
 }
 
 #endif
