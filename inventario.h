@@ -73,18 +73,19 @@ void aplicarEfeito(Item item, int *hp, int *atk, int *def) {
         *def -= defIncrease;
         printf("Defesa aumentada em %d pontos. Defesa atual: %d\n", defIncrease, *def);
     } else if (strcmp(item.name, "Soro") == 0) {
-         resetarAtributos(atk, def, atkOriginal, defOriginal);
+         resetarAtributos(atq, def, atqO, defO, agil, agilO);
         }if (strcmp(item.name, "Pena da Vida") == 0) {
-    reviverBirdmon(&poke[].vida, poke[].vidamax);
+            reviverBirdmon(&poke[].vida, poke[].vidamax);
         }else {
         printf("Efeito do item nao reconhecido: %s\n", item.name);
     }
 }
 
-void resetarAtributos(int *atq, int *def, int *atqO, int *defO) {
+void resetarAtributos(int *atq, int *def, int *atqO, int *defO, int *agil, int *agilO) {
     *atq = *atqO;
     *def = *defO;
-    printf("Ataque e Defesa foram restaurados aos valores originais. Ataque: %d, Defesa: %d\n", *atq, *def);
+    *agil = *agilO;
+    printf("Ataque, Defesa e Agilidade foram restaurados aos valores originais. Ataque: %d, Defesa: %d, Agilidade: %d\n", *atq, *def, *agil);
 }
 
 void reviverBirdmon(int *vida, int vidamax) {
