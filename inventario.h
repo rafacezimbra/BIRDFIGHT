@@ -2,8 +2,6 @@
 #define INVENTARIO_H
 #include <stdio.h>
 #include <string.h>
-
-#include "inventario.h"
 #define MAX 100
 
 //teoricamente é p funcionar
@@ -54,7 +52,7 @@ void adicionarAoInventario(Inventory *inv, const char *itemName) {
             return;
         }
     }
-    printf("Item %s não encontrado no inventario.\n", itemName);
+    printf("Item %s nao encontrado no inventario.\n", itemName);
 }
 
 #endif
