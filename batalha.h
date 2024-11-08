@@ -213,6 +213,22 @@ int batalha(int rodada, int *pokeUsuarioQtd, tp_pokemon pokeUsuario[], tp_pilha 
 
 }
 
+void ataque(int escolhaAtk, tp_pokemon poke, tp_pilha pokeOpenente){
+	printf("digite 1 para escolher atacar ou 2 para acessar o inventario: ");
+	scanf("%d", &escolhaAtk);
+			//definir como ascessar habilidade:
+			int chance = poke.agil;
+			tp_hab e;
+			removeFila(&poke.hab, &e);
+			int dano = e.dano;
+			srand(time(NULL));
+			int dado = rand()%100;
+			//if(chance>dado) //pokeOponente.vida - ((*(poke.atk)*0,01)-(pokeOponente*tipoV));
+			break;
+	}
+}
+
+
 
 
 #endif
