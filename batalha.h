@@ -87,7 +87,7 @@ void efeito(tp_pokemon *pokeAtacante, tp_pokemon *pokeAlvo, tp_hab ataque, tp_fi
 	} else 	if(ataque.efAgilAl==1 && ataque.efAtkAl==1){
 		pokeAtacante->agil = pokeAtacante->agil*1.1; //aumenta a agil em 10% do poke atacante
 		pokeAtacante->atq = pokeAtacante->atq*1.1; //aumenta a atk em 10% do poke atacante
-	} else if (ataque.efDefOp==-1 && ataque.efAgilOp==-1 && ataque.efAtkOp==-1){
+	} else if (ataque.efDefOp==1 && ataque.efAgilOp==1 && ataque.efAtkOp==1){
 		pokeAlvo->def = pokeAlvo->def*0.9; //reduz a def em 10% do poke alvo
 		pokeAlvo->atq = pokeAlvo->atq*0.9; //reduz a atk em 10% do poke alvo
 		pokeAlvo->agil = pokeAlvo->agil*0.9; //reduz a agil em 10% do poke alvo
