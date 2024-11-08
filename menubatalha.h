@@ -65,7 +65,7 @@ int escolha;
 
         default:
             printf("Opção inválida. Tente novamente.\n");
-            return menuBatalha(*pokeAtivo, *pokeOponente, *inv, pokeUsuario[], totalBirdmons, rodada);
+            return menuBatalha(pokeAtivo, pokeOponente, inv, pokeUsuario, totalBirdmons, rodada);
     }
     
 }
