@@ -73,6 +73,39 @@ void printarAtaque(tp_fila fila){
     printf("\n0 - para voltar\n");
 }
 
+
+void efeito(tp_pokemon *pokeAtacante, tp_pokemon *pokeAlvo, tp_hab ataque, tp_fila filahab){
+	if(ataque.efAgilAl==1 && ataque.efAtkAl==1 && ataque.efDefAl==-1){
+		pokeAtacante->agil = pokeAtacante->agil*1.1; //aumenta a agil em 10% do poke atacante
+		pokeAtacante->atq = pokeAtacante->atq*1.1; //aumenta a atk em 10% do poke atacante
+		pokeAtacante->def = pokeAtacante->def*0.9; //aumenta a def em 10% do poke atacante
+	} else if (ataque.efAtkAl==-1 && ataque.efDefAl==-1){
+		pokeAtacante->agil = pokeAtacante->agil*0.9; //aumenta a atk em 10% do poke atacante
+		pokeAtacante->def = pokeAtacante->def*0.9; //aumenta a def em 10% do poke atacante
+		pokeAlvo->agil = pokeAlvo->agil*0.8; //reduz a atk em 20% do poke alvo
+		pokeAlvo->def = pokeAlvo->def*0.8; //reduz a def em 20% do poke alvo
+	} else 	if(ataque.efAgilAl==1 && ataque.efAtkAl==1){
+		pokeAtacante->agil = pokeAtacante->agil*1.1; //aumenta a agil em 10% do poke atacante
+		pokeAtacante->atq = pokeAtacante->atq*1.1; //aumenta a atk em 10% do poke atacante
+	} else if (ataque.efDefOp==-1 && ataque.efAgilOp==-1 && ataque.efAtkOp==-1){
+		pokeAlvo->def = pokeAlvo->def*0.9; //reduz a def em 10% do poke alvo
+		pokeAlvo->atq = pokeAlvo->atq*0.9; //reduz a atk em 10% do poke alvo
+		pokeAlvo->agil = pokeAlvo->agil*0.9; //reduz a agil em 10% do poke alvo
+	} else if(ataque.efAgilAl==1){
+		pokeAtacante->agil = pokeAtacante->agil*1.1; //aumenta a agil em 10% do poke atacante
+	} else if (ataque.efAtkAl==1){
+		pokeAtacante->atq = pokeAtacante->atq*1.1; //aumenta a atk em 10% do poke atacante
+	} else if (ataque.efDefAl==1){
+		pokeAtacante->def = pokeAtacante->def*1.1; //aumenta a def em 10% do poke atacante
+	} else if(ataque.efAgilOp==1){
+		pokeAlvo->agil = pokeAlvo->agil*0.9; //reduz a agil em 10% do poke alvo
+	} else if (ataque.efAtkOp==1){
+		pokeAlvo->atq = pokeAlvo->atq*0.9; //reduz a atk em 10% do poke alvo
+	} else if (ataque.efDefOp==1){
+		pokeAlvo->def = pokeAlvo->def*0.9; //reduz a def em 10% do poke alvo
+	}
+}
+
 void atacar(tp_pokemon *pokeAtacante, tp_pokemon *pokeAlvo, int numAtaque, tp_fila filahab){
     //pega a fila de habilidades do atacante como copia, entao pode desempilhar a vontade
     tp_hab ataque;
@@ -82,6 +115,7 @@ void atacar(tp_pokemon *pokeAtacante, tp_pokemon *pokeAlvo, int numAtaque, tp_fi
     printf("%s usou %s...\n", pokeAtacante->nome, ataque.nome);
 
     //conferir se o alvo ira ou nao desviar do golpe
+    efeito(pokeAtacante, pokeAlvo, ataque, filahab);
     int danoDeTipo = multiplicadorDeTipo(ataque.tipo, pokeAlvo->tipo);
     int dado = rand()%100;
     int chanceDeDesviar = pokeAlvo->agil/2;
