@@ -55,4 +55,45 @@ void adicionarAoInventario(Inventory *inv, const char *itemName) {
     printf("Item %s nao encontrado no inventario.\n", itemName);
 }
 
+void aplicarEfeito(Item item, int *hp, int *atk, int *def) {
+    if (strcmp(item.name, "Alpiste") == 0) {
+        // Efeito de recuperacao de HP
+        int hpRecovery = 30;
+        *hp += hpRecovery;
+        printf("HP recuperado em %d pontos. HP atual: %d\n", hpRecovery, *hp);
+    } else if (strcmp(item.name, "Melao") == 0) {
+        // Efeito de aumento de ataque
+        float atkIncreasePercent = 0.2;  // 20%
+        int atkIncrease = *atk * atkIncreasePercent;
+        *atk += atkIncrease;
+        printf("Ataque aumentado em %d pontos. Ataque atual: %d\n", atkIncrease, *atk);
+    } else if (strcmp(item.name, "Capacete") == 0) {
+        // Efeito de aumento de defesa
+        float defIncreasePercent = 0.2;  // 20
+        *def -= defIncrease;
+        printf("Defesa aumentada em %d pontos. Defesa atual: %d\n", defIncrease, *def);
+    } else if (strcmp(item.name, "Soro") == 0) {
+         resetarAtributos(atk, def, atkOriginal, defOriginal);
+        }if (strcmp(item.name, "Pena da Vida") == 0) {
+    reviverBirdmon(&poke[].vida, poke[].vidamax);
+        }else {
+        printf("Efeito do item nao reconhecido: %s\n", item.name);
+    }
+}
+
+void resetarAtributos(int *atq, int *def, int *atqO, int *defO) {
+    *atq = *atqO;
+    *def = *defO;
+    printf("Ataque e Defesa foram restaurados aos valores originais. Ataque: %d, Defesa: %d\n", *atq, *def);
+}
+
+void reviverBirdmon(int *vida, int vidamax) {
+    if (*vida == 0) {
+        *vida = vidamax / 2;  // Restaura a 50% do HP máximo
+        printf("Birdmon revivido com %d HP.\n", *hp);
+    } else {
+        printf("Birdmon ainda está vivo e não precisa ser revivido.\n");
+    }
+}
+
 #endif
