@@ -13,7 +13,7 @@ typedef struct tp_pokemon{
     int vida, vidamax, atq, atqO, agil, evolucao, nivel, vivo;
     float def, defO;
     
-    int exp;
+    int exp, expO, expMax;
     char nome[35];
     char tipo[10];
 
@@ -27,6 +27,8 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     for(int i=0; i<=QTDPOKEMONS; i++){
 
     poke[i].exp = 0;
+    poke[i].expO = 0;
+    poke[i].expMax = 100;
     poke[i].nivel = 1; //mudar para 1
      poke[i].vivo = 1;
 
