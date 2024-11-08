@@ -267,7 +267,9 @@ int verificarVivos(int *pokeAtivo, tp_pokemon *pokeInimigo, tp_pokemon pokeUsuar
     if(pokeInimigo->vida <= 0){
         pokeInimigo->vivo = 0;
         printf("O %s selvagem foi derrotado!\n");
-        return 1; //inimigo perdeu
+        loja(inv, BirdCoin);
+
+	return 1; //inimigo perdeu
     }
 
     int aliadosDerrotados = 0;
