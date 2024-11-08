@@ -10,7 +10,7 @@
 
 
 // Função para tentar capturar o Birdmon inimigo usando uma gaiola
-int capturarBirdmon(Birdmon *pokeInimigo, Inventory *inv) {
+int capturarBirdmon(tp_pokemon *pokeInimigo, Inventory *inv) {
     // Procura a "Gaiola" no inventário do jogador
     for (int i = 0; i < 6; i++) {
         if (strcmp(inv->items[i].name, "Gaiola") == 0) {

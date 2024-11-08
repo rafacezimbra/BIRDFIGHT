@@ -158,8 +158,9 @@ void escolha(char nomeUsuario[], tp_pokemon pokeUsuario[], tp_pokemon poke[], in
 
 int main (void) {
     tp_hab hab[50]; //declaracao das habilidades
-    char nomeUsuario[15];
+    char nomeUsuario[30];
     int birdmonUsuario1, birdmonUsuario2, birdmonUsuario3; //se for usar pilha, talvez nn precise tmb
+
  
 	tp_pokemon poke[QTDPOKEMONS + 1]; //declara todos os pokemons
 	tp_pokemon pokeUsuario[6]; //pokemons do usuario
@@ -170,9 +171,9 @@ int main (void) {
     inicializaPilha(&pokeOponentes);
 	initializeInventory(&inventario);
     
-    criarHabilidades(hab);
+    //criarHabilidades(hab);
     criarPokemons(poke, hab);
-    
+
 	printf("POR FAVOR COLOQUE A JANELA EM TELA CHEIA\n\n");
     sleep (1);
     printf("O mundo dos Birdmon eh um mundo cheio de misterios...\n");
@@ -190,6 +191,7 @@ int main (void) {
     // LIMPAR TELA
 	apagarTela();
 
+
     menu(nomeUsuario, &pokeUsuarioQtd, pokeUsuario); //printa o menu
 
     // ESCOLHA DO BIRDMON 
@@ -199,23 +201,22 @@ int main (void) {
 
 	sortearPokemons(&pokeOponentes, pokeUsuario, poke);
 
-	//PRINTAR A PILHA SORTEADA
-	printf("Birdmons inimigos:\n");
-	imprimePilha(pokeOponentes);
+
 	
+
 
 	//LOOP DE BATALHA-LOJA
 	int rodada = 0;
-
-	while(playerVivo(pokeUsuarioQtd, pokeUsuario)){
+	int pokeAtivo = 0;
+	while(1){
 		rodada++;
 
-		if(batalha(rodada, &pokeUsuarioQtd, pokeUsuario, &pokeOponentes, &inventario) == 0){
+		if(batalha(rodada, &pokeUsuarioQtd, pokeUsuario, &pokeOponentes, &inventario, &pokeAtivo) == 0){
 			perdeu();
 			return 0;
-		};
-	
-		//loja()
+		}else{
+			//loja() alguem bota a loja ai namoral
+		}
 	}
 	
 

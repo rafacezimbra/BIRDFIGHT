@@ -15,7 +15,7 @@ typedef struct {
 } Item;
 
 typedef struct {
-    Item items[6];     // Array de 6 itens no inventário
+    Item items[7];     // Array de 7 itens no inventário
 } Inventory;
 
 // Função para inicializar o inventário com itens e quantidades
@@ -35,6 +35,7 @@ void initializeInventory(Inventory *inv) {
     inv->items[3] = Soro;
     inv->items[4] = Biscoito;
     inv->items[5] = Capacete;
+    inv->items[6] = BirdCoin;
 }
 
 // Função para exibir o inventário

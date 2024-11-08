@@ -114,7 +114,7 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     poke[4].atqO = 40;
     poke[4].atq = 40;
     poke[4].defO = 0.95;
-    poke[4].defO = 0.95;
+    poke[4].def = 0.95;
     poke[4].agil = 80;
     poke[4].evolucao = 1;
 
