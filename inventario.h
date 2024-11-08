@@ -55,7 +55,7 @@ void adicionarAoInventario(Inventory *inv, const char *itemName) {
     printf("Item %s nao encontrado no inventario.\n", itemName);
 }
 
-void aplicarEfeito(Item item, int *hp, int *atk, int *def) {
+void aplicarEfeito(Item item, int *vida, int *atq, int *def, int *agil) {
     if (strcmp(item.name, "Alpiste") == 0) {
         // Efeito de recuperacao de HP
         int hpRecovery = 30;
