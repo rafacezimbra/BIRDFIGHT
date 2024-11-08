@@ -70,7 +70,7 @@ void printarAtaque(tp_fila fila){
    	   }
 	   num++;
 	}
-    printf("\n0 - para voltar\0");
+    printf("\n0 - para voltar\n");
 }
 
 void atacar(tp_pokemon *pokeAtacante, tp_pokemon *pokeAlvo, int numAtaque, tp_fila filahab){
@@ -295,10 +295,11 @@ int batalha(int rodada, int *pokeUsuarioQtd, tp_pokemon pokeUsuario[], tp_pilha 
             default: break; //jogo continua
         }
         
-        sleep(5);
+       
         printarBatalha(pokeUsuario, &pokeInimigo, *pokeAtivo, rodada);
         turnoDoInimigo(pokeAtivo, &pokeInimigo, pokeUsuario);
-        verificarVivos(pokeAtivo, &pokeInimigo, pokeUsuario, rodada, *pokeUsuarioQtd);
+        situacao = verificarVivos(pokeAtivo, &pokeInimigo, pokeUsuario, rodada, *pokeUsuarioQtd);
+        sleep(5);
         switch(situacao){
             case 1: return 1; //inimigo perdeu, essa rodada acabou
             case 2: trocarBirdmon(pokeUsuario, pokeUsuarioQtd, pokeAtivo);

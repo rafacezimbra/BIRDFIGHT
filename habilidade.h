@@ -12,7 +12,7 @@ char tipo[15];
 //tipos: normal, eletrico, agua, dancarino, lutador, planta, sombrio, nenhum
 
 int dano;
-
+/*
 int temEfeito;
 int efDefOp;
 int efDefAl;
@@ -20,6 +20,7 @@ int efAtkOp;
 int efAtkAl;
 int efAgilOp;
 int efAgilAl;
+*/
 
 //efeitos especiais para certas habilidades serao adicionados em suas funcoes respectivas
 //funcoes so serao adicionadas apos a criacao do sistema de batalha
@@ -33,7 +34,7 @@ int efAgilAl;
 //TESTE DE FUNCAO
 // Função para inicializar uma habilidade
 void criarHabilidades(tp_hab hab[]) {
-
+  /*
   for(int i=0; i<numHab; i++){
 
     hab[i].temEfeito = 0;
@@ -45,6 +46,7 @@ void criarHabilidades(tp_hab hab[]) {
     hab[i].efAgilAl = 0;
   
   }
+  */
   //HABILIDADE 1:
     strcpy(hab[0].nome, "Bicada");
     strcpy(hab[0].tipo, "nenhum");

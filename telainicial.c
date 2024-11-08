@@ -171,7 +171,7 @@ int main (void) {
     inicializaPilha(&pokeOponentes);
 	initializeInventory(&inventario);
     
-    //criarHabilidades(hab);
+    criarHabilidades(hab);
     criarPokemons(poke, hab);
 
 	printf("POR FAVOR COLOQUE A JANELA EM TELA CHEIA\n\n");
