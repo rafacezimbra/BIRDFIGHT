@@ -10,7 +10,7 @@
 typedef struct tp_pokemon{
 
     int num;
-    int vida, vidamax, atq, atqO, agil, evolucao, nivel, vivo;
+    int vida, vidamax, atq, atqO, agil, agilO, evolucao, nivel, vivo;
     float def, defO;
     
     int exp, expO, expMax;
@@ -45,6 +45,7 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     poke[1].defO = 0;
     poke[1].def = 0;
     poke[1].agil = 0;
+    poke[1].agilO = 0;
     poke[1].evolucao = 1;
 
     //Pikapombo
@@ -57,6 +58,7 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     poke[1].atq = 30;
     poke[1].defO = 0.6;
     poke[1].def = 0.6;
+    poke[1].agilO = 50;
     poke[1].agil = 50;
     poke[1].evolucao = 1;
 
@@ -77,6 +79,7 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     poke[2].atq = 40;
     poke[2].defO = 0.8;
     poke[2].def = 0.8;
+    poke[2].agilO = 50;
     poke[2].agil = 50;
     poke[2].evolucao = 1;
 
@@ -97,6 +100,7 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     poke[3].atq = 50;
     poke[3].defO = 0.45;
     poke[3].def = 0.45;
+    poke[3].agilO = 50;
     poke[3].agil = 50;
     poke[3].evolucao = 1;
 
@@ -117,6 +121,7 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     poke[4].atq = 40;
     poke[4].defO = 0.95;
     poke[4].def = 0.95;
+    poke[4].agilO = 80;
     poke[4].agil = 80;
     poke[4].evolucao = 1;
 
@@ -137,6 +142,7 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     poke[5].atq = 45;
     poke[5].defO = 0.6;
     poke[5].def = 0.6;
+    poke[5].agilO = 35;
     poke[5].agil = 35;
     poke[5].evolucao = 1;
 
@@ -156,6 +162,7 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     poke[6].atq = 20;
     poke[6].defO = 0.6;
     poke[6].def = 0.6;
+    poke[6].agilO = 80;
     poke[6].agil = 80;
     poke[6].evolucao = 1;
 
@@ -176,6 +183,7 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     poke[7].atq = 35;
     poke[7].defO = 0.8;
     poke[7].def = 0.8;
+    poke[7].agilO = 50;
     poke[7].agil = 50;
     poke[7].evolucao = 1;
 
@@ -196,6 +204,7 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     poke[8].atq = 20;
     poke[8].defO = 0.8;
     poke[8].def = 0.8;
+    poke[8].agilO = 50;
     poke[8].agil = 50;
     poke[8].evolucao = 1;
 
@@ -216,6 +225,7 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     poke[9].atq = 30;
     poke[9].defO = 0.8;
     poke[9].def = 0.8;
+    poke[9].agilO = 65;
     poke[9].agil = 65;
     poke[9].evolucao = 1;
 
@@ -236,6 +246,7 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     poke[10].atq = 25;
     poke[10].defO = 0.55;
     poke[10].def = 0.55;
+    poke[10].agilO = 35;
     poke[10].agil = 35;
     poke[10].evolucao = 1;
 
@@ -256,6 +267,7 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     poke[11].atq = 25;
     poke[11].defO = 0.6;
     poke[11].def = 0.6;
+    poke[11].agilO = 80;
     poke[11].agil = 80;
     poke[11].evolucao = 1;
 
@@ -276,6 +288,7 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     poke[12].atq = 30;
     poke[12].defO = 0.8;
     poke[12].def = 0.8;
+    poke[12].agilO = 65;
     poke[12].agil = 65;
     poke[12].evolucao = 1;
 
@@ -296,6 +309,7 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     poke[13].atq = 35;
     poke[13].defO = 0.8;
     poke[13].def = 0.8;
+    poke[13].agilO = 95;
     poke[13].agil = 95;
     poke[13].evolucao = 1;
 
@@ -316,6 +330,7 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     poke[14].atq = 40;
     poke[14].defO = 0.65;
     poke[14].def = 0.65;
+    poke[14].agilO = 65;
     poke[14].agil = 65;
     poke[14].evolucao = 1;
 
@@ -336,6 +351,7 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     poke[15].atq = 40;
     poke[15].defO = 0.6;
     poke[15].def = 0.6;
+    poke[15].agilO = 50;
     poke[15].agil = 50;
     poke[15].evolucao = 1;
 
@@ -355,6 +371,7 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     poke[16].atq = 25;
     poke[16].defO = 0.65;
     poke[16].def = 0.65;
+    poke[16].agilO = 50;
     poke[16].agil = 50;
     poke[16].evolucao = 1;
 
