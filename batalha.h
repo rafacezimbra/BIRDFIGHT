@@ -50,7 +50,7 @@ void printarBatalha(tp_pokemon pokeUsuario[], tp_pokemon *pokeInimigo, int pokeA
 
 
 }
-
+/*versao inalterada por cesio
 void printarAtaque(tp_fila *fila, int num){
     tp_hab ataque;
     removeFila(fila, &ataque);
@@ -62,9 +62,27 @@ void printarAtaque(tp_fila *fila, int num){
     }else{
         printf("\n");
     }
+}*/
+
+//versao alterada leticia do mato
+//alterações: passando a fila por copia, loop while para retirar os intens da fila
+void printarAtaque(tp_fila fila){
+tp_hab ataque;
+    int num = 1;
+    while(!filaVazia(&fila)){
+	removeFila(&fila, &ataque);
+    //insereFila(&fila, ataque);
+   	printf("%d. %s", num, ataque.nome);
+	   if(num == 1 || num == 3){
+	   printf("%*c",deslocAtaque - strlen(ataque.nome), ' ');
+	   }else{
+	   printf("\n");
+   	   }
+	   num++;
+	}
 }
 
-void menuDeBatalha(tp_pokemon *pokeUsuario, tp_pokemon *pokeOponente, int pokeativo, int rodada) {
+void menuDeBatalha(tp_pokemon pokeUsuario[], tp_pokemon *pokeOponente, int pokeAtivo, int rodada) {
     int escolha;
 
         printf("\nEscolha sua ação:\n");
@@ -92,12 +110,13 @@ void menuDeBatalha(tp_pokemon *pokeUsuario, tp_pokemon *pokeOponente, int pokeat
         case 4:
             // fazer a função de selecionar atk
             apagarTela();
-            printarBatalha(*pokeUsuario, pokeOponente, pokeativo, rodada);
-            for(int i=1, i<=4, i++){printarAtaque(pokeUsuario->hab, i);}
+            printarBatalha(pokeUsuario, pokeOponente, pokeAtivo, rodada);
+           
+            printarAtaque(pokeUsuario->hab);
             
 
             //printar selecao de ataques
-            tp_hab atkTopo = topo;
+            
             
             break;
 
