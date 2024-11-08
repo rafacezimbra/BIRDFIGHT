@@ -60,12 +60,12 @@ int escolha;
             break;
 
         case 4:
-            printf("Você fugiu da batalha!\n");
-            return;  // Sai da batalha
+          capturarBirdmon(pokeInimigo, inv);
+            break;  // Sai da batalha
 
         default:
             printf("Opção inválida. Tente novamente.\n");
-            break;
+            return menuBatalha(*pokeAtivo, *pokeOponente, *inv, pokeUsuario[], totalBirdmons, rodada);
     }
     
 }
