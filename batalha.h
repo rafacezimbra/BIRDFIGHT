@@ -191,8 +191,8 @@ void menuBatalha(int *pokeAtivo, tp_pokemon *pokeInimigo, Inventory *inv, tp_pok
 
         
         case 4:
-            printf("VocÃª fugiu da batalha!\n");
-            return;  // Sai da batalha
+          capturarBirdmon(pokeInimigo, inv);
+            break;  // Sai da batalha
         
         default:
             printf("Opcao invalida. Tente novamente.\n");
