@@ -387,18 +387,46 @@ void criarHabilidades(tp_hab hab[]) {
     
     strcpy(hab[38].nome, "Beep Beep!");
     strcpy(hab[38].tipo, "planta");
+    hab[38].temEfeito = 1;
+    hab[38].efDefOp = 0;
+    hab[38].efDefAl = 0;
+    hab[38].efAtkOp = 0;
+    hab[38].efAtkAl = 1;
+    hab[38].efAgilOp = 0;
+    hab[38].efAgilAl = 1;
     hab[38].dano = 50;
     
     strcpy(hab[39].nome, "E la vamos nos!");
     strcpy(hab[39].tipo, "planta");
+    hab[39].temEfeito = 1;
+    hab[39].efDefOp = 0;
+    hab[39].efDefAl = 0;
+    hab[39].efAtkOp = 0;
+    hab[39].efAtkAl = 0;
+    hab[39].efAgilOp = 0;
+    hab[39].efAgilAl = 1;
     hab[39].dano = 55;
     
     strcpy(hab[40].nome, "boom?");
     strcpy(hab[40].tipo, "agua");
+    hab[40].temEfeito = 0;
+    hab[40].efDefOp = 0;
+    hab[40].efDefAl = 0;
+    hab[40].efAtkOp = 0;
+    hab[40].efAtkAl = 0;
+    hab[40].efAgilOp = 0;
+    hab[40].efAgilAl = 0;
     hab[40].dano = 90;
     
     strcpy(hab[41].nome, "Explosao de Kiwi");
     strcpy(hab[41].tipo, "planta");
+    hab[41].temEfeito = 0;
+    hab[41].efDefOp = 0;
+    hab[41].efDefAl = 0;
+    hab[41].efAtkOp = 0;
+    hab[41].efAtkAl = 0;
+    hab[41].efAgilOp = 0;
+    hab[41].efAgilAl = 0;
     hab[41].dano = 60;
 }
 
