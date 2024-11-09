@@ -41,7 +41,7 @@ void initializeInventory(Inventory *inv) {
 void displayInventory(Inventory *inv) {
     printf("Inventario:\n");
     for (int i = 0; i < 6; i++) {
-        printf("%d. %s (Quantidade: %d) - %s\n", i, inv->items[i].name, inv->items[i].quantity, inv->items[i].effect);
+        printf("%d. %s (Quantidade: %d) - %s\n", i+1, inv->items[i].name, inv->items[i].quantity, inv->items[i].effect);
     }
 }
 //função p adicionar coisa da loja pro inventario
@@ -73,33 +73,33 @@ void reviverBirdmon(tp_pokemon *poke) {
 
 
 int aplicarEfeito(int item, tp_pokemon *poke) {
-    if (item == 0) {
+    if (item == 1) {
         // Efeito de recuperacao de HP
         int hpRecovery = 30;
         poke->vida += hpRecovery;
         printf("HP recuperado em %d pontos. HP atual: %d\n", hpRecovery, poke->vida);
         return 1;
-    } else if (item == 1) {
+    } else if (item == 2) {
         // Efeito de aumento de ataque
         float atkIncreasePercent = 0.2;  // 20%
         int atkIncrease = poke->atq * atkIncreasePercent;
         poke->atq += atkIncrease;
         printf("Ataque aumentado em %d pontos. Ataque atual: %d\n", atkIncrease, poke->atq);
         return 1;
-    } else if (item == 2) {
+    } else if (item == 3) {
         // Efeito de aumento de defesa
         float defIncreasePercent = 0.2;  // 20%
         int defIncrease = poke->def * defIncreasePercent;
         poke->def -= defIncrease;
         printf("Defesa aumentada em %d pontos. Defesa atual: %d\n", defIncrease, poke->def);
         return 1;
-    } else if (item == 3) {
+    } else if (item == 4) {
          resetarAtributos(poke);
          return 1;
-        }if (item == 4) {
+        }if (item == 5) {
             reviverBirdmon(poke);
             return 1;
-        }else if(item == 5) {
+        }else if(item == 6) {
             printf("Esse item eh utilizado a partir do menu");
         return 0;
     }else{

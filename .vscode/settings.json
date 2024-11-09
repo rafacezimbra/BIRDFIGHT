@@ -4,6 +4,7 @@
         "string.h": "c",
         "pilha.h": "c",
         "stdlib.h": "c",
-        "loja.h": "c"
+        "loja.h": "c",
+        "apagartela.h": "c"
     }
 }

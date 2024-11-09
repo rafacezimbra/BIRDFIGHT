@@ -2,12 +2,10 @@
 #define LOJA_H
 #include <stdio.h>
 #include <string.h>
+#include <stdilb.h>
 #include "inventario.h"
 #include "apagartela.h"
 #define MAX 100
-
-#define ANSI_COLOR_1 "\x1b[93m"
-#define ANSI_COLOR_2 "\x1b[97m"
 
 typedef struct {
     char nome[50];
@@ -15,8 +13,59 @@ typedef struct {
     char descricao[100];
 } ItemLoja;
 
+typedef struct {
+    ItemLoja *itens;
+    int quantidade; // to keep track of the number of items
+} Loja;
+
+
+void inicializarLoja(Loja *loja) {
+    loja->quantidade = 6; // setting initial number of items
+    loja->itens = (ItemLoja*) malloc(loja->quantidade * sizeof(ItemLoja));
+    if (loja->itens == NULL) {
+        printf("Erro ao alocar memória para os itens da loja!\n");
+        exit(1);
+    }
+    
+    // Adding items to the store
+    strcpy(loja->itens[0].nome, "Alpiste");
+    loja->itens[0].preco = 250;
+    strcpy(loja->itens[0].descricao, "Restaura 30 HP do Birdmon ativo.");
+
+    strcpy(loja->itens[1].nome, "Gaiola");
+    loja->itens[1].preco = 150;
+    strcpy(loja->itens[1].descricao, "Captura o Birdmon adversario");
+
+    strcpy(loja->itens[2].nome, "Melao");
+    loja->itens[2].preco = 300;
+    strcpy(loja->itens[2].descricao, "Aumenta o ataque do Birdmon ativo temporariamente.");
+
+    strcpy(loja->itens[3].nome, "Capacete");
+    loja->itens[3].preco = 300;
+    strcpy(loja->itens[3].descricao, "Aumenta a defesa do Birdmon ativo temporariamente.");
+
+    strcpy(loja->itens[4].nome, "Biscoito");
+    loja->itens[4].preco = 500;
+    strcpy(loja->itens[4].descricao, "Revive um Birdmon com metade do HP.");
+
+    strcpy(loja->itens[5].nome, "Soro");
+    loja->itens[5].preco = 300;
+    strcpy(loja->itens[5].descricao, "Retira status negativos do Birdmon ativo.");
+}
+
+
+void liberarLoja(Loja *loja) {
+    free(loja->itens);
+    loja->itens = NULL;
+    loja->quantidade = 0;
+}
+
 void loja(Inventory *inv, int *BirdCoin){
-apagarTela();
+    apagarTela();
+
+    Loja loja;
+
+    inicializarLoja(&loja);
 
     ItemLoja itens[6] = {
         {"Alpiste", 250, "Restaura 30 HP do Birdmon ativo."},
@@ -132,6 +181,7 @@ printf("\nEscolha um item para comprar (ou 0 para sair): ");
     }
 
     printf("Obrigado por visitar a loja!\n");
+    liberarLoja(&loja);
 }
 
 #endif

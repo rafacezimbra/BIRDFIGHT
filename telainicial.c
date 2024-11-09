@@ -16,6 +16,8 @@
 #include "apagartela.h"
 #include "inventario.h"
 
+#define ANSI_COLOR_1 "\x1b[93m"
+#define ANSI_COLOR_2 "\x1b[97m"
 #define QTDPOKEMONS 16
 
 
@@ -24,7 +26,7 @@ void menu(char nomeUsuario[], int *pokeUsuarioQtd, tp_pokemon pokeUsuario[]){
 	
 	apagarTela();
 	//textcolor(5);
-	printf("|| *********    *******  *******       ********                ************* *******       *********   ***      *** *************** ||\n"); 
+	printf(ANSI_COLOR_1"|| *********    *******  *******       ********                ************* *******       *********   ***      *** *************** ||\n"); 
 	printf("|| ***********   *****  **********    **     ***               *************  *****   ***************  ***      *** *************** ||\n");
 	printf("|| **      ****   ***   **      **    **       ***             ***             ***    ************     ***      ***       ***       ||\n"); 
 	printf("|| **       ***   ***   **   ****     **        ***            ***             ***   ****              ***      ***       ***       ||\n"); 
@@ -55,7 +57,7 @@ void menu(char nomeUsuario[], int *pokeUsuarioQtd, tp_pokemon pokeUsuario[]){
 	if(*pokeUsuarioQtd>1){
 	printf("                                                 * %s                                                                                \n", pokeUsuario[1].nome);
 	if(*pokeUsuarioQtd>2){
-	printf("                                                 * %s                                                                                \n", pokeUsuario[2].nome);
+	printf("                                                 * %s                                                                                \n"ANSI_COLOR_2, pokeUsuario[2].nome);
 	}
 	}
 	}

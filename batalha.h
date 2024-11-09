@@ -152,7 +152,7 @@ void atacar(tp_pokemon *pokeAtacante, tp_pokemon *pokeAlvo, int numAtaque, tp_fi
 }
 
 // Função de troca de Birdmon
-void trocarBirdmon(tp_pokemon pokeUsuario[], int *totalBirdmons, int *pokeAtivo) {
+int trocarBirdmon(tp_pokemon pokeUsuario[], int *totalBirdmons, int *pokeAtivo) {
     apagarTela();
     int escolha;
     printf("Escolha um Birdmon para a batalha:\n");
@@ -161,6 +161,8 @@ void trocarBirdmon(tp_pokemon pokeUsuario[], int *totalBirdmons, int *pokeAtivo)
     }
     printf("Escolha: ");
     scanf("%d", &escolha);
+
+    if(escolha == 0) return 0;
     if (escolha > 0 && escolha <= *totalBirdmons) {
 
         if(!pokeUsuario[escolha-1].vivo){
@@ -174,6 +176,7 @@ void trocarBirdmon(tp_pokemon pokeUsuario[], int *totalBirdmons, int *pokeAtivo)
         pokeUsuario[*pokeAtivo] = pokeUsuario[escolha - 1];
         pokeUsuario[escolha - 1] = pokeAux;
         printf("Voce escolheu %s para a batalha!\n", pokeUsuario[*pokeAtivo].nome);
+        return 1;
         }
         
     } else {
@@ -233,19 +236,24 @@ void menuBatalha(int *pokeAtivo, tp_pokemon *pokeInimigo, Inventory *inv, tp_pok
             printf("digite o numero do item (0 para retornar):\n");
             int item;
             while(1){
-            scanf("%d", item);
+            scanf("%d", &item);
             if(item == 0){ //retornar
                 apagarTela();
                 printarBatalha(pokeUsuario, pokeInimigo, *pokeAtivo, rodada);
                 return  menuBatalha(pokeAtivo, pokeInimigo, inv, pokeUsuario, pokeUsuarioQtd, rodada);
                 break;
             }
-		    if(aplicarEfeito(item, &pokeInimigo[*pokeAtivo])) break;
+		    if(aplicarEfeito(item, &pokeUsuario[*pokeAtivo])) break;
             }
         break;
 
         case 3:
-            trocarBirdmon(pokeUsuario, pokeUsuarioQtd, pokeAtivo);
+            if(trocarBirdmon(pokeUsuario, pokeUsuarioQtd, pokeAtivo)==0){
+            //voltar
+            apagarTela();
+            printarBatalha(pokeUsuario, pokeInimigo, *pokeAtivo, rodada);
+            return  menuBatalha(pokeAtivo, pokeInimigo, inv, pokeUsuario, pokeUsuarioQtd, rodada);
+            }
         break;
 
         
@@ -322,7 +330,11 @@ int verificarVivos(int *pokeAtivo, tp_pokemon *pokeInimigo, tp_pokemon pokeUsuar
     //return 1: inimigo perdeu
     //return 2: pokemon ativo do jogador foi derrotado
     //return 3: todos os pokemons do jogador foram derrotados
-  
+
+    //checa se algum pokemon esta alem da vida maxima
+    if(pokeInimigo->vida > pokeInimigo->vidamax) pokeInimigo-> vida = pokeInimigo->vidamax;
+    if(pokeUsuario[*pokeAtivo].vida > pokeUsuario[*pokeAtivo].vidamax) pokeUsuario[*pokeAtivo].vida = pokeUsuario[*pokeAtivo].vidamax;
+
     if(pokeInimigo->vida <= 0){
         pokeInimigo->vivo = 0;
         printf("O %s selvagem foi derrotado!\n", pokeInimigo->nome);
