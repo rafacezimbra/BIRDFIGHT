@@ -215,7 +215,7 @@ int main (void) {
 			perdeu();
 			return 0;
 		}else{
-			//loja() alguem bota a loja ai namoral
+			loja(&inventario, &inventario.items[6].quantity);
 		}
 	}
 	

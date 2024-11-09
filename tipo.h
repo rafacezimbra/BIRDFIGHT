@@ -1,7 +1,7 @@
 #ifndef TIPO_H
 #define TIPO_H
 
-int multiplicadorDeTipo(char tipoAtacante[], char tipoAlvo[]){
+float multiplicadorDeTipo(char tipoAtacante[], char tipoAlvo[]){
 
     //normal ganha planta perde sombrio
     //eletrico ganha lutador perde agua

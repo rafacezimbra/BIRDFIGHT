@@ -2,6 +2,7 @@
 #define INVENTARIO_H
 #include <stdio.h>
 #include <string.h>
+#include "pokemon.h"
 #define MAX 100
 
 //teoricamente é p funcionar
@@ -40,7 +41,7 @@ void initializeInventory(Inventory *inv) {
 void displayInventory(Inventory *inv) {
     printf("Inventario:\n");
     for (int i = 0; i < 6; i++) {
-        printf("%s (Quantidade: %d) - %s\n", inv->items[i].name, inv->items[i].quantity, inv->items[i].effect);
+        printf("%d. %s (Quantidade: %d) - %s\n", i, inv->items[i].name, inv->items[i].quantity, inv->items[i].effect);
     }
 }
 //função p adicionar coisa da loja pro inventario
@@ -54,46 +55,53 @@ void adicionarAoInventario(Inventory *inv, const char *itemName) {
     }
     printf("Item %s nao encontrado no inventario.\n", itemName);
 }
-void resetarAtributos(int *atq, int *def, int *atqO, int *defO, int *agil, int *agilO) {
-    *atq = *atqO;
-    *def = *defO;
-    *agil = *agilO;
-    printf("Ataque, Defesa e Agilidade foram restaurados aos valores originais. Ataque: %d, Defesa: %d, Agilidade: %d\n", *atq, *def, *agil);
+void resetarAtributos(tp_pokemon *poke) {
+    poke->atq = poke->atqO;
+    poke->def = poke->defO;
+    poke->agil = poke->agilO;
+    printf("Ataque, Defesa e Agilidade foram restaurados aos valores originais. Ataque: %d, Defesa: %d, Agilidade: %d\n", poke->atq, poke->def, poke->agil);
 }
 
-void reviverBirdmon(int *vida, int vidamax) {
-    if (*vida == 0) {
-        *vida = vidamax / 2;  // Restaura a 50% do HP máximo
-        printf("Birdmon revivido com %d HP.\n", *hp);
+void reviverBirdmon(tp_pokemon *poke) {
+    if (poke->vida == 0) {
+        poke->vida = poke->vidamax / 2;  // Restaura a 50% do HP máximo
+        printf("Birdmon revivido com %d HP.\n", poke->vida);
     } else {
         printf("Birdmon ainda está vivo e não precisa ser revivido.\n");
     }
 }
 
 
-void aplicarEfeito(Item item, int *vida, int *atq, int *def, int *agil) {
-    if (strcmp(item.name, "Alpiste") == 0) {
+int aplicarEfeito(int item, tp_pokemon *poke) {
+    if (item == 1) {
         // Efeito de recuperacao de HP
         int hpRecovery = 30;
-        *hp += hpRecovery;
-        printf("HP recuperado em %d pontos. HP atual: %d\n", hpRecovery, *hp);
-    } else if (strcmp(item.name, "Melao") == 0) {
+        poke->vida += hpRecovery;
+        printf("HP recuperado em %d pontos. HP atual: %d\n", hpRecovery, poke->vida);
+        return 1;
+    } else if (item == 2) {
         // Efeito de aumento de ataque
         float atkIncreasePercent = 0.2;  // 20%
-        int atkIncrease = *atk * atkIncreasePercent;
-        *atk += atkIncrease;
-        printf("Ataque aumentado em %d pontos. Ataque atual: %d\n", atkIncrease, *atk);
-    } else if (strcmp(item.name, "Capacete") == 0) {
+        int atkIncrease = poke->atq * atkIncreasePercent;
+        poke->atq += atkIncrease;
+        printf("Ataque aumentado em %d pontos. Ataque atual: %d\n", atkIncrease, poke->atq);
+        return 1;
+    } else if (item == 3) {
         // Efeito de aumento de defesa
-        float defIncreasePercent = 0.2;  // 20
-        *def -= defIncrease;
-        printf("Defesa aumentada em %d pontos. Defesa atual: %d\n", defIncrease, *def);
-    } else if (strcmp(item.name, "Soro") == 0) {
-         resetarAtributos(atq, def, atqO, defO, agil, agilO);
-        }if (strcmp(item.name, "Pena da Vida") == 0) {
-            reviverBirdmon(&poke[].vida, poke[].vidamax);
+        float defIncreasePercent = 0.2;  // 20%
+        int defIncrease = poke->def * defIncreasePercent;
+        poke->def -= defIncrease;
+        printf("Defesa aumentada em %d pontos. Defesa atual: %d\n", defIncrease, poke->def);
+        return 1;
+    } else if (item == 4) {
+         resetarAtributos(poke);
+         return 1;
+        }if (item == 5) {
+            reviverBirdmon(poke);
+            return 1;
         }else {
-        printf("Efeito do item nao reconhecido: %s\n", item.name);
+        printf("item nao reconhecido, digite novamente.\n");
+        return 0;
     }
 }
 

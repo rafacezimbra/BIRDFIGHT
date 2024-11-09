@@ -8,6 +8,7 @@
 #include "fila.h"
 #include "inventario.h"
 #include "tipo.h"
+#include "captura.h"
 
 #define deslocamentoDoOponente 80
 #define deslocAtaque 25
@@ -27,23 +28,23 @@ void perdeu(){
 	char lixo;
 	scanf(" %c", &lixo);
 }
-void xpBatalha(tp_pokemon *pokeAtivo) {
+void xpBatalha(int *pokeAtivo, tp_pokemon pokeUsuario[]) {
     // Gera experiência aleatória entre 10 e 50
     int exp_ganha = (rand() % 41) + 10;
-    printf("%s ganhou %d de EXP na batalha!\n", pokemon->nome, exp_ganha);
+    printf("%s ganhou %d de EXP na batalha!\n", pokeUsuario[*pokeAtivo].nome, exp_ganha);
 
     // Atualiza a experiência do Pokémon
-    pokemon->exp += exp_ganha;
+    pokeUsuario[*pokeAtivo].exp += exp_ganha;
 
     // Verifica se o Pokémon alcançou ou excedeu a experiência necessária para subir de nível
-    if (pokemon->exp >= pokemon->expMax) {
+    if (pokeUsuario[*pokeAtivo].exp >= pokeUsuario[*pokeAtivo].expMax) {
         // Sobe de nível
-        pokemon->nivel += 1;
-        printf("%s subiu para o nível %d!\n", pokemon->nome, pokemon->nivel);
+        pokeUsuario[*pokeAtivo].nivel += 1;
+        printf("%s subiu para o nível %d!\n", pokeUsuario[*pokeAtivo].nome,pokeUsuario[*pokeAtivo].nivel);
 
         // Reseta a experiência atual e aumenta o limite de experiência para o próximo nível
-        pokemon->exp = pokemon->expO;
-        pokemon->expMax += 20;
+        pokeUsuario[*pokeAtivo].exp = pokeUsuario[*pokeAtivo].expO;
+        pokeUsuario[*pokeAtivo].expMax += 20;
     }
 }
 
@@ -134,23 +135,17 @@ void atacar(tp_pokemon *pokeAtacante, tp_pokemon *pokeAlvo, int numAtaque, tp_fi
 
     //conferir se o alvo ira ou nao desviar do golpe
     efeito(pokeAtacante, pokeAlvo, ataque, filahab);
-    int danoDeTipo = multiplicadorDeTipo(ataque.tipo, pokeAlvo->tipo);
+    float danoDeTipo = multiplicadorDeTipo(ataque.tipo, pokeAlvo->tipo);
     int dado = rand()%100;
-    int chanceDeDesviar = pokeAlvo->agil/2;
+    int chanceDeDesviar = pokeAlvo->agil/3;
     if(dado>chanceDeDesviar){ //ataque acertou
-    pokeAlvo->vida = pokeAlvo->vida - ((ataque.dano + pokeAtacante->atq)*pokeAlvo->def)*(danoDeTipo/2);
-   
-    switch(danoDeTipo){
-        case 1:
-        printf("o ataque nao foi muito eficaz...");
-        break;
-        case 2:
-        printf("o ataque acertou!");
-        break;
-        case 4:
-        printf("o ataque foi super efetivo!");
-        break; 
-    }
+        pokeAlvo->vida = pokeAlvo->vida - (float)(((float)ataque.dano + (float)pokeAtacante->atq)*(float)pokeAlvo->def)*(float)(danoDeTipo);
+    
+        if(danoDeTipo == 0.5) printf("o ataque nao foi muito eficaz...");
+        else if(danoDeTipo == 1) printf("o ataque acertou!");
+        else if(danoDeTipo == 2) printf("o ataque foi super efetivo!");
+    
+
     }else{ //ataque errou
     printf("%s desviou do golpe!", pokeAlvo->nome);
     }
@@ -194,7 +189,7 @@ void menuBatalha(int *pokeAtivo, tp_pokemon *pokeInimigo, Inventory *inv, tp_pok
     printf("1. Atacar\n");
     printf("2. Inventario\n");
     printf("3. Birdmons\n");
-    //printf("4. Fugir\n");
+    printf("4. Capturar Birdmon\n");
     printf("Escolha uma opcao: ");
     scanf("%d", &escolha);
     
@@ -220,8 +215,6 @@ void menuBatalha(int *pokeAtivo, tp_pokemon *pokeInimigo, Inventory *inv, tp_pok
 	            apagarTela();
 	            printarBatalha(pokeUsuario, pokeInimigo, *pokeAtivo, rodada);
 				return menuBatalha(pokeAtivo, pokeInimigo, inv, pokeUsuario, pokeUsuarioQtd, rodada);
-				sleep(5);
-				break;
            }
 
              /*
@@ -234,7 +227,18 @@ void menuBatalha(int *pokeAtivo, tp_pokemon *pokeInimigo, Inventory *inv, tp_pok
 
         case 2:
             displayInventory(inv);
-		aplicarEfeito(item, poke.vida, poke.atq, poke.def, poke.agil);
+            printf("digite o numero do item (0 para retornar):\n");
+            int item;
+            while(1){
+            scanf("%d", item);
+            if(item == 0){ //retornar
+                apagarTela();
+                printarBatalha(pokeUsuario, pokeInimigo, *pokeAtivo, rodada);
+                return  menuBatalha(pokeAtivo, pokeInimigo, inv, pokeUsuario, pokeUsuarioQtd, rodada);
+                break;
+            }
+		    if(aplicarEfeito(item, &pokeInimigo[*pokeAtivo])) break;
+            }
         break;
 
         case 3:
@@ -243,7 +247,7 @@ void menuBatalha(int *pokeAtivo, tp_pokemon *pokeInimigo, Inventory *inv, tp_pok
 
         
         case 4:
-          capturarBirdmon(pokeInimigo, inv);
+          capturarBirdmon(pokeInimigo, inv, pokeUsuario, pokeUsuarioQtd);
             break;  // Sai da batalha
         
         default:
@@ -310,19 +314,20 @@ void turnoDoInimigo(int *pokeAtivo, tp_pokemon *pokeInimigo, tp_pokemon pokeUsua
     atacar(pokeInimigo, &pokeUsuario[*pokeAtivo], numAtaque, pokeInimigo->hab);
 }
 
-int verificarVivos(int *pokeAtivo, tp_pokemon *pokeInimigo, tp_pokemon pokeUsuario[], int rodada, int pokeUsuarioQtd){
+int verificarVivos(int *pokeAtivo, tp_pokemon *pokeInimigo, tp_pokemon pokeUsuario[], int rodada, int pokeUsuarioQtd, Inventory *inv){
     //return 0: todo mundo ta de boa, ninguem morreu nesse turno
     //return 1: inimigo perdeu
     //return 2: pokemon ativo do jogador foi derrotado
     //return 3: todos os pokemons do jogador foram derrotados
-
+  
     if(pokeInimigo->vida <= 0){
         pokeInimigo->vivo = 0;
-        printf("O %s selvagem foi derrotado!\n");
-       	 int moedasGanhas = rand() % 451 + 150;
-    		*birdcoins += moedasGanhas;
-	 loja(inv, BirdCoin);
-	xpBatalha(pokeAtivo);
+        printf("O %s selvagem foi derrotado!\n", pokeInimigo->nome);
+       	int moedasGanhas = rand() % 451 + 150;
+    	inv->items[6].quantity += moedasGanhas; //adicionando nas birdcoins do jogador
+        xpBatalha(pokeAtivo, pokeUsuario);
+	
+	
 
 	return 1; //inimigo perdeu
     }
@@ -354,7 +359,7 @@ int batalha(int rodada, int *pokeUsuarioQtd, tp_pokemon pokeUsuario[], tp_pilha 
     while(1){ //loop "infinito" - quebra apenas quando alguem morrer
         printarBatalha(pokeUsuario, &pokeInimigo, *pokeAtivo, rodada); 
         menuBatalha(pokeAtivo, &pokeInimigo, inventario, pokeUsuario, pokeUsuarioQtd, rodada);
-        situacao = verificarVivos(pokeAtivo, &pokeInimigo, pokeUsuario, rodada, *pokeUsuarioQtd);
+        situacao = verificarVivos(pokeAtivo, &pokeInimigo, pokeUsuario, rodada, *pokeUsuarioQtd, inventario);
         sleep(5);
         switch(situacao){
             case 1: return 1; //inimigo perdeu, essa rodada acabou
@@ -367,7 +372,7 @@ int batalha(int rodada, int *pokeUsuarioQtd, tp_pokemon pokeUsuario[], tp_pilha 
        
         printarBatalha(pokeUsuario, &pokeInimigo, *pokeAtivo, rodada);
         turnoDoInimigo(pokeAtivo, &pokeInimigo, pokeUsuario);
-        situacao = verificarVivos(pokeAtivo, &pokeInimigo, pokeUsuario, rodada, *pokeUsuarioQtd);
+        situacao = verificarVivos(pokeAtivo, &pokeInimigo, pokeUsuario, rodada, *pokeUsuarioQtd, inventario);
         sleep(5);
         switch(situacao){
             case 1: return 1; //inimigo perdeu, essa rodada acabou
