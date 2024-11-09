@@ -101,7 +101,7 @@ int aplicarEfeito(int item, tp_pokemon *poke) {
             return 1;
         }else if(item == 5) {
             printf("Esse item eh utilizado a partir do menu");
-        return 0
+        return 0;
     }else{
         printf("item nao reconhecido, digite novamente.\n");
         return 0;

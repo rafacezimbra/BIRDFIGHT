@@ -169,12 +169,15 @@ void trocarBirdmon(tp_pokemon pokeUsuario[], int *totalBirdmons, int *pokeAtivo)
             return trocarBirdmon(pokeUsuario, totalBirdmons, pokeAtivo);
 
         }else{
+        tp_pokemon pokeAux;
+        pokeAux = pokeUsuario[*pokeAtivo];
         pokeUsuario[*pokeAtivo] = pokeUsuario[escolha - 1];
-        printf("Você escolheu %s para a batalha!\n", pokeUsuario[*pokeAtivo].nome);
+        pokeUsuario[escolha - 1] = pokeAux;
+        printf("Voce escolheu %s para a batalha!\n", pokeUsuario[*pokeAtivo].nome);
         }
         
     } else {
-        printf("Escolha inválida.\n");
+        printf("Escolha invalida.\n");
         sleep(5);
         return trocarBirdmon(pokeUsuario, totalBirdmons, pokeAtivo);
     }
