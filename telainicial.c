@@ -12,7 +12,7 @@
 #include "sprites.h"
 #include "randompokemon.h"
 #include "batalha.h"
-#include "loja.h"
+#include "lojaencadeada.h"
 #include "apagartela.h"
 #include "inventario.h"
 
