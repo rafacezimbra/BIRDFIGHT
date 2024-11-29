@@ -71,41 +71,54 @@ void reviverBirdmon(tp_pokemon *poke) {
     }
 }
 
+int temItem(int numItem, Inventory *inv){ //checa se o jogador tem pelo menos uma unidade daquele item para utiliza-lo
 
-int aplicarEfeito(int item, tp_pokemon *poke) {
-    if (item == 1) {
-        // Efeito de recuperacao de HP
-        int hpRecovery = 30;
-        poke->vida += hpRecovery;
-        printf("HP recuperado em %d pontos. HP atual: %d\n", hpRecovery, poke->vida);
-        return 1;
-    } else if (item == 2) {
-        // Efeito de aumento de ataque
-        float atkIncreasePercent = 0.2;  // 20%
-        int atkIncrease = poke->atq * atkIncreasePercent;
-        poke->atq += atkIncrease;
-        printf("Ataque aumentado em %d pontos. Ataque atual: %d\n", atkIncrease, poke->atq);
-        return 1;
-    } else if (item == 3) {
-        // Efeito de aumento de defesa
-        float defIncreasePercent = 0.2;  // 20%
-        int defIncrease = poke->def * defIncreasePercent;
-        poke->def -= defIncrease;
-        printf("Defesa aumentada em %d pontos. Defesa atual: %d\n", defIncrease, poke->def);
-        return 1;
-    } else if (item == 4) {
-         resetarAtributos(poke);
-         return 1;
-        }if (item == 5) {
-            reviverBirdmon(poke);
+       if(inv->items[numItem].quantity > 0) return 1;
+       else{
+            printf("Voce nao tem esse item.\n");
+            return 0;
+       }
+    
+    } 
+
+int aplicarEfeito(int item, tp_pokemon *poke, Inventory *inv) { //aplica o efeito de um item no inventario
+
+    if(temItem(item, inv)){ //testa se o jogador tem o item antes de aplicar os efeitos
+        if (item == 1) { //alpiste
+            // Efeito de recuperacao de HP
+            int hpRecovery = 30;
+            poke->vida += hpRecovery;
+            printf("HP recuperado em %d pontos. HP atual: %d\n", hpRecovery, poke->vida);
             return 1;
-        }else if(item == 6) {
-            printf("Esse item eh utilizado a partir do menu");
-        return 0;
-    }else{
-        printf("item nao reconhecido, digite novamente.\n");
-        return 0;
+        } else if (item == 2) { //melao
+            // Efeito de aumento de ataque
+            float atkIncreasePercent = 0.2;  // 20%
+            int atkIncrease = poke->atq * atkIncreasePercent;
+            poke->atq += atkIncrease;
+            printf("Ataque aumentado em %d pontos. Ataque atual: %d\n", atkIncrease, poke->atq);
+            return 1;
+        } else if (item == 3) { //capacete
+            // Efeito de aumento de defesa
+            float defIncreasePercent = 0.2;  // 20%
+            int defIncrease = poke->def * defIncreasePercent;
+            poke->def -= defIncrease;
+            printf("Defesa aumentada em %d pontos. Defesa atual: %d\n", defIncrease, poke->def);
+            return 1;
+        } else if (item == 4) {
+            resetarAtributos(poke);
+            return 1;
+            }if (item == 5) {
+                reviverBirdmon(poke);
+                return 1;
+            }else if(item == 6) {
+                printf("Esse item eh utilizado a partir do menu");
+            return 0;
+        }else{
+            printf("item nao reconhecido, digite novamente.\n");
+            return 0;
+        }
     }
+    else return 0; //se o jogador nao tiver o item, volte
 }
 
 

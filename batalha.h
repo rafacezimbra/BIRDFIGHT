@@ -151,9 +151,19 @@ void atacar(tp_pokemon *pokeAtacante, tp_pokemon *pokeAlvo, int numAtaque, tp_fi
     }
 }
 
+int ajustarVidaNegativa(tp_pokemon pokeUsuario[], int *totalBirdmons){ //checa se a vida de algum birdmon esta abaixo de zero e deixar em 0
+
+    for(int i=0; i<*totalBirdmons; i++){
+        if(pokeUsuario[i].vida <= 0) pokeUsuario[i].vida = 0;
+    }
+
+} 
+
 // Função de troca de Birdmon
 int trocarBirdmon(tp_pokemon pokeUsuario[], int *totalBirdmons, int *pokeAtivo) {
+
     apagarTela();
+    ajustarVidaNegativa(pokeUsuario, totalBirdmons); //testa se a vida de algum birdmon ta negativa e joga pra 0
     int escolha;
     printf("Escolha um Birdmon para a batalha:\n");
     for (int i = 0; i < *totalBirdmons; i++) {
@@ -162,7 +172,7 @@ int trocarBirdmon(tp_pokemon pokeUsuario[], int *totalBirdmons, int *pokeAtivo) 
     printf("Escolha: ");
     scanf("%d", &escolha);
 
-    if(escolha == 0) return 0;
+    if(escolha == 0 || escolha == 1) return 0;
     if (escolha > 0 && escolha <= *totalBirdmons) {
 
         if(!pokeUsuario[escolha-1].vivo){
@@ -243,7 +253,7 @@ void menuBatalha(int *pokeAtivo, tp_pokemon *pokeInimigo, Inventory *inv, tp_pok
                 return  menuBatalha(pokeAtivo, pokeInimigo, inv, pokeUsuario, pokeUsuarioQtd, rodada);
                 break;
             }
-		    if(aplicarEfeito(item, &pokeUsuario[*pokeAtivo])) break;
+		    if(aplicarEfeito(item, &pokeUsuario[*pokeAtivo], inv)) break;
             }
         break;
 

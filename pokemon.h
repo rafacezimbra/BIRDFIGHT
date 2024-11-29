@@ -30,7 +30,7 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     poke[i].expO = 0;
     poke[i].expMax = 100;
     poke[i].nivel = 1; //mudar para 1
-     poke[i].vivo = 1;
+    poke[i].vivo = 1;
 
     }
 

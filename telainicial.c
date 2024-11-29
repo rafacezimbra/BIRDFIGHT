@@ -15,18 +15,18 @@
 #include "lojaencadeada.h"
 #include "apagartela.h"
 #include "inventario.h"
+#include "ranking.h"
 
-#define ANSI_COLOR_1 "\x1b[93m"
-#define ANSI_COLOR_2 "\x1b[97m"
+#define YEL "\e[0;33m"
+#define WHT "\e[0;37m"
 #define QTDPOKEMONS 16
-
-
 
 void menu(char nomeUsuario[], int *pokeUsuarioQtd, tp_pokemon pokeUsuario[]){
 	
 	apagarTela();
 	//textcolor(5);
-	printf(ANSI_COLOR_1"|| *********    *******  *******       ********                ************* *******       *********   ***      *** *************** ||\n"); 
+	printf(YEL);
+	printf("|| *********    *******  *******       ********                ************* *******       *********   ***      *** *************** ||\n"); 
 	printf("|| ***********   *****  **********    **     ***               *************  *****   ***************  ***      *** *************** ||\n");
 	printf("|| **      ****   ***   **      **    **       ***             ***             ***    ************     ***      ***       ***       ||\n"); 
 	printf("|| **       ***   ***   **   ****     **        ***            ***             ***   ****              ***      ***       ***       ||\n"); 
@@ -50,7 +50,7 @@ void menu(char nomeUsuario[], int *pokeUsuarioQtd, tp_pokemon pokeUsuario[]){
 	printf("||                                                |  16- Kiwi                 |                                                     ||\n");
 	printf("||                                                                                                                                  ||\n");
 	printf("||                                                                                                                                  ||\n");
-
+	printf(WHT);
 	if(*pokeUsuarioQtd>0){
 	printf("                                                   EQUIPE DE %s                                                                      \n", nomeUsuario);
 	printf("                                                 * %s                                                                                \n", pokeUsuario[0].nome);
@@ -79,9 +79,6 @@ void escolha(char nomeUsuario[], tp_pokemon pokeUsuario[], tp_pokemon poke[], in
     int birdmonUsuario; //numero q a pessoa vai digitar
 
     while(*pokeUsuarioQtd!=3){
-
-
-
 
     	printf("%d Birdmon: ", *pokeUsuarioQtd+1);
 	    scanf(" %d", &birdmonUsuario); //escaneia o numero q o usuario digitou
@@ -205,8 +202,6 @@ int main (void) {
 
 
 	
-
-
 	//LOOP DE BATALHA-LOJA
 	int rodada = 0;
 	int pokeAtivo = 0;
