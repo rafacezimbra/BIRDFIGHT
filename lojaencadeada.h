@@ -95,7 +95,7 @@ void loja(Inventory *inv, int *BirdCoin) {
                 printf(" ####     \n\n");
                 break;
 
-            case 3: ```c
+            case 3:
                 printf("          --MM \n");
                 printf("      MM##MM:: \n");
                 printf("    MMMM####++ \n");
@@ -132,7 +132,7 @@ void loja(Inventory *inv, int *BirdCoin) {
     printf("Escolha um item pelo número (ou 0 para sair): ");
     scanf("%d", &escolha);
 
-    if (escolha > 0 && escolha <= index) { 
+    if (escolha > 0 && escolha < index) {
         atual = itens;
         for (int i = 1; i < escolha; i++) {
             atual = atual->prox;
@@ -141,19 +141,27 @@ void loja(Inventory *inv, int *BirdCoin) {
         if (atual != NULL) {
             ItemLoja* item = (ItemLoja*)atual->info; // Cast para ItemLoja
             if (*BirdCoin >= item->preco) {
-                *BirdCoin -= item->preco;
-                adicionarAoInventario(inv, item); // Função para adicionar o item ao inventário
-                printf("Você comprou %s por %d BirdCoins.\n", item->nome, item->preco);
+                char confirmacao;
+                printf("Você selecionou %s por %d BirdCoins. Deseja confirmar a compra? (s/n): ", item->nome, item->preco);
+                scanf(" %c", &confirmacao); // O espaço antes de %c é para ignorar qualquer espaço em branco
+
+                if (confirmacao == 's' || confirmacao == 'S') {
+                    *BirdCoin -= item->preco;
+                    adicionarAoInventario(inv, item->nome); // Função para adicionar o item ao inventário
+                    printf("Você comprou %s por %d BirdCoins.\n", item->nome, item->preco);
+                    printf("BirdCoins restantes: %d\n", *BirdCoin);
+                } else {
+                    printf("Compra cancelada.\n");
+                }
             } else {
                 printf("Você não tem BirdCoins suficientes para comprar %s.\n", item->nome);
             }
         }
-    } else if (escolha == 0) {
-        printf("Saindo da loja...\n");
-    } else {
-        printf("Escolha inválida.\n");
+    } else if (escolha != 0) {
+        printf("Escolha inválida. Tente novamente.\n");
     }
 
+    printf("Saindo da loja...\n");
     liberarLista(itens);
 }
 

@@ -1,16 +1,18 @@
+#ifndef RANKING_H //if not define
+#define RANKING_H
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct{
+typedef struct jogadorNoRank{
 
 char nome[30];
 int rodada;
 
 }ranked;
 
-int imprimeRank(FILE *arquivo, char ranking[]){
+int imprimeRank(){
 	char registro[50];
-	arquivo = fopen(ranking, "r+");
+	FILE *arquivo = fopen("ranking.txt", "r+");
 	if (!arquivo) return 0;
 	while(fgets(registro, sizeof(registro), arquivo)){
 		printf("%s", registro);
@@ -19,14 +21,14 @@ int imprimeRank(FILE *arquivo, char ranking[]){
 	return 1;
 }
 
-void colocarNoRanking(char nome[], int rodada, char ranking[]){
+void colocarNoRanking(char nome[], int rodada){
 
     int jogadorPosicionado = 0; //diz se o jogador ja foi colocado no ranking ou nao
     ranked novoJogador;
     strcmp(novoJogador.nome, nome); //atribui o nome
     novoJogador.rodada = rodada; //atribui a rodada
 
-   FILE *arquivo = fopen(ranking, "r+");
+   FILE *arquivo = fopen("ranking.txt", "r+");
 
     if(arquivo == NULL) printf("\nERRO AO ABRIR ARQUIVO\n");
 
@@ -65,3 +67,4 @@ void colocarNoRanking(char nome[], int rodada, char ranking[]){
         fclose(arquivo);
     }
 }
+#endif

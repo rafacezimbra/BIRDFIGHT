@@ -209,7 +209,7 @@ int main (void) {
 		rodada++;
 
 		if(batalha(rodada, &pokeUsuarioQtd, pokeUsuario, &pokeOponentes, &inventario, &pokeAtivo) == 0){
-			perdeu();
+			perdeu(nomeUsuario, rodada);
 			return 0;
 		}else{
 			loja(&inventario, &inventario.items[6].quantity);
