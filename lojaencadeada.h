@@ -47,7 +47,7 @@ void loja(Inventory *inv, int *BirdCoin) {
     insereListase(&itens, criarItem("Biscoito", 500, "Revive um Birdmon com metade do HP."));
     insereListase(&itens, criarItem("Capacete", 300, "Aumenta a defesa do Birdmon ativo temporariamente."));
     insereListase(&itens, criarItem("Melao", 300, "Aumenta o ataque do Birdmon ativo temporariamente."));
-    insereListase(&itens, criarItem("Gaiola", 150, "Captura o Birdmon adversário"));
+    insereListase(&itens, criarItem("Gaiola", 150, "Captura o Birdmon adversario"));
     insereListase(&itens, criarItem("Alpiste", 250, "Restaura 30 HP do Birdmon ativo."));
 
     printf("\n");
