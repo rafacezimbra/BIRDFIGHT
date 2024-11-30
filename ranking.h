@@ -8,14 +8,25 @@ int rodada;
 
 }ranked;
 
-void colocarNoRanking(nome, rodada){
+int imprimeRank(FILE *arquivo, char ranking[]){
+	char registro[50];
+	arquivo = fopen(ranking, "r+");
+	if (!arquivo) return 0;
+	while(fgets(registro, sizeof(registro), arquivo)){
+		printf("%s", registro);
+	}
+	fclose(arquivo);
+	return 1;
+}
+
+void colocarNoRanking(char nome[], int rodada, char ranking[]){
 
     int jogadorPosicionado = 0; //diz se o jogador ja foi colocado no ranking ou nao
     ranked novoJogador;
     strcmp(novoJogador.nome, nome); //atribui o nome
     novoJogador.rodada = rodada; //atribui a rodada
 
-   FILE *arquivo = fopen(ranking.txt, "r+");
+   FILE *arquivo = fopen(ranking, "r+");
 
     if(arquivo == NULL) printf("\nERRO AO ABRIR ARQUIVO\n");
 
