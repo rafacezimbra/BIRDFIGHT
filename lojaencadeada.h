@@ -46,7 +46,7 @@ void loja(Inventory *inv, int *BirdCoin) {
     insereListase(&itens, criarItem("Soro", 300, "Retira status negativos do Birdmon ativo."));
     insereListase(&itens, criarItem("Biscoito", 500, "Revive um Birdmon com metade do HP."));
     insereListase(&itens, criarItem("Capacete", 300, "Aumenta a defesa do Birdmon ativo temporariamente."));
-    insereListase(&itens, criarItem("Melão", 300, "Aumenta o ataque do Birdmon ativo temporariamente."));
+    insereListase(&itens, criarItem("Melao", 300, "Aumenta o ataque do Birdmon ativo temporariamente."));
     insereListase(&itens, criarItem("Gaiola", 150, "Captura o Birdmon adversário"));
     insereListase(&itens, criarItem("Alpiste", 250, "Restaura 30 HP do Birdmon ativo."));
 
@@ -59,8 +59,8 @@ void loja(Inventory *inv, int *BirdCoin) {
     printf("|| ***     *      *  *  **    ******** ||\n");
     printf("|| ******  **    **  *  **    **    ** ||\n");
     printf("|| ******   ******   *****    **    ** ||\n");
-    printf("Bem-vindo à Loja!\n");
-    printf("Você tem %d BirdCoins.\n\n", *BirdCoin);
+    printf("Bem-vindo a Loja!\n");
+    printf("Voce tem %d BirdCoins.\n\n", *BirdCoin);
 
     tp_listase* atual = itens;
     int index = 1;
@@ -129,7 +129,7 @@ void loja(Inventory *inv, int *BirdCoin) {
         index++;
     }
 
-    printf("Escolha um item pelo número (ou 0 para sair): ");
+    printf("Escolha um item pelo numero (ou 0 para sair): ");
     scanf("%d", &escolha);
 
     if (escolha > 0 && escolha < index) {
@@ -142,23 +142,23 @@ void loja(Inventory *inv, int *BirdCoin) {
             ItemLoja* item = (ItemLoja*)atual->info; // Cast para ItemLoja
             if (*BirdCoin >= item->preco) {
                 char confirmacao;
-                printf("Você selecionou %s por %d BirdCoins. Deseja confirmar a compra? (s/n): ", item->nome, item->preco);
+                printf("Voce selecionou %s por %d BirdCoins. Deseja confirmar a compra? (s/n): ", item->nome, item->preco);
                 scanf(" %c", &confirmacao); // O espaço antes de %c é para ignorar qualquer espaço em branco
 
                 if (confirmacao == 's' || confirmacao == 'S') {
                     *BirdCoin -= item->preco;
                     adicionarAoInventario(inv, item->nome); // Função para adicionar o item ao inventário
-                    printf("Você comprou %s por %d BirdCoins.\n", item->nome, item->preco);
+                    printf("Voce comprou %s por %d BirdCoins.\n", item->nome, item->preco);
                     printf("BirdCoins restantes: %d\n", *BirdCoin);
                 } else {
                     printf("Compra cancelada.\n");
                 }
             } else {
-                printf("Você não tem BirdCoins suficientes para comprar %s.\n", item->nome);
+                printf("Voce nao tem BirdCoins suficientes para comprar %s.\n", item->nome);
             }
         }
     } else if (escolha != 0) {
-        printf("Escolha inválida. Tente novamente.\n");
+        printf("Escolha invalida. Tente novamente.\n");
     }
 
     printf("Saindo da loja...\n");
