@@ -26,7 +26,7 @@ int playerVivo(int pokeUsuarioQtd, tp_pokemon pokeUsuario[]){ //procura um pokem
 void perdeu(char nome[], int rodada){
     apagarTela();
     printf("\n Voce perdeu!\n");
-    sleep(5);
+    sleep(1);
     apagarTela();
     colocarNoRanking(nome, rodada);
     imprimeRank();
@@ -206,9 +206,12 @@ int trocarBirdmon(tp_pokemon pokeUsuario[], int *totalBirdmons, int *pokeAtivo) 
 
 void perderJogo(tp_pokemon pokeUsuario[], int *pokeUsuarioQtd){ //zera a vida de todos os pokemons aliados para perder o jogo de proposito
 
+    //printf("INICIO PERDER JOGO \n");sleep(5); //teste 
     for(int i=0; i<*pokeUsuarioQtd; i++){
         pokeUsuario[i].vida = 0;
+        pokeUsuario[i].vivo = 0;
     }
+    //printf("FIM PERDER JOGO \n"); sleep(5);//teste
 
 }
 
@@ -288,11 +291,10 @@ void menuBatalha(int *pokeAtivo, tp_pokemon *pokeInimigo, Inventory *inv, tp_pok
         break;  
         
         case 5: // Desiste da batalha, terminando o jogo
-            printf("tem certeza que deseja desistir do jogo? (s/n)");
+            printf("tem certeza que deseja desistir do jogo? (s/n): ");
             int escolha;
 
-            while(1){
-            scanf(" %c", escolha);
+            scanf(" %c", &escolha);
             if(escolha == 's' || escolha == 'S') perderJogo(pokeUsuario, pokeUsuarioQtd);
             else{
                 apagarTela();
@@ -308,7 +310,7 @@ void menuBatalha(int *pokeAtivo, tp_pokemon *pokeInimigo, Inventory *inv, tp_pok
             printarBatalha(pokeUsuario, pokeInimigo, *pokeAtivo, rodada);
             return  menuBatalha(pokeAtivo, pokeInimigo, inv, pokeUsuario, pokeUsuarioQtd, rodada);
             break;
-        }
+        
     }
    
 }

@@ -11,11 +11,15 @@ int rodada;
 }ranked;
 
 int imprimeRank(){
+    printf("RANKING\n");
 	char registro[50];
+    int pos = 1;
 	FILE *arquivo = fopen("ranking.txt", "r+");
 	if (!arquivo) return 0;
 	while(fgets(registro, sizeof(registro), arquivo)){
+        printf("%d. ", pos);
 		printf("%s", registro);
+        pos++;
 	}
 	fclose(arquivo);
 	return 1;
@@ -25,7 +29,7 @@ void colocarNoRanking(char nome[], int rodada){
 
     int jogadorPosicionado = 0; //diz se o jogador ja foi colocado no ranking ou nao
     ranked novoJogador;
-    strcmp(novoJogador.nome, nome); //atribui o nome
+    strcpy(novoJogador.nome, nome); //atribui o nome
     novoJogador.rodada = rodada; //atribui a rodada
 
    FILE *arquivo = fopen("ranking.txt", "r+");
@@ -46,10 +50,13 @@ void colocarNoRanking(char nome[], int rodada){
         rodada = atoi(rodadaString); //transforma a rodada, lida como string, em inteiro
 
         if(novoJogador.rodada >= rodada){
+            
+            char rodadaEmString[12];
+            itoa(novoJogador.rodada, rodadaEmString, 10); //transforma o numero de rodadas em uma string
 
             fseek(arquivo, posAnterior, SEEK_SET); //volta para a posicao antes
-            fprintf(arquivo, "%s\n", novoJogador.nome);
-            fprintf(arquivo, "%d\n", novoJogador.rodada);
+            fputs(novoJogador.nome, arquivo);
+            fputs(rodadaEmString, arquivo);
             jogadorPosicionado = 1;
             break;
         }else{
@@ -57,6 +64,7 @@ void colocarNoRanking(char nome[], int rodada){
             posAnterior = posAtual;
 
         }
+    }
         
         if(!jogadorPosicionado){ //botar no final
             fseek(arquivo, 0, SEEK_END);
@@ -65,6 +73,6 @@ void colocarNoRanking(char nome[], int rodada){
         }
 
         fclose(arquivo);
-    }
+    
 }
 #endif
