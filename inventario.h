@@ -25,7 +25,7 @@ void initializeInventory(Inventory *inv) {
     Item Melao = {"Melao", 0, "Aumenta o atk do birdmon"};
     Item Gaiola = {"Gaiola", 5, "Usada para capturar Birdmon(com consentimento do governo)"};
     Item Soro = {"Soro", 0, "Cura efeitos negativos"};
-    Item Biscoito = {"Revive", 0, "Revive um Birdmon desmaiado com 50% de HP"};
+    Item Biscoito = {"Biscoito", 0, "Revive um Birdmon desmaiado com 50% de HP"};
     Item Capacete = {"Capacete", 0, "Aumenta a defesa do birdmon"};
 
     inv->items[0] = Alpiste;
