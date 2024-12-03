@@ -9,8 +9,7 @@
 #include "inventario.h"
 #include "tipo.h"
 #include "captura.h"
-#include "ranking2.h"
-#include "listaserank.h"
+#include "ranking.h"
 
 #define deslocamentoDoOponente 80
 #define deslocAtaque 25
@@ -25,13 +24,12 @@ int playerVivo(int pokeUsuarioQtd, tp_pokemon pokeUsuario[]){ //procura um pokem
 }
 
 void perdeu(char nome[], int rodada){
-    tp_listase *lista;
     apagarTela();
     printf("\n Voce perdeu!\n");
     sleep(1);
     apagarTela();
-    lista = ordenaRank(nome, rodada);
-    imprime_e_escreve_listase(lista);
+    colocarNoRanking(nome, rodada);
+    imprimeRank();
 	printf("\n digite qualquer valor para encerrar o programa\n");
 	char lixo;
 	scanf(" %c", &lixo);
@@ -50,7 +48,7 @@ void xpBatalha(int *pokeAtivo, tp_pokemon pokeUsuario[]) {
     if (pokeUsuario[*pokeAtivo].exp >= pokeUsuario[*pokeAtivo].expMax) {
         // Sobe de nível
         pokeUsuario[*pokeAtivo].nivel += 1;
-        printf("%s subiu para o nivel %d!\n", pokeUsuario[*pokeAtivo].nome,pokeUsuario[*pokeAtivo].nivel);
+        printf("%s subiu para o nível %d!\n", pokeUsuario[*pokeAtivo].nome,pokeUsuario[*pokeAtivo].nivel);
 
         // Reseta a experiência atual e aumenta o limite de experiência para o próximo nível
         pokeUsuario[*pokeAtivo].exp = pokeUsuario[*pokeAtivo].expO;
@@ -78,7 +76,6 @@ void printarBatalha(tp_pokemon pokeUsuario[], tp_pokemon *pokeInimigo, int pokeA
     
     //printar o pokemon do jogador
     printarPokemon(pokeUsuario[pokeAtivo], 0);
- 
 
 
 }
