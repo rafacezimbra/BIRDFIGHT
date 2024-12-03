@@ -56,35 +56,29 @@ int insereListaseOrdenadaOLD(tp_listase **l, tp_item e, char nome[30]){
   return 1;
   }
 
-  int insereListaseOrdenada (tp_listase **lista, tp_item e, char nome[30]){
-	tp_listase *novo;
-	novo=alocaListase();
-	int i =0;
-	tp_listase *atu, *ant;
-	atu = *lista;
-	ant = NULL;
-
-	if (!novo) return 0;
-
-	novo->rodada = e;
-    strcpy(novo->nome, nome);
-	novo->prox = NULL;
-
-	if ( listaseVazia(*lista) ){ //Se for o primeiro elemento da lista
-	    *lista=novo;
-	}
-	else {
-		while(atu->prox != NULL && atu->prox->rodada >= e){
+  int insereListaseOrdenada (tp_listase *l, tp_item rodada, char nome[30]){
+	tp_listase *novo_no, *atu, *ant;
+	novo_no=alocaListase();
+	if(novo_no==NULL) return 0;
+	novo_no->rodada = rodada;
+	novo_no->nome = nome[30];
+	novo_no->prox = NULL;
+	if(listaseVazia(l)){
+		l=novo_no;
+	} else {
+		atu = l;
+		ant = NULL;
+		int r = atu->rodada;
+		while(r>novo_no->rodada){
 			ant=atu;
 			atu=atu->prox;
+			r = atu->rodada;
 		}
-            novo->prox = atu;
-            ant->prox = novo;
-	}
-    
-    atu->prox=novo;
+		ant->prox=novo_no;
+		novo_no->prox=atu->prox;
 	
 	return 1;
+	}
 }
   
 
