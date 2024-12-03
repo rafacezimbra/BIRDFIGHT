@@ -102,30 +102,30 @@ int temItem(int numItem, Inventory *inv) { // Checa se o jogador tem pelo menos 
 
 int aplicarEfeito(int itemIndex, tp_pokemon *poke, Inventory *inv) { // Aplica o efeito de um item no inventário
     if (temItem(itemIndex, inv)) { // Testa se o jogador tem o item antes de aplicar os efeitos
-        if (itemIndex == 1) { // Alpiste
+        if (itemIndex == 0) { // Alpiste
             int hpRecovery = 30;
             poke->vida += hpRecovery;
             printf("HP recuperado em %d pontos. HP atual: %d\n", hpRecovery, poke->vida);
             return 1;
-        } else if (itemIndex == 2) { // Melão
+        } else if (itemIndex == 1) { // Melão
             float atkIncreasePercent = 0.2; // Aumento de ataque de 20%
             int atkIncrease = poke->atq * atkIncreasePercent;
             poke->atq += atkIncrease;
             printf("Ataque aumentado em %d pontos. Ataque atual: %d\n", atkIncrease, poke->atq);
             return 1;
-        } else if (itemIndex == 3) { // Capacete
+        } else if (itemIndex == 2) { // Capacete
             float defIncreasePercent = 0.2; // Aumento de defesa de 20%
             int defIncrease = poke->def * defIncreasePercent;
             poke->def += defIncrease; // Corrigido para aumentar a defesa
             printf("Defesa aumentada em %d pontos. Defesa atual: %d\n", defIncrease, poke->def);
             return 1;
-        } else if (itemIndex == 4) {
+        } else if (itemIndex == 3) {
             resetarAtributos(poke);
             return 1;
-        } else if (itemIndex == 5) {
+        } else if (itemIndex == 4) {
             reviverBirdmon(poke);
             return 1;
-        } else if (itemIndex == 6) {
+        } else if (itemIndex == 5) {
             printf("Esse item eh utilizado a partir do menu.\n");
             return 0;
         } else {
