@@ -9,7 +9,8 @@
 #include "inventario.h"
 #include "tipo.h"
 #include "captura.h"
-#include "ranking.h"
+#include "ranking2.h"
+#include "listaserank.h"
 
 #define deslocamentoDoOponente 80
 #define deslocAtaque 25
@@ -24,12 +25,13 @@ int playerVivo(int pokeUsuarioQtd, tp_pokemon pokeUsuario[]){ //procura um pokem
 }
 
 void perdeu(char nome[], int rodada){
+    tp_listase *lista;
     apagarTela();
     printf("\n Voce perdeu!\n");
     sleep(1);
     apagarTela();
-    colocarNoRanking(nome, rodada);
-    imprimeRank();
+    lista = ordenaRank(nome, rodada);
+    imprime_e_escreve_listase(lista);
 	printf("\n digite qualquer valor para encerrar o programa\n");
 	char lixo;
 	scanf(" %c", &lixo);

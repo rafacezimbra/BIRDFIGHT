@@ -17,7 +17,7 @@ typedef struct {
     char descricao[100];
 } ItemLoja;
 
-tp_item criarItem(char* nome, int preco, char* descricao) {
+Item criarItem(char* nome, int preco, char* descricao) {
     ItemLoja* novoItem = (ItemLoja*)malloc(sizeof(ItemLoja));
     strcpy(novoItem->nome, nome);
     novoItem->preco = preco;
@@ -25,12 +25,11 @@ tp_item criarItem(char* nome, int preco, char* descricao) {
     return novoItem;
 }
 
-void liberarItem(tp_item item) {
+void liberarItem(Item item) {
     free(item);
 }
 
-void liberarLista(tp_listase* lista) {
-    tp_listase* temp;
+void liberarLista(tp_listase* lista, tp_listase* temp) {
     while (lista != NULL) {
         temp = lista;        
         lista = lista->prox; 
@@ -63,7 +62,7 @@ void loja(Inventory *inv, int *BirdCoin) {
     printf("Voce tem %d BirdCoins.\n\n", *BirdCoin);
 
     tp_listase* atual = itens;
-    int index = 1;
+    int index = 0;
     while (atual != NULL) {
         ItemLoja* item = (ItemLoja*)atual->info; // Cast para ItemLoja
         switch (index - 1) {

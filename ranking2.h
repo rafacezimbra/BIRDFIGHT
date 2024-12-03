@@ -2,7 +2,8 @@
 #define RANKING_H
 #include <stdio.h>
 #include <stdlib.h>
-#include "listase.h"
+#include <string.h>
+#include "listaserank.h"
 
 typedef struct jogadorNoRank{
 
@@ -10,6 +11,34 @@ char nome[30];
 int rodada;
 
 }ranked;
+
+tp_listase ordenaRank(char nome[30], int rodada){
+
+    tp_listase *lista;
+
+    lista = iniciaListase();
+  
+    char rodadaString[50];
+    char nomeAtual[50];
+
+    FILE *arquivo = fopen("ranking.txt", "r+");
+	if (!arquivo){
+        printf("\nERRO AO ABRIR O ARQUIVO DE RANKING\n");
+        sleep(5);
+        return NULL;
+    } 
+    while(fgets(nome, 50, arquivo)){ //pega o nome de alguem ate nao terem mais jogadores
+
+    fgets(rodadaString, 50, arquivo); //pega a rodada desse alguem
+    int rodadaAtual = atoi(rodadaString);
+    
+    insereListaseOrdenada(&lista, rodadaAtual, nomeAtual); //insere esse jogador na lista encadeada de forma ordenada
+    }
+
+    insereListaseOrdenada(&lista, rodada, nome);
+
+    return *lista;
+}
 
 int imprimeRank(){
     printf("RANKING\n");
@@ -76,4 +105,7 @@ void colocarNoRanking(char nome[], int rodada){
         fclose(arquivo);
     
 }
+
+
+
 #endif
