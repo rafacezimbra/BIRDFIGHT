@@ -8,8 +8,10 @@
 #include "apagartela.h"
 #include "listase.h"
 
+#define YEL "\e[0;33m"
 #define ANSI_COLOR_1 "\x1b[93m"
 #define ANSI_COLOR_2 "\x1b[97m"
+#define WHT "\e[0;37m"
 
 typedef struct {
     char nome[50];
@@ -17,7 +19,7 @@ typedef struct {
     char descricao[100];
 } ItemLoja;
 
-Item criarItem(char* nome, int preco, char* descricao) {
+tp_item criarItem(char* nome, int preco, char* descricao) {
     ItemLoja* novoItem = (ItemLoja*)malloc(sizeof(ItemLoja));
     strcpy(novoItem->nome, nome);
     novoItem->preco = preco;
@@ -25,11 +27,12 @@ Item criarItem(char* nome, int preco, char* descricao) {
     return novoItem;
 }
 
-void liberarItem(Item item) {
+void liberarItem(tp_item item) {
     free(item);
 }
 
-void liberarLista(tp_listase* lista, tp_listase* temp) {
+void liberarLista(tp_listase* lista) {
+    tp_listase* temp;
     while (lista != NULL) {
         temp = lista;        
         lista = lista->prox; 
@@ -52,6 +55,9 @@ void loja(Inventory *inv, int *BirdCoin) {
     printf("\n");
 
     int escolha;
+
+    while(1){
+    printf(YEL);
     printf("|| ***      ******   ********   ****   ||\n");
     printf("|| ***     **    **     **    ***  *** ||\n");
     printf("|| ***     *      *     **    **    ** ||\n");
@@ -60,9 +66,10 @@ void loja(Inventory *inv, int *BirdCoin) {
     printf("|| ******   ******   *****    **    ** ||\n");
     printf("Bem-vindo a Loja!\n");
     printf("Voce tem %d BirdCoins.\n\n", *BirdCoin);
+    printf(WHT);
 
     tp_listase* atual = itens;
-    int index = 0;
+    int index = 1;
     while (atual != NULL) {
         ItemLoja* item = (ItemLoja*)atual->info; // Cast para ItemLoja
         switch (index - 1) {
@@ -70,7 +77,7 @@ void loja(Inventory *inv, int *BirdCoin) {
                 printf("  ___   \n");
                 printf(" |   |  \n");
                 printf(" _| |_  \n");
-                printf("|_____|             %d - %s (Preco: %d BirdCoins): %s\n", index, item->nome, item->preco, item->descricao);
+                printf("|_____|             %d - %s (Valor: %d BirdCoins): %s\n", index, item->nome, item->preco, item->descricao);
                 printf("|_____| \n");
                 printf("|_____| \n\n");
                 break;
@@ -79,7 +86,7 @@ void loja(Inventory *inv, int *BirdCoin) {
                 printf("    *******       \n");
                 printf("  ***  @   ****   \n");
                 printf(" ** @    @   ***  \n");
-                printf(" *    @    @  **    %d - %s (Preço: %d BirdCoins): %s\n", index, item->nome, item->preco, item->descricao);
+                printf(" *    @    @  **    %d - %s (Valor: %d BirdCoins): %s\n", index, item->nome, item->preco, item->descricao);
                 printf(" *  @        ***  \n");
                 printf(" **     @   ***   \n");
                 printf("   **********     \n\n");
@@ -88,7 +95,7 @@ void loja(Inventory *inv, int *BirdCoin) {
             case 2: // Capacete
                 printf(" #######  \n");
                 printf("##      # \n"); 
-                printf("#    ####           %d - %s (Preço: %d BirdCoins): %s\n", index, item->nome, item->preco, item->descricao);
+                printf("#    ####           %d - %s (Valor: %d BirdCoins): %s\n", index, item->nome, item->preco, item->descricao);
                 printf("#   ##  | \n");
                 printf("#   #___| \n");
                 printf(" ####     \n\n");
@@ -98,7 +105,7 @@ void loja(Inventory *inv, int *BirdCoin) {
                 printf("          --MM \n");
                 printf("      MM##MM:: \n");
                 printf("    MMMM####++ \n");
-                printf("    ####MM@@++      %d - %s (Preço: %d BirdCoins): %s\n", index, item->nome, item->preco, item->descricao);
+                printf("    ####MM@@++      %d - %s (Valor: %d BirdCoins): %s\n", index, item->nome, item->preco, item->descricao);
                 printf("  MM##MM##  ## \n");
                 printf("@@--      MM   \n"); 
                 printf("  ########     \n\n");    
@@ -108,7 +115,7 @@ void loja(Inventory *inv, int *BirdCoin) {
                 printf("xxxxxxxxxxxxx \n");
                 printf("x  x  x  x  x \n");
                 printf("x  x  x  x  x \n");
-                printf("x  x  x  x  x       %d - %s (Preço: %d BirdCoins): %s\n", index, item->nome, item->preco, item->descricao);
+                printf("x  x  x  x  x       %d - %s (Valor: %d BirdCoins): %s\n", index, item->nome, item->preco, item->descricao);
                 printf("x  x  x  x  x \n");
                 printf("x  x  x  x  x \n");
                 printf("xxxxxxxxxxxxx \n\n");
@@ -118,7 +125,7 @@ void loja(Inventory *inv, int *BirdCoin) {
                 printf("|-------------| \n");
                 printf("|   ALPISTE   | \n");
                 printf("|-------------| \n");
-                printf("|:::::::::::::|     %d - %s (Preço: %d BirdCoins): %s\n", index, item->nome, item->preco, item->descricao);
+                printf("|:::::::::::::|     %d - %s (Valor: %d BirdCoins): %s\n", index, item->nome, item->preco, item->descricao);
                 printf("|:::::::::::::| \n");
                 printf("|:::::::::::::| \n");
                 printf("|-------------| \n\n");
@@ -127,6 +134,8 @@ void loja(Inventory *inv, int *BirdCoin) {
         atual = atual->prox;
         index++;
     }
+
+    
 
     printf("Escolha um item pelo numero (ou 0 para sair): ");
     scanf("%d", &escolha);
@@ -149,19 +158,26 @@ void loja(Inventory *inv, int *BirdCoin) {
                     adicionarAoInventario(inv, item->nome); // Função para adicionar o item ao inventário
                     printf("Voce comprou %s por %d BirdCoins.\n", item->nome, item->preco);
                     printf("BirdCoins restantes: %d\n", *BirdCoin);
+                    continue;
                 } else {
                     printf("Compra cancelada.\n");
+                    continue;
                 }
             } else {
                 printf("Voce nao tem BirdCoins suficientes para comprar %s.\n", item->nome);
+                printf("Preco: %d BirdCoins. Voce tem apenas: %d BirdCoins.\n", item->preco, *BirdCoin);
+                continue;
             }
         }
     } else if (escolha != 0) {
         printf("Escolha invalida. Tente novamente.\n");
+    } else{
+        break;
     }
-
+    apagarTela();
+    }
     printf("Saindo da loja...\n");
     liberarLista(itens);
+    
 }
-
 #endif
