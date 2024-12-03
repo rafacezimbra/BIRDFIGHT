@@ -50,7 +50,7 @@ void xpBatalha(int *pokeAtivo, tp_pokemon pokeUsuario[]) {
     if (pokeUsuario[*pokeAtivo].exp >= pokeUsuario[*pokeAtivo].expMax) {
         // Sobe de nível
         pokeUsuario[*pokeAtivo].nivel += 1;
-        printf("%s subiu para o nível %d!\n", pokeUsuario[*pokeAtivo].nome,pokeUsuario[*pokeAtivo].nivel);
+        printf("%s subiu para o nivel %d!\n", pokeUsuario[*pokeAtivo].nome,pokeUsuario[*pokeAtivo].nivel);
 
         // Reseta a experiência atual e aumenta o limite de experiência para o próximo nível
         pokeUsuario[*pokeAtivo].exp = pokeUsuario[*pokeAtivo].expO;
