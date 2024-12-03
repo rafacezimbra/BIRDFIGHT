@@ -61,7 +61,7 @@ void resetarAtributos(tp_pokemon *poke) {
     poke->atq = poke->atqO;
     poke->def = poke->defO;
     poke->agil = poke->agilO;
-    printf("Ataque, Defesa e Agilidade foram restaurados aos valores originais. Ataque: %d, Defesa: %d, Agilidade: %d\n", poke->atq, poke->def, poke->agil);
+    printf("Ataque, Defesa e Agilidade foram restaurados aos valores originais. Ataque: %d, Defesa: %.2f, Agilidade: %d\n", poke->atq, poke->def, poke->agil);
 }
 
 void listarBirdmons(tp_pokemon *poke) {
@@ -115,9 +115,9 @@ int aplicarEfeito(int itemIndex, tp_pokemon *poke, Inventory *inv) { // Aplica o
             return 1;
         } else if (itemIndex == 3) { // Capacete
             float defIncreasePercent = 0.2; // Aumento de defesa de 20%
-            int defIncrease = poke->def * defIncreasePercent;
+            float defIncrease = poke->def * defIncreasePercent;
             poke->def += defIncrease; // Corrigido para aumentar a defesa
-            printf("Defesa aumentada em %d pontos. Defesa atual: %d\n", defIncrease, poke->def);
+            printf("Defesa aumentada em %.2f pontos. Defesa atual: %.2f\n", defIncrease, poke->def);
             return 1;
         } else if (itemIndex == 4) {
             resetarAtributos(poke);
