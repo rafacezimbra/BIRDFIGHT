@@ -61,7 +61,7 @@ void resetarAtributos(tp_pokemon *poke) {
     poke->atq = poke->atqO;
     poke->def = poke->defO;
     poke->agil = poke->agilO;
-    printf("Ataque, Defesa e Agilidade foram restaurados aos valores originais. Ataque: %d, Defesa: %d, Agilidade: %d\n", poke->atq, poke->def, poke->agil);
+    printf("Ataque, Defesa e Agilidade foram restaurados aos valores originais. Ataque: %d, Defesa: %f, Agilidade: %d\n", poke->atq, poke->def, poke->agil);
 }
 
 void listarBirdmons(tp_pokemon *poke) {
