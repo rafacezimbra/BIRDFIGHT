@@ -15,7 +15,7 @@
 #include "lojaencadeada.h"
 #include "apagartela.h"
 #include "inventario.h"
-#include "ranking.h"
+#include "ranking2.h"
 
 #define YEL "\e[0;33m"
 #define WHT "\e[0;37m"
