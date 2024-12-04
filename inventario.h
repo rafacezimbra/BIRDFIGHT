@@ -22,7 +22,7 @@ void initializeInventory(Inventory *inv) {
     Item BirdCoin = {"BirdCoin", 1000, "Recurso para trocar por outros itens na loja"};
     Item Alpiste = {"Alpiste", 0, "Recupera 60 HP"};
     Item Melao = {"Melao", 0, "Aumenta o ataque do birdmon"};
-    Item Gaiola = {"Gaiola", 5, "Usada para capturar Birdmon (com consentimento do governo)"};
+    Item Gaiola = {"Gaiola", 200, "Usada para capturar Birdmon (com consentimento do governo)"};
     Item Soro = {"Soro", 0, "Cura efeitos negativos"};
     Item Biscoito = {"Biscoito", 0, "Revive um Birdmon desmaiado com 50% de HP"};
     Item Capacete = {"Capacete", 0, "Aumenta a defesa do birdmon"};
@@ -72,7 +72,7 @@ void listarBirdmons(tp_pokemon *poke) {
     }
 }
 
-int reviverBirdmon(tp_pokemon *poke, int pokeUsuarioQtd) {
+int reviverBirdmon(tp_pokemon *poke, int pokeUsuarioQtd, tp_pokemon pokeUsuario[]) {
 
     listarBirdmons(poke);
     int escolha;
@@ -82,10 +82,12 @@ int reviverBirdmon(tp_pokemon *poke, int pokeUsuarioQtd) {
          scanf("%d", &escolha);
         if(escolha == 0) return 0;
         if (escolha > 0 && escolha <= pokeUsuarioQtd) {
-            tp_pokemon *poke = &poke[escolha]; 
+            tp_pokemon *poke = &pokeUsuario[escolha - 1]; 
             if (poke->vida == 0) {
                 poke->vida = poke->vidamax / 2; // Restaura a 50% do HP máximo
                 printf("%s revivido com %d HP.\n", poke->nome, poke->vida);
+                poke->vivo = 1;
+
                 return 1;
             } else {
                 printf("%s ainda esta vivo e nao precisa ser revivido.\n", poke->nome);
@@ -103,7 +105,7 @@ int temItem(int numItem, Inventory *inv) { // Checa se o jogador tem pelo menos 
     return 0;
 }
 
-int aplicarEfeito(int itemIndex, tp_pokemon *poke, Inventory *inv, int pokeUsuarioQtd) { // Aplica o efeito de um item no inventário
+int aplicarEfeito(int itemIndex, tp_pokemon *poke, Inventory *inv, int pokeUsuarioQtd, tp_pokemon pokeUsuario[]) { // Aplica o efeito de um item no inventário
     if (temItem(itemIndex-1, inv)) { // Testa se o jogador tem o item antes de aplicar os efeitos
         if (itemIndex == 1) { // Alpiste
             int hpRecovery = 60;
@@ -134,7 +136,7 @@ int aplicarEfeito(int itemIndex, tp_pokemon *poke, Inventory *inv, int pokeUsuar
             inv->items[itemIndex-1].quantity--;
             return 1;
         } else if (itemIndex == 5) {
-            if(reviverBirdmon(poke, pokeUsuarioQtd)) inv->items[itemIndex-1].quantity--;
+            if(reviverBirdmon(poke, pokeUsuarioQtd, pokeUsuario)) inv->items[itemIndex-1].quantity--;
             return 1;
         } else if (itemIndex == 6) {
             printf("Esse item eh utilizado a partir do menu.\n");

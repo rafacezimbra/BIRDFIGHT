@@ -1,6 +1,6 @@
 #ifndef BATALHA_H //if not define
 #define BATALHA_H
-
+#include "pilha.h"
 #include "pokemon.h"
 #include "sprites.h"
 #include "apagartela.h"
@@ -271,7 +271,7 @@ void menuBatalha(int *pokeAtivo, tp_pokemon *pokeInimigo, Inventory *inv, tp_pok
                 return  menuBatalha(pokeAtivo, pokeInimigo, inv, pokeUsuario, pokeUsuarioQtd, rodada);
                 break;
             }
-		    if(aplicarEfeito(item, &pokeUsuario[*pokeAtivo], inv, *pokeUsuarioQtd)) break;
+		    if(aplicarEfeito(item, &pokeUsuario[*pokeAtivo], inv, *pokeUsuarioQtd, pokeUsuario)) break;
             }
         break;
 

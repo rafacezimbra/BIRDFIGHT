@@ -207,13 +207,20 @@ int main (void) {
 	int pokeAtivo = 0;
 	while(1){
 		rodada++;
-
 		if(batalha(rodada, &pokeUsuarioQtd, pokeUsuario, &pokeOponentes, &inventario, &pokeAtivo) == 0){
 			perdeu(nomeUsuario, rodada);
 			return 0;
 		}else{
 			loja(&inventario, &inventario.items[6].quantity);
 		}
+
+		if(pilhaVazia(&pokeOponentes)==1){
+			tp_pokemon *pokeInimigo;
+			pokeInimigo->vida == pokeInimigo->vidamax;
+				sortearPokemons(&pokeOponentes, pokeUsuario, poke);
+			return 1;
+		}
+		
 	}
 	
 

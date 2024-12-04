@@ -25,7 +25,7 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
 
     //coloca para todos os pokemons comecarem com experiencia = 0.
     for(int i=0; i<=QTDPOKEMONS; i++){
-
+    
     poke[i].exp = 0;
     poke[i].expO = 0;
     poke[i].expMax = 100;
@@ -198,8 +198,8 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
     strcpy(poke[8].nome, "Dodo");
     strcpy(poke[8].tipo, "normal");
     poke[8].num = 8;
-    poke[8].vida = 150;
-    poke[8].vidamax = 150;
+    poke[8].vida = 1500000;
+    poke[8].vidamax = 1500000;
     poke[8].atqO = 20;
     poke[8].atq = 20;
     poke[8].defO = 0.8;
