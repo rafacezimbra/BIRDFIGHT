@@ -63,139 +63,140 @@ void loja(Inventory *inv, int *BirdCoin) {
     int escolha;
 
     while(1){
-    printf(YEL);
-    printf("|| ***      ******   ********   ****   ||\n");
-    printf("|| ***     **    **     **    ***  *** ||\n");
-    printf("|| ***     *      *     **    **    ** ||\n");
-    printf("|| ***     *      *  *  **    ******** ||\n");
-    printf("|| ******  **    **  *  **    **    ** ||\n");
-    printf("|| ******   ******   *****    **    ** ||\n");
-    printf("Bem-vindo a Loja!\n");
-    printf("Voce tem %d BirdCoins.\n\n", *BirdCoin);
-    printf(WHT);
+        apagarTela();
+        printf(YEL);
+        printf("|| ***      ******   ********   ****   ||\n");
+        printf("|| ***     **    **     **    ***  *** ||\n");
+        printf("|| ***     *      *     **    **    ** ||\n");
+        printf("|| ***     *      *  *  **    ******** ||\n");
+        printf("|| ******  **    **  *  **    **    ** ||\n");
+        printf("|| ******   ******   *****    **    ** ||\n");
+        printf("Bem-vindo a Loja!\n");
+        printf("Voce tem %d BirdCoins.\n\n", *BirdCoin);
+        printf(WHT);
 
-    tp_listase* atual = itens;
-    int index = 1;
-    while (atual != NULL) {
-        ItemLoja* item = (ItemLoja*)atual->info; // Cast para ItemLoja
-        switch (index - 1) {
-            case 0: // Soro
-                printf(BHBLU);
-                printf("  ___   \n");
-                printf(" |   |  \n");
-                printf(" _| |_  \n");
-                printf("|_____|             %d - %s (Valor: %d BirdCoins): %s\n", index, item->nome, item->preco, item->descricao);
-                printf(WHT);
-                printf("|_____| \n");
-                printf(BHBLU);
-                printf("|_____| \n\n");
-                printf(WHT);
-                break;
-
-            case 1: // Biscoito
-                printf(BHMAG);
-                printf("    *******       \n");
-                printf("  ***  @   ****   \n");
-                printf(" ** @    @   ***  \n");
-                printf(" *    @    @  **    %d - %s (Valor: %d BirdCoins): %s\n", index, item->nome, item->preco, item->descricao);
-                printf(" *  @        ***  \n");
-                printf(" **     @   ***   \n");
-                printf("   **********     \n\n");
-                printf(WHT);
-                break;
-
-            case 2: // Capacete
-                printf(BHRED);
-                printf(" #######  \n");
-                printf("##      # \n"); 
-                printf("#    ####           %d - %s (Valor: %d BirdCoins): %s\n", index, item->nome, item->preco, item->descricao);
-                printf("#   ##  | \n");
-                printf("#   #___| \n");
-                printf(" ####     \n\n");
-                printf(WHT);
-                break;
-
-            case 3:
-                printf(YEL);
-                printf("          --MM \n");
-                printf("      MM##MM:: \n");
-                printf("    MMMM####++ \n");
-                printf("    ####MM@@++      %d - %s (Valor: %d BirdCoins): %s\n", index, item->nome, item->preco, item->descricao);
-                printf("  MM##MM##  ## \n");
-                printf("@@--      MM   \n"); 
-                printf("  ########     \n\n");   
-                printf(WHT); 
-                break;
-
-            case 4: // Gaiola
-                printf(BHBLK);
-                printf("xxxxxxxxxxxxx \n");
-                printf("x  x  x  x  x \n");
-                printf("x  x  x  x  x \n");
-                printf("x  x  x  x  x       %d - %s (Valor: %d BirdCoins): %s\n", index, item->nome, item->preco, item->descricao);
-                printf("x  x  x  x  x \n");
-                printf("x  x  x  x  x \n");
-                printf("xxxxxxxxxxxxx \n\n");
-                printf(WHT);
-                break;
-
-            case 5: // Alpiste
-                printf(BHGRN);
-                printf("|-------------| \n");
-                printf("|   ALPISTE   | \n");
-                printf("|-------------| \n");
-                printf(BHBLU);
-                printf("|:::::::::::::|     %d - %s (Valor: %d BirdCoins): %s\n", index, item->nome, item->preco, item->descricao);
-                printf("|:::::::::::::| \n");
-                printf("|:::::::::::::| \n");
-                printf("|-------------| \n\n");
-                printf(WHT);
-                break;
-        }
-        atual = atual->prox;
-        index++;
-    }
-
-    
-
-    printf("Escolha um item pelo numero (ou 0 para sair): ");
-    scanf("%d", &escolha);
-
-    if (escolha > 0 && escolha < index) {
-        atual = itens;
-        for (int i = 1; i < escolha; i++) {
-            atual = atual->prox;
-        }
-
-        if (atual != NULL) {
+        tp_listase* atual = itens;
+        int index = 1;
+        while (atual != NULL) {
             ItemLoja* item = (ItemLoja*)atual->info; // Cast para ItemLoja
-            if (*BirdCoin >= item->preco) {
-                char confirmacao;
-                printf("Voce selecionou %s por %d BirdCoins. Deseja confirmar a compra? (s/n): ", item->nome, item->preco);
-                scanf(" %c", &confirmacao); // O espaço antes de %c é para ignorar qualquer espaço em branco
+            switch (index - 1) {
+                case 0: // Soro
+                    printf(BHBLU);
+                    printf("  ___   \n");
+                    printf(" |   |  \n");
+                    printf(" _| |_  \n");
+                    printf("|_____|             %d - %s (Valor: %d BirdCoins): %s\n", index, item->nome, item->preco, item->descricao);
+                    printf(WHT);
+                    printf("|_____| \n");
+                    printf(BHBLU);
+                    printf("|_____| \n\n");
+                    printf(WHT);
+                    break;
 
-                if (confirmacao == 's' || confirmacao == 'S') {
-                    *BirdCoin -= item->preco;
-                    adicionarAoInventario(inv, item->nome); // Função para adicionar o item ao inventário
-                    printf("Voce comprou %s por %d BirdCoins.\n", item->nome, item->preco);
-                    printf("BirdCoins restantes: %d\n", *BirdCoin);
-                    continue;
+                case 1: // Biscoito
+                    printf(BHMAG);
+                    printf("    *******       \n");
+                    printf("  ***  @   ****   \n");
+                    printf(" ** @    @   ***  \n");
+                    printf(" *    @    @  **    %d - %s (Valor: %d BirdCoins): %s\n", index, item->nome, item->preco, item->descricao);
+                    printf(" *  @        ***  \n");
+                    printf(" **     @   ***   \n");
+                    printf("   **********     \n\n");
+                    printf(WHT);
+                    break;
+
+                case 2: // Capacete
+                    printf(BHRED);
+                    printf(" #######  \n");
+                    printf("##      # \n"); 
+                    printf("#    ####           %d - %s (Valor: %d BirdCoins): %s\n", index, item->nome, item->preco, item->descricao);
+                    printf("#   ##  | \n");
+                    printf("#   #___| \n");
+                    printf(" ####     \n\n");
+                    printf(WHT);
+                    break;
+
+                case 3:
+                    printf(YEL);
+                    printf("          --MM \n");
+                    printf("      MM##MM:: \n");
+                    printf("    MMMM####++ \n");
+                    printf("    ####MM@@++      %d - %s (Valor: %d BirdCoins): %s\n", index, item->nome, item->preco, item->descricao);
+                    printf("  MM##MM##  ## \n");
+                    printf("@@--      MM   \n"); 
+                    printf("  ########     \n\n");   
+                    printf(WHT); 
+                    break;
+
+                case 4: // Gaiola
+                    printf(BHBLK);
+                    printf("xxxxxxxxxxxxx \n");
+                    printf("x  x  x  x  x \n");
+                    printf("x  x  x  x  x \n");
+                    printf("x  x  x  x  x       %d - %s (Valor: %d BirdCoins): %s\n", index, item->nome, item->preco, item->descricao);
+                    printf("x  x  x  x  x \n");
+                    printf("x  x  x  x  x \n");
+                    printf("xxxxxxxxxxxxx \n\n");
+                    printf(WHT);
+                    break;
+
+                case 5: // Alpiste
+                    printf(BHGRN);
+                    printf("|-------------| \n");
+                    printf("|   ALPISTE   | \n");
+                    printf("|-------------| \n");
+                    printf(BHBLU);
+                    printf("|:::::::::::::|     %d - %s (Valor: %d BirdCoins): %s\n", index, item->nome, item->preco, item->descricao);
+                    printf("|:::::::::::::| \n");
+                    printf("|:::::::::::::| \n");
+                    printf("|-------------| \n\n");
+                    printf(WHT);
+                    break;
+            }
+            atual = atual->prox;
+            index++;
+        }
+
+        
+
+        printf("Escolha um item pelo numero (ou 0 para sair): ");
+        scanf("%d", &escolha);
+
+        if (escolha > 0 && escolha < index) {
+            atual = itens;
+            for (int i = 1; i < escolha; i++) {
+                atual = atual->prox;
+            }
+
+            if (atual != NULL) {
+                ItemLoja* item = (ItemLoja*)atual->info; // Cast para ItemLoja
+                if (*BirdCoin >= item->preco) {
+                    char confirmacao;
+                    printf("Voce selecionou %s por %d BirdCoins. Deseja confirmar a compra? (s/n): ", item->nome, item->preco);
+                    scanf(" %c", &confirmacao); // O espaço antes de %c é para ignorar qualquer espaço em branco
+
+                    if (confirmacao == 's' || confirmacao == 'S') {
+                        *BirdCoin -= item->preco;
+                        adicionarAoInventario(inv, item->nome); // Função para adicionar o item ao inventário
+                        printf("Voce comprou %s por %d BirdCoins.\n", item->nome, item->preco);
+                        printf("BirdCoins restantes: %d\n", *BirdCoin);
+                        continue;
+                    } else {
+                        printf("Compra cancelada.\n");
+                        continue;
+                    }
                 } else {
-                    printf("Compra cancelada.\n");
+                    printf("Voce nao tem BirdCoins suficientes para comprar %s.\n", item->nome);
+                    printf("Preco: %d BirdCoins. Voce tem apenas: %d BirdCoins.\n", item->preco, *BirdCoin);
                     continue;
                 }
-            } else {
-                printf("Voce nao tem BirdCoins suficientes para comprar %s.\n", item->nome);
-                printf("Preco: %d BirdCoins. Voce tem apenas: %d BirdCoins.\n", item->preco, *BirdCoin);
-                continue;
             }
+        } else if (escolha != 0) {
+            printf("Escolha invalida. Tente novamente.\n");
+        } else{
+            break;
         }
-    } else if (escolha != 0) {
-        printf("Escolha invalida. Tente novamente.\n");
-    } else{
-        break;
-    }
-    apagarTela();
+        apagarTela();
     }
     printf("Saindo da loja...\n");
     liberarLista(itens);

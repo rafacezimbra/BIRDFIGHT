@@ -9,7 +9,7 @@
 #include "inventario.h"
 #include "tipo.h"
 #include "captura.h"
-#include "ranking.h"
+#include "ranking2.h"
 
 #define deslocamentoDoOponente 80
 #define deslocAtaque 25
