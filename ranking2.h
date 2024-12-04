@@ -12,11 +12,8 @@ int rodada;
 
 }ranked;
 
-tp_listase ordenaRank(char nome[30], int rodada){
+int ordenaRank(char nome[30], int rodada, tp_listase_rank *lista){
 
-    tp_listase *lista;
-
-    lista = iniciaListase();
   
     char rodadaString[50];
     char nomeAtual[50];
@@ -25,19 +22,21 @@ tp_listase ordenaRank(char nome[30], int rodada){
 	if (!arquivo){
         printf("\nERRO AO ABRIR O ARQUIVO DE RANKING\n");
         sleep(5);
-        return NULL;
+        return 0;
     } 
     while(fgets(nome, 50, arquivo)){ //pega o nome de alguem ate nao terem mais jogadores
 
     fgets(rodadaString, 50, arquivo); //pega a rodada desse alguem
     int rodadaAtual = atoi(rodadaString);
     
-    insereListaseOrdenada(&lista, rodadaAtual, nomeAtual); //insere esse jogador na lista encadeada de forma ordenada
+    insereListaseOrdenada(lista, rodadaAtual, nomeAtual); //insere esse jogador na lista encadeada de forma ordenada
     }
 
-    insereListaseOrdenada(&lista, rodada, nome);
+    insereListaseOrdenada(lista, rodada, nome);
 
-    return *lista;
+    fclose(arquivo);
+
+    return 1;
 }
 
 int imprimeRank(){

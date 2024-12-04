@@ -1,26 +1,26 @@
 //lista simplesmente encadeada (cada nó tem o conteudo e um ponteiro)
 /*https://youtu.be/H7p2QZOVlD0*/
-#ifndef LISTASE_H
-#define LISTASE_H
+#ifndef LISTASERANK_H
+#define LISTASERANK_H
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-typedef int tp_item;
+typedef int tp_rank;
 
 
-typedef struct tp_no{
-    tp_item rodada;
+typedef struct tp_no_rank{
+    tp_rank rodada;
     char nome[30];
-    struct tp_no *prox; //ponteiro que aponta para outra struct dessa
-}tp_listase;
+    struct tp_no_rank *prox; //ponteiro que aponta para outra struct dessa
+}tp_listase_rank;
 
-tp_listase* iniciaListase(){  //envia um ponteiro do tipo listase
+tp_listase_rank* iniciaListaseRank(){  //envia um ponteiro do tipo listase
     return NULL;
 }
 
-int listaseVazia(tp_listase *lista){  //recebe o conteudo do ponteiro lista
+int listaseVaziaRank(tp_listase_rank *lista){  //recebe o conteudo do ponteiro lista
     if(lista==NULL){
         return 1;
     }else{
@@ -29,21 +29,21 @@ int listaseVazia(tp_listase *lista){  //recebe o conteudo do ponteiro lista
 }
 
 
-tp_listase * alocaListase(){
-    tp_listase *novo_no;        //cria um nó e aloca espaço para ele e retorna o endereço de memoria
-    novo_no = (tp_listase*) malloc(sizeof(tp_listase));
+tp_listase_rank * alocaListaseRank(){
+    tp_listase_rank *novo_no;        //cria um nó e aloca espaço para ele e retorna o endereço de memoria
+    novo_no = (tp_listase_rank*) malloc(sizeof(tp_listase_rank));
     return novo_no;
 }
 
-int insereListaseOrdenadaOLD(tp_listase **l, tp_item e, char nome[30]){
-  tp_listase *novo_no, *atu;
-  novo_no=alocaListase(); //Endereço de memoria do novo no, criado pelo aloca lista, para o novo no
+int insereListaseOrdenadaOLD(tp_listase_rank **l, tp_rank e, char nome[30]){
+  tp_listase_rank *novo_no, *atu;
+  novo_no=alocaListaseRank(); //Endereço de memoria do novo no, criado pelo aloca lista, para o novo no
   if(novo_no==NULL) return 0; // Não alocou memória
    novo_no->rodada = e; // atribuir os valores para o novo nó;
    novo_no->prox = NULL; //finaliza o encadeamento do nó
    strcpy(novo_no->nome, nome);
 
-  if(listaseVazia(*l)){// se for o primeiro nó entra aqui
+  if(listaseVaziaRank(*l)){// se for o primeiro nó entra aqui
    *l=novo_no;
 } else{
 
@@ -56,14 +56,14 @@ int insereListaseOrdenadaOLD(tp_listase **l, tp_item e, char nome[30]){
   return 1;
   }
 
-  int insereListaseOrdenada (tp_listase *l, tp_item rodada, char nome[30]){
-	tp_listase *novo_no, *atu, *ant;
-	novo_no=alocaListase();
+  int insereListaseOrdenada (tp_listase_rank *l, tp_rank rodada, char nome[30]){
+	tp_listase_rank *novo_no, *atu, *ant;
+	novo_no=alocaListaseRank();
 	if(novo_no==NULL) return 0;
 	novo_no->rodada = rodada;
-	novo_no->nome = nome[30];
+	strcpy(novo_no->nome, nome);
 	novo_no->prox = NULL;
-	if(listaseVazia(l)){
+	if(listaseVaziaRank(l)){
 		l=novo_no;
 	} else {
 		atu = l;
@@ -82,8 +82,8 @@ int insereListaseOrdenadaOLD(tp_listase **l, tp_item e, char nome[30]){
 }
   
 
-void destroiListase(tp_listase **lista){
-    tp_listase *atu;
+void destroiListaseRank(tp_listase_rank **lista){
+    tp_listase_rank *atu;
     atu = *lista;
     while(atu!=NULL){
         *lista=atu->prox;
@@ -93,29 +93,11 @@ void destroiListase(tp_listase **lista){
     *lista = NULL;
 }
 
-int listaseIgual(tp_listase *l1, tp_listase *l2){
-    tp_listase *atu1;
-    tp_listase *atu2;
-    
-    atu1 = l1;
-    atu2 = l2;
-    
-    if(tamanhoListase(l1)!=tamanhoListase(l2)) return 0;
-    
-    while(atu1!=NULL){
-        if(atu1->rodada != atu2->rodada) return 0;
-    
-    atu1 = atu1->prox;
-    atu2 = atu2->prox;
-    }
-    return 1;
-}
 
-
-void imprime_e_escreve_listase(tp_listase *lista){
+void imprime_e_escreve_listase(tp_listase_rank *lista){
 
     FILE *arquivo = fopen("ranking.txt", "r");
-    tp_listase *atu;
+    tp_listase_rank *atu;
     atu=lista;
 
     printf("--- RANKING ---");

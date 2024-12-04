@@ -25,12 +25,14 @@ int playerVivo(int pokeUsuarioQtd, tp_pokemon pokeUsuario[]){ //procura um pokem
 }
 
 void perdeu(char nome[], int rodada){
-    tp_listase *lista;
     apagarTela();
     printf("\n Voce perdeu!\n");
     sleep(1);
     apagarTela();
-    lista = ordenaRank(nome, rodada);
+
+    tp_listase_rank *lista;
+    lista = iniciaListaseRank();
+    ordenaRank(nome, rodada, lista);
     imprime_e_escreve_listase(lista);
 	printf("\n digite qualquer valor para encerrar o programa\n");
 	char lixo;
