@@ -30,10 +30,16 @@ void perdeu(char nome[], int rodada){
     sleep(1);
     apagarTela();
 
+    /*
     tp_listase_rank *lista;
     lista = iniciaListaseRank();
     ordenaRank(nome, rodada, lista);
     imprime_e_escreve_listase(lista);
+    */
+  
+    colocarNoRanking(nome, rodada);
+    imprimeRank();
+
 	printf("\n digite qualquer valor para encerrar o programa\n");
 	char lixo;
 	scanf(" %c", &lixo);
@@ -318,52 +324,6 @@ void menuBatalha(int *pokeAtivo, tp_pokemon *pokeInimigo, Inventory *inv, tp_pok
     }
    
 }
-/*
-void menuDeBatalha(tp_pokemon pokeUsuario[], tp_pokemon *pokeOponente, int pokeAtivo, int rodada) {
-    int escolha;
-
-        printf("\nEscolha sua ação:\n");
-        printf("1 - Acessar Inventário\n");
-        printf("2 - Capturar Pokémon\n");
-        printf("3 - Trocar Pokémon\n");
-        printf("4 - Selecionar Ataque\n");
-        printf("Escolha: ");
-        scanf("%d", &escolha);
-
-    switch (escolha) {
-        case 1:
-            // fazer a função do inventario
-            break;
-
-        case 2:
-            //fazer a função para capturar
-            break;
-
-        case 3:
-            // fazer a função para trocar o pkm
-            
-            break;
-
-        case 4:
-            // fazer a função de selecionar atk
-            apagarTela();
-            printarBatalha(pokeUsuario, pokeOponente, pokeAtivo, rodada);
-           
-            printarAtaque(pokeUsuario->hab);
-            
-
-            //printar selecao de ataques
-            
-            
-            break;
-
-        default:
-            printf("Escolha inválida. Tente novamente.\n");
-            break;
-    }
-    
-}
-*/
 
 void turnoDoInimigo(int *pokeAtivo, tp_pokemon *pokeInimigo, tp_pokemon pokeUsuario[]){
     //randomizar ataque do oponente

@@ -63,16 +63,15 @@ int insereListaseOrdenadaOLD(tp_listase_rank **l, tp_rank e, char nome[30]){
 	novo_no->rodada = rodada;
 	strcpy(novo_no->nome, nome);
 	novo_no->prox = NULL;
+
 	if(listaseVaziaRank(l)){
 		l=novo_no;
 	} else {
 		atu = l;
 		ant = NULL;
-		int r = atu->rodada;
-		while(r>novo_no->rodada){
+		while(atu->rodada > novo_no->rodada && atu->prox != NULL){
 			ant=atu;
 			atu=atu->prox;
-			r = atu->rodada;
 		}
 		ant->prox=novo_no;
 		novo_no->prox=atu->prox;
@@ -96,7 +95,8 @@ void destroiListaseRank(tp_listase_rank **lista){
 
 void imprime_e_escreve_listase(tp_listase_rank *lista){
 
-    FILE *arquivo = fopen("ranking.txt", "r");
+    FILE *arquivo = fopen("ranking.txt", "w");
+    if(arquivo == NULL) printf("ERRO AO ABRIR ARQUIVO");
     tp_listase_rank *atu;
     atu=lista;
 
