@@ -214,13 +214,9 @@ int main (void) {
 			loja(&inventario, &inventario.items[6].quantity);
 		}
 
-		if(pilhaVazia(&pokeOponentes)==1){
-			tp_pokemon *pokeInimigo;
-			pokeInimigo->vida == pokeInimigo->vidamax;
+		if(pilhaVazia(&pokeOponentes) == 1){
 				sortearPokemons(&pokeOponentes, pokeUsuario, poke);
-			return 1;
 		}
-		
 	}
 	
 

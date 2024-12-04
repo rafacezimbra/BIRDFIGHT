@@ -38,7 +38,7 @@ void perdeu(char nome[], int rodada){
 
 void xpBatalha(int *pokeAtivo, tp_pokemon pokeUsuario[]) {
     // Gera experiência aleatória entre 10 e 50
-    int exp_ganha = (rand() % 41) + 10;
+    int exp_ganha = (rand() % 91) + 10;
     printf("%s ganhou %d de EXP na batalha!\n", pokeUsuario[*pokeAtivo].nome, exp_ganha);
 
     // Atualiza a experiência do Pokémon
