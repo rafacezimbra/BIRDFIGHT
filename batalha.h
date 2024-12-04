@@ -271,7 +271,7 @@ void menuBatalha(int *pokeAtivo, tp_pokemon *pokeInimigo, Inventory *inv, tp_pok
                 return  menuBatalha(pokeAtivo, pokeInimigo, inv, pokeUsuario, pokeUsuarioQtd, rodada);
                 break;
             }
-		    if(aplicarEfeito(item, &pokeUsuario[*pokeAtivo], inv)) break;
+		    if(aplicarEfeito(item, &pokeUsuario[*pokeAtivo], inv, *pokeUsuarioQtd)) break;
             }
         break;
 

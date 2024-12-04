@@ -20,7 +20,7 @@ typedef struct {
 void initializeInventory(Inventory *inv) {
     // Inicialização dos itens
     Item BirdCoin = {"BirdCoin", 1000, "Recurso para trocar por outros itens na loja"};
-    Item Alpiste = {"Alpiste", 0, "Recupera 30 HP"};
+    Item Alpiste = {"Alpiste", 0, "Recupera 60 HP"};
     Item Melao = {"Melao", 0, "Aumenta o ataque do birdmon"};
     Item Gaiola = {"Gaiola", 5, "Usada para capturar Birdmon (com consentimento do governo)"};
     Item Soro = {"Soro", 0, "Cura efeitos negativos"};
@@ -72,24 +72,27 @@ void listarBirdmons(tp_pokemon *poke) {
     }
 }
 
-void reviverBirdmon(tp_pokemon *poke) {
+int reviverBirdmon(tp_pokemon *poke, int pokeUsuarioQtd) {
 
     listarBirdmons(poke);
-    int numBirdmons = 6;
     int escolha;
-    printf("Digite o numero do Birdmon que deseja reviver: ");
-    scanf("%d", &escolha);
-    
-    if (escolha > 0 && escolha <= numBirdmons) {
-        tp_pokemon *poke = &poke[escolha]; 
-        if (poke->vida == 0) {
-            poke->vida = poke->vidamax / 2; // Restaura a 50% do HP máximo
-            printf("%s revivido com %d HP.\n", poke->nome, poke->vida);
+   
+    while(1){
+         printf("Digite o numero do Birdmon que deseja reviver (0 para retornar): ");
+         scanf("%d", &escolha);
+        if(escolha == 0) return 0;
+        if (escolha > 0 && escolha <= pokeUsuarioQtd) {
+            tp_pokemon *poke = &poke[escolha]; 
+            if (poke->vida == 0) {
+                poke->vida = poke->vidamax / 2; // Restaura a 50% do HP máximo
+                printf("%s revivido com %d HP.\n", poke->nome, poke->vida);
+                return 1;
+            } else {
+                printf("%s ainda esta vivo e nao precisa ser revivido.\n", poke->nome);
+            }
         } else {
-            printf("%s ainda esta vivo e nao precisa ser revivido.\n", poke->nome);
+            printf("Escolha invalida.\n");
         }
-    } else {
-        printf("Escolha invalida.\n");
     }
 }
 
@@ -100,33 +103,44 @@ int temItem(int numItem, Inventory *inv) { // Checa se o jogador tem pelo menos 
     return 0;
 }
 
-int aplicarEfeito(int itemIndex, tp_pokemon *poke, Inventory *inv) { // Aplica o efeito de um item no inventário
+int aplicarEfeito(int itemIndex, tp_pokemon *poke, Inventory *inv, int pokeUsuarioQtd) { // Aplica o efeito de um item no inventário
     if (temItem(itemIndex-1, inv)) { // Testa se o jogador tem o item antes de aplicar os efeitos
         if (itemIndex == 1) { // Alpiste
-            int hpRecovery = 30;
+            int hpRecovery = 60;
+            if(poke->vidamax - poke->vida < hpRecovery) hpRecovery = poke->vidamax - poke->vida;
             poke->vida += hpRecovery;
+            
             printf("HP recuperado em %d pontos. HP atual: %d\n", hpRecovery, poke->vida);
+            inv->items[itemIndex-1].quantity--;
             return 1;
         } else if (itemIndex == 2) { // Melão
             float atkIncreasePercent = 0.2; // Aumento de ataque de 20%
             int atkIncrease = poke->atq * atkIncreasePercent;
             poke->atq += atkIncrease;
             printf("Ataque aumentado em %d pontos. Ataque atual: %d\n", atkIncrease, poke->atq);
+            inv->items[itemIndex-1].quantity--;
             return 1;
+
         } else if (itemIndex == 3) { // Capacete
             float defIncreasePercent = 0.2; // Aumento de defesa de 20%
             int defIncrease = poke->def * defIncreasePercent;
             poke->def += defIncrease; // Corrigido para aumentar a defesa
             printf("Defesa aumentada em %d pontos. Defesa atual: %d\n", defIncrease, poke->def);
+            inv->items[itemIndex-1].quantity--;
             return 1;
+            
         } else if (itemIndex == 4) {
             resetarAtributos(poke);
+            inv->items[itemIndex-1].quantity--;
             return 1;
         } else if (itemIndex == 5) {
-            reviverBirdmon(poke);
+            if(reviverBirdmon(poke, pokeUsuarioQtd)) inv->items[itemIndex-1].quantity--;
             return 1;
         } else if (itemIndex == 6) {
             printf("Esse item eh utilizado a partir do menu.\n");
+            return 0;
+         } else if (itemIndex == 7) {
+            printf("Esse item eh utilizado na loja.\n");
             return 0;
         } else {
             printf("Item nao reconhecido. Digite novamente.\n");
