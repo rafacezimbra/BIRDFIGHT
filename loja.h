@@ -19,7 +19,7 @@ void loja(Inventory *inv, int *BirdCoin){
 apagarTela();
 
     ItemLoja itens[6] = {
-        {"Alpiste", 250, "Restaura 30 HP do Birdmon ativo."},
+        {"Alpiste", 250, "Restaura 60 HP do Birdmon ativo."},
         {"Gaiola", 150, "Captura o Birdmon adversario"},
         {"Melao", 300, "Aumenta o ataque do Birdmon ativo temporariamente."},
         {"Capacete", 300, "Aumenta a defesa do Birdmon ativo temporariamente."},

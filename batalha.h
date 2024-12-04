@@ -1,6 +1,6 @@
 #ifndef BATALHA_H //if not define
 #define BATALHA_H
-
+#include "pilha.h"
 #include "pokemon.h"
 #include "sprites.h"
 #include "apagartela.h"
@@ -9,8 +9,7 @@
 #include "inventario.h"
 #include "tipo.h"
 #include "captura.h"
-#include "ranking2.h"
-#include "listaserank.h"
+#include "ranking.h"
 
 #define deslocamentoDoOponente 80
 #define deslocAtaque 25
@@ -29,17 +28,8 @@ void perdeu(char nome[], int rodada){
     printf("\n Voce perdeu!\n");
     sleep(1);
     apagarTela();
-
-    /*
-    tp_listase_rank *lista;
-    lista = iniciaListaseRank();
-    ordenaRank(nome, rodada, lista);
-    imprime_e_escreve_listase(lista);
-    */
-  
     colocarNoRanking(nome, rodada);
     imprimeRank();
-
 	printf("\n digite qualquer valor para encerrar o programa\n");
 	char lixo;
 	scanf(" %c", &lixo);
@@ -48,7 +38,7 @@ void perdeu(char nome[], int rodada){
 
 void xpBatalha(int *pokeAtivo, tp_pokemon pokeUsuario[]) {
     // Gera experiência aleatória entre 10 e 50
-    int exp_ganha = (rand() % 41) + 10;
+    int exp_ganha = (rand() % 91) + 10;
     printf("%s ganhou %d de EXP na batalha!\n", pokeUsuario[*pokeAtivo].nome, exp_ganha);
 
     // Atualiza a experiência do Pokémon
@@ -58,7 +48,7 @@ void xpBatalha(int *pokeAtivo, tp_pokemon pokeUsuario[]) {
     if (pokeUsuario[*pokeAtivo].exp >= pokeUsuario[*pokeAtivo].expMax) {
         // Sobe de nível
         pokeUsuario[*pokeAtivo].nivel += 1;
-        printf("%s subiu para o nivel %d!\n", pokeUsuario[*pokeAtivo].nome,pokeUsuario[*pokeAtivo].nivel);
+        printf("%s subiu para o nível %d!\n", pokeUsuario[*pokeAtivo].nome,pokeUsuario[*pokeAtivo].nivel);
 
         // Reseta a experiência atual e aumenta o limite de experiência para o próximo nível
         pokeUsuario[*pokeAtivo].exp = pokeUsuario[*pokeAtivo].expO;
@@ -86,7 +76,6 @@ void printarBatalha(tp_pokemon pokeUsuario[], tp_pokemon *pokeInimigo, int pokeA
     
     //printar o pokemon do jogador
     printarPokemon(pokeUsuario[pokeAtivo], 0);
- 
 
 
 }
@@ -282,7 +271,7 @@ void menuBatalha(int *pokeAtivo, tp_pokemon *pokeInimigo, Inventory *inv, tp_pok
                 return  menuBatalha(pokeAtivo, pokeInimigo, inv, pokeUsuario, pokeUsuarioQtd, rodada);
                 break;
             }
-		    if(aplicarEfeito(item, &pokeUsuario[*pokeAtivo], inv)) break;
+		    if(aplicarEfeito(item, &pokeUsuario[*pokeAtivo], inv, *pokeUsuarioQtd, pokeUsuario)) break;
             }
         break;
 

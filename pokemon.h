@@ -25,7 +25,7 @@ void criarPokemons(tp_pokemon poke[], tp_hab hab[]){
 
     //coloca para todos os pokemons comecarem com experiencia = 0.
     for(int i=0; i<=QTDPOKEMONS; i++){
-
+    
     poke[i].exp = 0;
     poke[i].expO = 0;
     poke[i].expMax = 100;
